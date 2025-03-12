@@ -49,3 +49,44 @@ coverage/
 *.njsproj
 *.sln
 *.sw?
+
+
+📦 StockEd-Frontend
+ ┣ 📂 public
+ ┃ ┣ 📜 index.html
+ ┃ ┣ 📂 images/ (SVG assets for plant growth)
+ ┣ 📂 src
+ ┃ ┣ 📂 components
+ ┃ ┃ ┣ 📂 auth
+ ┃ ┃ ┃ ┣ 📜 Login.js
+ ┃ ┃ ┃ ┣ 📜 Register.js
+ ┃ ┃ ┣ 📂 dashboard
+ ┃ ┃ ┃ ┣ 📜 Portfolio.js
+ ┃ ┃ ┃ ┣ 📜 StockList.js
+ ┃ ┃ ┃ ┣ 📜 Watchlist.js
+ ┃ ┃ ┃ ┣ 📜 GrowthPlant.js  🌱 (Dynamic animated plant)
+ ┃ ┃ ┣ 📂 stocks
+ ┃ ┃ ┃ ┣ 📜 StockSearch.js
+ ┃ ┃ ┃ ┣ 📜 StockDetails.js
+ ┃ ┃ ┃ ┣ 📜 TrendingStocks.js
+ ┃ ┃ ┣ 📂 ui
+ ┃ ┃ ┃ ┣ 📜 Navbar.js
+ ┃ ┃ ┃ ┣ 📜 Footer.js
+ ┃ ┃ ┃ ┣ 📜 ThemeToggle.js (Light/Dark mode)
+ ┃ ┣ 📂 pages
+ ┃ ┃ ┣ 📜 Home.js
+ ┃ ┃ ┣ 📜 Dashboard.js
+ ┃ ┃ ┣ 📜 PortfolioPage.js
+ ┃ ┃ ┣ 📜 StockPage.js
+ ┃ ┣ 📂 context
+ ┃ ┃ ┣ 📜 AuthContext.js (Handles user state)
+ ┃ ┃ ┣ 📜 StockContext.js (Manages stock data globally)
+ ┃ ┣ 📂 services
+ ┃ ┃ ┣ 📜 api.js (Handles API calls)
+ ┃ ┣ 📜 App.js
+ ┃ ┣ 📜 index.js
+ ┣ 📂 styles
+ ┃ ┣ 📜 global.css
+ ┃ ┣ 📜 plant.css (For plant growth animations)
+ ┣ 📜 package.json
+ ┣ 📜 README.md

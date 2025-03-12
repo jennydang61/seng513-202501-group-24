@@ -18,7 +18,7 @@ if (process.env.MONGO_RUI) {
 
 // Default Route
 app.get("/", (req, res) => {
-  res.send("🚀 StockEd Backend Running!");
+  res.send("🚀 The Game of Stocks Backend Running!");
 });
 
 // Start Server
