@@ -1,0 +1,51 @@
+.qodo
+# 🛠 Node.js Dependencies
+node_modules/
+package-lock.json
+dist
+dist-ssr
+*.local
+
+# 🔑 Environment Variables
+.env
+.env.local
+.env.development
+.env.production
+
+# 🔄 Logs & Debugging
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# 📦 Build & Cache Files
+dist/
+.cache/
+.vscode/
+.DS_Store
+
+# 🚀 IDE & System Files
+*.swp
+.idea/
+*.sublime-workspace
+
+# 🔹 MongoDB Data Dumps (if using local MongoDB)
+dump/
+*.gz
+
+# 🔍 Test Coverage Reports (if using Jest)
+coverage/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
