@@ -1,0 +1,53 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    background-color: transparent;
+    color: white;
+    position: relative;
+  }
+  
+  .logo {
+    width: 5rem;
+    height: auto;
+  }
+  
+  .navigation {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  .navList {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navItem {
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .authButtons {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .authButton {
+    background-color: #316BF3;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+  }
+
+  .authButton:hover {
+    background-color: #2563eb;
+  }
