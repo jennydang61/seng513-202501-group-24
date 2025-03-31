@@ -1,0 +1,63 @@
+/* styles/SignIn.css */
+
+.signInPage {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #17161C;
+    color: white;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .signInContainer {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 6rem auto 0 auto;
+  }
+  
+  .signInTitle {
+    font-size: 3.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  .signInForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .signInForm label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+  }
+  
+  .signInForm input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    padding: 0.5rem 0;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    width: 25rem;
+  }
+  
+  .signInForm button {
+    background-color: #316BF3;
+    color: white;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .signInForm button:hover {
+    background-color: #2563eb;
+  }
+  
