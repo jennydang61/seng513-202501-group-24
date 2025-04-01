@@ -1,5 +1,7 @@
 import logo from '../../images/logo.png';
 import '../../../styles/Navbar.css';
+import { Link } from 'react-router-dom';
+
 
 const NavBar = () => {
     return (
@@ -11,9 +13,15 @@ const NavBar = () => {
         />
         <nav className={'navigation'}>
             <ul className={'navList'}>
-            <li className={'navItem'}>Profile</li>
-            <li className={'navItem'}>Trade</li>
-            <li className={'navItem'}>Leaderboard</li>
+            <li className={'navItem'}>
+                <Link to="/profile">Profile</Link>
+            </li>
+            <li className={'navItem'}>
+                <Link to="/trade">Trade</Link>
+            </li>
+            <li className={'navItem'}>
+                <Link to="/leaderboard">Leaderboard</Link>
+            </li>
             </ul>
             <div className={'authButtons'}>
             <button className={'authButton'}>Logout</button>
