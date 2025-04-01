@@ -6,7 +6,7 @@ const ProfilePage = () => {
       <div className="profilePage">
         <NavBar />
         <main className="profileContainer">
-
+            <h1 className="profileTitle">Profile</h1>
         </main>
       </div>
     );
