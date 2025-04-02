@@ -1,15 +1,17 @@
 import logo from '../../images/logo.png';
 import '../../../styles/Navbar.css';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 
 const NavBar = () => {
+    const navigate = useNavigate();
     return (
         <header className={'header'}>
         <img
             src={logo}
             alt="Logo"
             className={'logo'}
+            onClick={() => navigate('/profile')}
         />
         <nav className={'navigation'}>
             <ul className={'navList'}>

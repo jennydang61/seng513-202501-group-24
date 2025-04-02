@@ -1,4 +1,4 @@
-import NavBar from "../components/ui/Navbar2";
+import NavBar from "../components/ui/Navbar";
 import '../../styles/StockPage.css';
 import searchImage from "/src/images/searchIcon.png";
 
