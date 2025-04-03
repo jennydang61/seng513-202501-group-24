@@ -1,20 +1,24 @@
-require("dotenv").config();
 const express = require("express");
-const connectDB = require("./src/config/db");
-
 const app = express();
 
+const path = require('path');
+const PORT = process.env.PORT || 3500;
+
+// require("dotenv").config();
+// const connectDB = require("./src/config/db");
+
+
 // Middleware
-app.use(express.json());
-app.use(require("cors")());
-app.use(require("helmet")());
+// app.use(express.json());
+// app.use(require("cors")());
+// app.use(require("helmet")());
 
 // Connect to Database
-if (process.env.MONGO_RUI) {
-  connectDB();
-} else {
-  console.log("⚠️ Skipping MongoDB connection (MONGO_URI not set)")
-}
+// if (process.env.MONGO_RUI) {
+//   connectDB();
+// } else {
+//   console.log("⚠️ Skipping MongoDB connection (MONGO_URI not set)")
+// }
 
 // Default Route
 app.get("/", (req, res) => {
@@ -22,5 +26,4 @@ app.get("/", (req, res) => {
 });
 
 // Start Server
-const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
