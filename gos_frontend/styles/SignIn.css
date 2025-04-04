@@ -60,4 +60,63 @@
   .signInForm button:hover {
     background-color: #2563eb;
   }
-  
+
+@media (max-width: 1024px) {
+  .signInContainer {
+    padding: 0 2rem;
+    margin-top: 4rem;
+  }
+
+  .signInTitle {
+    font-size: 3rem;
+    text-align: left;
+  }
+
+  .signInForm input {
+    width: 100%;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .signInContainer {
+    padding: 0 1.5rem;
+    margin-top: 3rem;
+    max-width: 100%;
+  }
+
+  .signInTitle {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+
+  .signInForm input {
+    font-size: 1rem;
+    width: 100%;
+  }
+
+  .signInForm button {
+    font-size: 1rem;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .signInTitle {
+    font-size: 2rem;
+  }
+
+  .signInForm label {
+    font-size: 0.85rem;
+  }
+
+  .signInForm input {
+    font-size: 0.95rem;
+  }
+
+  .signInForm button {
+    font-size: 0.95rem;
+    padding: 0.65rem;
+  }
+}

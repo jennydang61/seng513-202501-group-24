@@ -80,3 +80,84 @@
     background-color: #2563eb;
   }
   
+@media (max-width: 1024px) {
+  .registerContainer {
+    flex-direction: column;
+    padding: 3rem 4rem;
+    gap: 3rem;
+  }
+
+  .registerLeft,
+  .registerRight {
+    width: 100%;
+  }
+
+  .registerTitle {
+    font-size: 3rem;
+  }
+
+  .registerImage {
+    max-width: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  .registerContainer {
+    padding: 2rem;
+    gap: 2rem;
+  }
+
+  .registerLeft {
+    text-align: center;
+    margin: 0;
+  }
+
+  .registerTitle {
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .registerImage {
+    max-width: 70%;
+  }
+
+  .registerForm {
+    max-width: 100%;
+  }
+
+  .registerForm input {
+    font-size: 0.95rem;
+  }
+
+  .registerForm button {
+    font-size: 0.95rem;
+    padding: 0.65rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .registerContainer {
+    padding: 1.5rem 1rem;
+  }
+
+  .registerTitle {
+    font-size: 2rem;
+  }
+
+  .registerImage {
+    max-width: 80%;
+  }
+
+  .registerForm label {
+    font-size: 0.85rem;
+  }
+
+  .registerForm input {
+    font-size: 0.9rem;
+  }
+
+  .registerForm button {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+}
