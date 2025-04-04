@@ -1,0 +1,33 @@
+.leaderboardPage {
+    min-height: 100vh;
+    color: white;
+  }
+  
+  .leaderboardContainer {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: linear-gradient(to bottom, #4f7df9, #5fd3ff);
+    border-radius: 1rem;
+  }
+  
+  .leaderboardTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+  
+  .leaderboardHeader {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .leaderboardList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
