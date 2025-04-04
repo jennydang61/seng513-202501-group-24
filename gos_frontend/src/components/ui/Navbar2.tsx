@@ -1,36 +1,52 @@
 import logo from '../../images/logo.png';
 import '../../../styles/Navbar.css';
 import { useNavigate, Link } from 'react-router-dom';
-
+import { useState } from 'react';
 
 const NavBar = () => {
-    const navigate = useNavigate();
-    return (
-        <header className={'header'}>
-        <img
-            src={logo}
-            alt="Logo"
-            className={'logo'}
-            onClick={() => navigate('/profile')}
-        />
-        <nav className={'navigation'}>
-            <ul className={'navList'}>
-            <li className={'navItem'}>
-                <Link to="/profile">Profile</Link>
+  const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = (): void => {
+    setMenuOpen(!menuOpen);
+  };
+
+  return (
+    <header className="header">
+      <img
+        src={logo}
+        alt="Logo"
+        className="logo"
+        onClick={() => navigate('/')}
+      />
+
+      <div
+        className={`hamburgerNav ${menuOpen ? 'open' : ''}`}
+        onClick={toggleMenu}
+      >
+        <div className="line"></div>
+        <div className="line"></div>
+        <div className="line"></div>
+      </div>
+
+      <nav className={`navBar ${menuOpen ? 'open' : ''}`}>
+        <ul className="navList">
+            <li className="navItem">
+                <Link to="/signin">Profile</Link>
             </li>
-            <li className={'navItem'}>
+            <li className="navItem">
                 <Link to="/trade">Trade</Link>
             </li>
-            <li className={'navItem'}>
+            <li className="navItem">
                 <Link to="/leaderboard">Leaderboard</Link>
             </li>
-            </ul>
-            <div className={'authButtons'}>
-            <button className={'authButton'}>Logout</button>
-            </div>
-        </nav>
-        </header>
-    );
+            <li className="navItem">
+                <Link to="/signin" className="authButton">Logout</Link>
+            </li>
+        </ul>       
+      </nav>
+    </header>
+  );
 };
 
 export default NavBar;
