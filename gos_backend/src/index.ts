@@ -7,6 +7,9 @@ import { APP_ORIGIN, NODE_ENV, PORT } from './constants/env';
 import errorHandler from "./middleware/errorHandler";
 import catchErrors from "./utils/catchErrors";
 import authRoutes from "./routes/auth.route";
+import authenticate from "./middleware/authenticate";
+import userRoutes from "./routes/user.route";
+import sessionRoutes from "./routes/session.route";
 
 const app = express();
 
@@ -33,6 +36,10 @@ app.get(
 
 // auth routes
 app.use("/auth", authRoutes);
+
+// protected routes
+app.use("/user", authenticate, userRoutes) // making sure the user is authenticated first before fetching the user
+app.use("/sessions", authenticate, sessionRoutes) // making sure the user is authenticated first before fetching the user
 
 app.use(errorHandler);
 
