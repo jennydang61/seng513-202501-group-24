@@ -1,6 +1,7 @@
 import { CookieOptions, Response } from "express";
 import { fifteenMinutesFromNow, thirtyDaysFromNow } from "../utils/date";
 
+export const REFRESH_PATH = "/auth/refresh";
 // to allow for running in development mode which uses http (not secure)
 const secure = process.env.NODE_ENV !== "development";
 
@@ -18,7 +19,7 @@ const getAccessTokenCookieOptions = (): CookieOptions => ({
 const getRefreshTokenCookieOptions = (): CookieOptions => ({
     ...defaults,
     expires: thirtyDaysFromNow(),
-    path: "/auth/refresh" // which path for this to be sent on
+    path: REFRESH_PATH // which path for this to be sent on
 });
 
 type Params = {
@@ -30,4 +31,11 @@ type Params = {
 export const setAuthCookies = ({res, accessToken, refreshToken}:Params ) =>
     res
         .cookie("accessToken", accessToken, getAccessTokenCookieOptions())
-        .cookie("refrreshToken", refreshToken, getRefreshTokenCookieOptions());
+        .cookie("refreshToken", refreshToken, getRefreshTokenCookieOptions());
+
+export const clearAuthCookies = (res: Response): Response => {
+    res
+        .clearCookie("accessToken")
+        .clearCookie("refreshToken", { path: REFRESH_PATH });
+    return res;
+};
