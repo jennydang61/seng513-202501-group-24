@@ -2,6 +2,7 @@ import { ErrorRequestHandler, Response } from "express";
 import { BAD_REQUEST, INTERNAL_SERVER_ERROR } from "../constants/http";
 import { z } from "zod";
 import AppError from "../utils/AppError";
+import { clearAuthCookies, REFRESH_PATH } from "../utils/cookies";
 
 const handleZodError = (res:Response, error: z.ZodError) => {
     const errors = error.issues.map((err) => ({ // array of error issues
@@ -23,9 +24,10 @@ const handleAppError = (res: Response, error: AppError) => {
 
 const errorHandler: ErrorRequestHandler = (error, req, res, next) => {
     console.log(`PATH: ${req.path}`, error);
-    // if (req.path === REFRESH_PATH) {
-    //     clearAuthCookies(res);
-    // }
+
+    if (req.path === REFRESH_PATH) {
+        clearAuthCookies(res);
+    }
 
     if (error instanceof z.ZodError) {
         handleZodError(res, error);
