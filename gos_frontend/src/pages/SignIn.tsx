@@ -38,6 +38,7 @@ import { login } from "../lib/api";
             {
               isError && (
               <div className="error">
+                {/* needs styling */}
                 Invalid username or password
               </div>
               )
