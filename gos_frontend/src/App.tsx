@@ -9,17 +9,16 @@ import ProfilePage from './pages/ProfilePage'
 import '../styles/App.css'
 
 function App() {
+  
   return (
-    <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<SignIn />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/trade" element={<Stockpage />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
-        <Route path="/signin" element={<SignIn />} />
         <Route path="/register" element={<Register />} />
       </Routes>
-    </Router>
   )
 }
 

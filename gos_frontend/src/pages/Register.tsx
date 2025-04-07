@@ -1,8 +1,12 @@
 import NavBar from "../components/ui/Navbar";
 import '../../styles/Register.css';
 import registerImage from "/src/images/registerImage.png";
+import { useState } from "react";
 
 const Register = () => {
+
+  const [confirmPassword, setConfirmPassword] = useState("");
+
   return (
     <div className="registerPage">
       <NavBar />
@@ -24,7 +28,11 @@ const Register = () => {
             </label>
             <label>
               <span>Confirm Password</span>
-              <input type="password" name="confirmPassword" required />
+              <input 
+                type="password" 
+                name="confirmPassword" 
+                value={confirmPassword}
+                required />
             </label>
             <button type="submit">Register</button>
           </form>
