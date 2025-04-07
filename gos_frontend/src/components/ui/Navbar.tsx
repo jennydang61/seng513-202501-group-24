@@ -32,7 +32,7 @@ const NavBar = () => {
       <nav className={`navBar ${menuOpen ? 'open' : ''}`}>
         <ul className="navList">
             <li className="navItem">
-                <Link to="/signin">Profile</Link>
+                <Link to="/login">Profile</Link>
             </li>
             <li className="navItem">
                 <Link to="/trade">Trade</Link>
@@ -41,7 +41,7 @@ const NavBar = () => {
                 <Link to="/leaderboard">Leaderboard</Link>
             </li>
             <li className="navItem">
-                <Link to="/signin" className="authButton">Sign In</Link>
+                <Link to="/login" className="authButton">Sign In</Link>
             </li>
             <li className="navItem">
                 <Link to="/register" className="authButton">Register</Link>
