@@ -32,7 +32,7 @@ const NavBar = () => {
       <nav className={`navBar ${menuOpen ? 'open' : ''}`}>
         <ul className="navList">
             <li className="navItem">
-                <Link to="/login">Profile</Link>
+                <Link to="/profile">Profile</Link>
             </li>
             <li className="navItem">
                 <Link to="/trade">Trade</Link>

@@ -1,16 +1,17 @@
 import { useState } from "react";
 import NavBar from "../components/ui/Navbar";
 import '../../styles/SignIn.css';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useMutation } from '@tanstack/react-query';
 import { login } from "../lib/api";
 
   const SignIn = () => {
+    const location = useLocation();
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const redirectUrl = location.state?.redirectUrl || "/";
 
-    // const redirectUrl = location.state?.redirectUrl || "/";
 
     const {
         mutate: signIn,
@@ -19,7 +20,7 @@ import { login } from "../lib/api";
       } = useMutation({
         mutationFn: login, // api call to the backend
         onSuccess: () => {
-          navigate('/', {
+          navigate(redirectUrl, {
             replace: true, // prevents going back to the login page when back is pressed after logging in
           });
         },

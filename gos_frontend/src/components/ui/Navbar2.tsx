@@ -2,6 +2,9 @@ import logo from '../../images/logo.png';
 import '../../../styles/Navbar.css';
 import { useNavigate, Link } from 'react-router-dom';
 import { useState } from 'react';
+import { useMutation } from '@tanstack/react-query';
+import queryClient from '../../config/queryClient';
+import { logout } from '../../lib/api';
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -10,6 +13,16 @@ const NavBar = () => {
   const toggleMenu = (): void => {
     setMenuOpen(!menuOpen);
   };
+
+  const{
+    mutate:signOut
+  } = useMutation({
+    mutationFn: logout,
+    onSettled: () => {
+      queryClient.clear(); // remove all data stored in client
+      navigate("/login", { replace: true }); // navigate the user to the sigin page
+    }
+  })
 
   return (
     <header className="header">
@@ -32,7 +45,7 @@ const NavBar = () => {
       <nav className={`navBar ${menuOpen ? 'open' : ''}`}>
         <ul className="navList">
             <li className="navItem">
-                <Link to="/login">Profile</Link>
+                <Link to="/profile">Profile</Link>
             </li>
             <li className="navItem">
                 <Link to="/trade">Trade</Link>
@@ -41,7 +54,7 @@ const NavBar = () => {
                 <Link to="/leaderboard">Leaderboard</Link>
             </li>
             <li className="navItem">
-                <Link to="/login" className="authButton">Logout</Link>
+                <button className="authButton" onClick={signOut}>Logout</button>
             </li>
         </ul>       
       </nav>

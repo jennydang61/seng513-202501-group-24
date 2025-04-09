@@ -5,6 +5,7 @@ package-lock.json
 dist
 dist-ssr
 *.local
+ref_frontend/
 
 # 🔑 Environment Variables
 .env

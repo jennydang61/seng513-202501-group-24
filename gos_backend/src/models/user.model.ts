@@ -5,6 +5,7 @@ import { compareValue, hashValue } from "../utils/bcrypt";
 export interface UserDocument extends mongoose.Document {
     username: string;
     password: string;
+    // role: "user" || "admin";
     createdAt: Date;
     updatedAt: Date;
     comparePassword(val:string): Promise<boolean>;
@@ -18,6 +19,7 @@ const userSchema = new mongoose.Schema<UserDocument> (
     {
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
+    // role: { type: String, default: "user"},
     },
     {
         timestamps: true,
