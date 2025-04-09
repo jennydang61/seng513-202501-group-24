@@ -19,11 +19,12 @@ function App() {
 
   return (
       <Routes>
-        <Route path="/" element={<AppContainer />}>
-          <Route path="profile" element={<ProfilePage />} />
-          <Route path="trade" element={<Settings />} />
-        </Route>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/user" element={<AppContainer />}>
+          <Route index element={<LandingPage />} />
+          <Route path="profile" element={<ProfilePage />} />
+          <Route path="trade" element={<Stockpage />} />
+        </Route>
         <Route path="/login" element={<SignIn />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/trade" element={<Stockpage />} />
