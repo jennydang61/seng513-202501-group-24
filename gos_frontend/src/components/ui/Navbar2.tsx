@@ -30,7 +30,7 @@ const NavBar = () => {
         src={logo}
         alt="Logo"
         className="logo"
-        onClick={() => navigate('/')}
+        onClick={() => navigate('/profile')}
       />
 
       <div
