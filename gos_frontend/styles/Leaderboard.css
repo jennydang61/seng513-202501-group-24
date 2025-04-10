@@ -31,3 +31,19 @@
     gap: 1rem;
   }
   
+  .leaderboardRow {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    padding: 0.75rem 1rem;
+    background: #17161C;
+    border-radius: 10px;
+  }
+  
+  .positive {
+    color: #4ade80;
+  }
+  
+  .negative {
+    color: #f87171;
+  }
+  

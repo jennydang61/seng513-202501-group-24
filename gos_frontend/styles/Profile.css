@@ -26,24 +26,20 @@
   
   .profileGrid {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
     gap: 2rem;
-    flex-wrap: wrap;
   }
   
   .profileLeft {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    flex: 1;
     gap: 1.5rem;
+    align-items: center;
   }
   
   .profileTop {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 0.5rem;
   }
   

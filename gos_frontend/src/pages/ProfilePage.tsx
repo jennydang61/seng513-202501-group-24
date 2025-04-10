@@ -15,7 +15,6 @@ const ProfilePage = () => {
 
         <div className="profileCard">
           <div className="profileGrid">
-            {/* LEFT: Avatar + Username + Buttons */}
             <div className="profileLeft">
               <div className="profileTop">
                 <img src={profileImage} alt="Profile" className="avatar" />
@@ -29,7 +28,6 @@ const ProfilePage = () => {
               </div>
             </div>
 
-            {/* RIGHT: Stats + Status + Portfolio */}
             <div className="profileRight">
               <div className="statsSection">
                 <div className="statCard">
