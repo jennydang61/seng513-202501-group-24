@@ -5,9 +5,15 @@ import useAuth from "../hooks/useAuth";
 import profileImage from "/src/images/happyPlant.png";
 import { useState } from "react";
 
+
 const ProfilePage = () => {
   const { user } = useAuth();
   const { username } = user;
+  // hard code
+  const remainingFunds = 5056.0;
+  const currentValue = 13256.0;
+  const returnPercentage = 4.23;
+
 
   const [modalType, setModalType] = useState<"edit" | "password" | "delete" | null>(null);
   const closeModal = () => setModalType(null);
@@ -37,16 +43,20 @@ const ProfilePage = () => {
             <div className="profileRight">
               <div className="statsSection">
                 <div className="statCard">
-                  <span className="label">Remaining funds</span>
-                  <span className="amount">$50.56</span>
+                  <span className="label">Remaining funds </span>
+                  <span className="amount">${remainingFunds.toLocaleString()}</span>
                 </div>
                 <div className="statCard">
-                  <span className="label">Current</span>
-                  <span className="amount">$132.56</span>
-                  <span className="change positive">+4.23%</span>
+                  <span className="label">Current </span>
+                  <span className="amount">${currentValue.toLocaleString()}</span>
+                  <span className={`return ${returnPercentage >= 0 ? "positive" : "negative"}`}>
+                    {returnPercentage >= 0 ? "+" : ""}
+                    {returnPercentage.toFixed(2)}%
+                  </span>
                 </div>
               </div>
 
+              {/* hard code */}
               <p className="statusMessage">
                 Congratulations! You are 12th position on the leaderboard
               </p>

@@ -2,6 +2,7 @@ import NavBar from "../components/ui/Navbar2";
 import "../../styles/Admin.css";
 import Modal from "../components/ui/Modal";
 import { useState } from "react";
+import pfpImage from "/src/images/pfp.png";
 
 {/* hard code */}
 const dummyUsers = [
@@ -47,8 +48,9 @@ const AdminPage = () => {
               {dummyUsers.map((user, index) => (
                 <div key={index} className="userCard">
                   <div className="userInfo">
-                    <span className="userAvatar">👤</span>
+                    <img className="userAvatar" src={pfpImage}/>
                     <div>
+                      {/* username and return*/}
                       <p className="username">{user.name}</p>
                       <p className={`userReturn ${user.return.startsWith("-") ? "negative" : "positive"}`}>
                         {user.return}
@@ -68,7 +70,7 @@ const AdminPage = () => {
           {/* set funds */}
           <div className="adminFunds">
             <h2>Set Starting Fund Amount</h2>
-            <p className="currentFund">Current: <strong>$1,000,000</strong></p>
+            <p className="currentFund">Current: <strong>$</strong></p>
             <div className="fundInputGroup">
               <input type="text" placeholder="$ New Starting Amount" />
               <button className="setButton">SET</button>
