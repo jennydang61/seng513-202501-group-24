@@ -24,35 +24,58 @@
     padding: 2rem;
   }
   
+  .profileGrid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .profileLeft {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+    gap: 1.5rem;
+  }
+  
   .profileTop {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    gap: 0.5rem;
   }
   
   .avatar {
     width: 120px;
     height: 130px;
-    border-radius: 50%;
   }
   
   .username {
-    margin-top: 0.75rem;
     font-size: 1.25rem;
     font-weight: 600;
   }
   
+  .profileRight {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    flex: 2;
+    gap: 1.5rem;
+  }
+  
   .statsSection {
     display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 1.5rem;
+    justify-content: center; 
+    gap: 1rem;
     flex-wrap: wrap;
+    width: 100%;   
   }
   
   .statCard {
     background: linear-gradient(to right, #5b21b6, #7e22ce);
-    border-radius: 1rem;
+    border-radius: 20px;
     padding: 1rem 1.5rem;
     text-align: center;
     min-width: 150px;
@@ -60,24 +83,16 @@
   
   .statCard .label {
     font-size: 0.9rem;
-    opacity: 0.8;
   }
   
   .statusMessage {
-    margin-top: 1rem;
-    padding: 0.6rem 1rem;
     background: linear-gradient(to right, #4338ca, #6d28d9);
-    border-radius: 0.5rem;
-    text-align: center;
+    border-radius: 20px;
+    padding: 0.6rem 1rem;
     font-size: 0.9rem;
-  }
-  
-  .profileGrid {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2rem;
-    flex-wrap: wrap;
-    gap: 2rem;
+    text-align: center; 
+    justify-content: center;
+    width: 90%;
   }
   
   .profileButtons {
@@ -85,7 +100,6 @@
     flex-direction: column;
     gap: 0.75rem;
     align-items: flex-start;
-    flex: 1;
   }
   
   .profileButtons button {
@@ -93,7 +107,7 @@
     color: white;
     border: none;
     padding: 0.5rem 1.2rem;
-    border-radius: 0.75rem;
+    border-radius: 20px;
     font-weight: 500;
     cursor: pointer;
     transition: 0.3s ease;
@@ -105,19 +119,46 @@
   }
   
   .portfolioSection {
-    flex: 2;
+    width: 100%;
   }
   
   .portfolioSection h2 {
     font-size: 1.2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    text-align: left; 
   }
-
+  
   .viewMore {
     color: #f97316;
     font-size: 0.9rem;
     display: inline-block;
     margin-top: 0.5rem;
     text-decoration: none;
+    text-align: left; 
+  }
+  
+  @media (max-width: 768px) {
+    .profileGrid {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .profileLeft, .profileRight {
+      align-items: center;
+      text-align: center;
+    }
+  
+    .statsSection {
+      justify-content: center;
+    }
+  
+    .statusMessage {
+      text-align: center;
+    }
+  
+    .portfolioSection h2,
+    .viewMore {
+      text-align: center;
+    }
   }
   

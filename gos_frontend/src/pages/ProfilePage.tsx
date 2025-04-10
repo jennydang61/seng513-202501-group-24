@@ -12,39 +12,42 @@ const ProfilePage = () => {
       <NavBar />
       <main className="profileContainer">
         <h1 className="profileTitle">Profile</h1>
+
         <div className="profileCard">
-
-          {/* pfp + username */}
-          <div className="profileTop">
-            <img src={profileImage} alt="Profile" className="avatar" />
-            <h2 className="username">{username}</h2>
-          </div>
-
-          {/* funds*/}
-          <div className="statsSection">
-            <div className="statCard">
-              <span className="label">Remaining funds</span>
-            </div>
-            <div className="statCard">
-              <span className="label">Current</span>
-            </div>
-          </div>
-
-          {/* Leaderboard message */}
-          <p className="statusMessage">
-            Congratulations! You are 12th position on the leaderboard
-          </p>
-
           <div className="profileGrid">
-            <div className="profileButtons">
-              <button>Edit name</button>
-              <button>Change password</button>
-              <button>Delete account</button>
+            {/* LEFT: Avatar + Username + Buttons */}
+            <div className="profileLeft">
+              <div className="profileTop">
+                <img src={profileImage} alt="Profile" className="avatar" />
+                <h2 className="username">{username}</h2>
+              </div>
+
+              <div className="profileButtons">
+                <button>Edit name</button>
+                <button>Change password</button>
+                <button>Delete account</button>
+              </div>
             </div>
 
-            <div className="portfolioSection">
-              <h2>Your Portfolio</h2>
-              <a href="#" className="viewMore">See All Assets →</a>
+            {/* RIGHT: Stats + Status + Portfolio */}
+            <div className="profileRight">
+              <div className="statsSection">
+                <div className="statCard">
+                  <span className="label">Remaining funds</span>
+                </div>
+                <div className="statCard">
+                  <span className="label">Current</span>
+                </div>
+              </div>
+
+              <p className="statusMessage">
+                Congratulations! You are 12th position on the leaderboard
+              </p>
+
+              <div className="portfolioSection">
+                <h2>Your Portfolio</h2>
+                <a href="#" className="viewMore">See All Assets →</a>
+              </div>
             </div>
           </div>
         </div>
