@@ -1,5 +1,6 @@
 import NavBar from "../components/ui/Navbar2";
 import '../../styles/Leaderboard.css';
+import pfpImage from "/src/images/pfp.png";
 
 {/* hard code for now */}
 const users = [
@@ -28,7 +29,11 @@ const Leaderboard = () => {
         <div className="leaderboardList">
           {users.map((user, index) => (
             <div key={index} className="leaderboardRow">
-              <span>{index + 1}. {user.username}</span>
+              <div className="userInfo">
+              <span className="ranking">{index + 1}</span>
+              <img className="userAvatar" src={pfpImage}/>
+              <span className="username">{user.username}</span>
+            </div>
               <span>{user.assets}</span>
               <span className={user.return.startsWith("-") ? "negative" : "positive"}>
                 {user.return}

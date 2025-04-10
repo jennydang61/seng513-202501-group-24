@@ -38,6 +38,25 @@
     background: #17161C;
     border-radius: 10px;
   }
+
+  .userInfo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .userAvatar {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .username {
+    font-weight: 600;
+  }
+  
+  .ranking {
+    margin-right: 0.5rem;
+  }
   
   .positive {
     color: #4ade80;
