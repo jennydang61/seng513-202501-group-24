@@ -36,18 +36,18 @@ import { login } from "../lib/api";
         <NavBar />
         <main className="signInContainer">
             <h1 className="signInTitle">Sign In</h1>
-            {
-              isError && (
-              <div className="error">
-                {/* needs styling */}
-                Invalid username or password
-              </div>
-              )
-            }
+
             <form 
               className="signInForm"
               onSubmit={handleSubmit}
             >
+              {
+                isError && (
+                <div className="error">
+                  Invalid username or password
+                </div>
+                )
+              }
               <label>
                 <span>Username</span>
                 <input 

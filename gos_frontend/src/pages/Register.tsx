@@ -42,18 +42,17 @@ const Register = () => {
         </section>
 
         <section className="registerRight">
-        {
-          isError && (
-          <div className="error">
-            {/* needs styling */}
-            An error ocurred      
-          </div>
-          )
-        }
           <form 
             className="registerForm"
             onSubmit={handleSubmit}
           >
+            {
+              isError && (
+              <div className="error">
+                An error ocurred      
+              </div>
+              )
+            } 
             <label>
               <span>Username</span>
               <input 
