@@ -44,3 +44,33 @@
     height: auto;
   }
   
+  @media (max-width: 768px) {
+    .stockPageTitle {
+      font-size: 3rem;
+    }
+
+    .searchBar {
+      max-width: 30rem;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .stockPageTitle {
+      font-size: 3rem;
+    }
+
+    .searchBar {
+      max-width: 25rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .stockPageTitle {
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    .searchBar {
+      max-width: 20rem;
+    }
+  }

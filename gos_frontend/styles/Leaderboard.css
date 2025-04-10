@@ -46,4 +46,32 @@
   .negative {
     color: #f87171;
   }
-  
+
+  @media (max-width: 768px) {
+    .leaderboardContainer {
+      padding: 1rem;
+      margin: 1rem;
+    }
+
+    .leaderboardHeader, .leaderboardRow {
+      grid-template-columns: 1fr 1fr 1fr;
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .leaderboardTitle {
+      font-size: 1.5rem;
+    }
+
+    .leaderboardHeader, .leaderboardRow {
+      grid-template-columns: 1fr 1fr;
+      text-align: left;
+      gap: 0.5rem;
+    }
+    
+    .leaderboardContainer {
+      padding: 1rem;
+      margin: 0.5rem;
+    }
+  }

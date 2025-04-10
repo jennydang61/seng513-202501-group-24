@@ -133,6 +133,12 @@
     text-align: left; 
   }
   
+  @media (max-width: 1024px) {
+    .profileContainer {
+      padding: 1.5rem;
+    }
+  }
+  
   @media (max-width: 768px) {
     .profileGrid {
       flex-direction: column;
@@ -158,3 +164,18 @@
     }
   }
   
+  @media (max-width: 480px) {
+    .profileTitle {
+      font-size: 1.5rem;
+    }
+  
+    .avatar {
+      width: 100px;
+      height: 110px;
+    }
+  
+    .profileButtons button {
+      padding: 0.4rem 1rem;
+      min-width: 140px;
+    }
+  }
