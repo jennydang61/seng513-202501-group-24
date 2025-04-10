@@ -5,6 +5,7 @@ import SignIn from './pages/SignIn'
 import Stockpage from './pages/StockPage'
 import Leaderboard from './pages/Leaderboard'
 import ProfilePage from './pages/ProfilePage'
+import AdminPage from './pages/AdminPage'
 
 import '../styles/App.css'
 // import Home from './pages/Home'
@@ -24,12 +25,14 @@ function App() {
           <Route index element={<LandingPage />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="trade" element={<Stockpage />} />
+          <Route path="admin" element={<AdminPage />} />
         </Route>
         <Route path="/login" element={<SignIn />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/trade" element={<Stockpage />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/admin" element={<AdminPage />} />
       </Routes>
   )
 }

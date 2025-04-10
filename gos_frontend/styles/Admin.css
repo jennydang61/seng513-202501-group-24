@@ -1,0 +1,198 @@
+.adminPage {
+    color: white;
+    min-height: 100vh;
+  }
+  
+  .adminPageContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+  
+  .adminPageTitle {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: white;
+  }
+  
+  .adminPanel {
+    display: flex;
+    flex: 1;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .adminUsers {
+    flex: 1;
+    min-width: 350px;
+    max-height: 70vh;
+    overflow-y: auto;
+    background: linear-gradient(to bottom, #3b82f6, #5eead4);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-sizing: border-box;
+  }
+  
+  .adminUsers h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+  
+  .userSearchBar {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid white;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .userSearchBar input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    font-size: 1rem;
+    padding-left: 0.5rem;
+  }
+
+  .userSearchBar input::placeholder {
+    color: white;
+    opacity: 0.6;
+  }
+  
+  .searchIcon {
+    width: 1rem;
+    height: auto;
+  }
+  
+  .userList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .userCard {
+    background: linear-gradient(to right, #000, #001f1f);
+    padding: 1rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  
+  .userInfo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .userAvatar {
+    font-size: 1.75rem;
+  }
+  
+  .username {
+    font-weight: 600;
+  }
+  
+  .userReturn.positive {
+    color: #4ade80;
+  }
+  
+  .userReturn.negative {
+    color: #f87171;
+  }
+  
+  .userTotal {
+    font-weight: 600;
+  }
+  
+  .userActions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .editBtn {
+    background: #16a34a;
+    color: white;
+    border: none;
+    padding: 0.3rem 0.75rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+  
+  .removeBtn {
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 0.3rem 0.75rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+  
+  .adminFunds {
+    flex: 1;
+    min-width: 350px;
+    background: linear-gradient(to bottom, #3b82f6, #5eead4);
+    padding: 2rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  
+  .adminFunds h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+  
+  .currentFund {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .fundInputGroup {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  
+  .fundInputGroup input {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border: none;
+    background-color: white;
+    color: #000;
+  }
+  
+  .setBtn {
+    background: #22c55e;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 768px) {
+    .adminPanel {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .adminUsers,
+    .adminFunds {
+      width: 100%;
+    }
+  }
