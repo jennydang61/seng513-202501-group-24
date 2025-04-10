@@ -1,0 +1,123 @@
+.profilePage {
+    background-color: #17161C;
+    min-height: 100vh;
+    color: white;
+  }
+  
+  .profileContainer {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: linear-gradient(to bottom, #4f7df9, #5fd3ff);
+    border-radius: 20px;
+  }
+  
+  .profileTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+  
+  .profileCard {
+    background: linear-gradient(to bottom right, #000000, #001f1f);
+    border-radius: 1.25rem;
+    padding: 2rem;
+  }
+  
+  .profileTop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .avatar {
+    width: 120px;
+    height: 130px;
+    border-radius: 50%;
+  }
+  
+  .username {
+    margin-top: 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  .statsSection {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .statCard {
+    background: linear-gradient(to right, #5b21b6, #7e22ce);
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+    text-align: center;
+    min-width: 150px;
+  }
+  
+  .statCard .label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+  
+  .statusMessage {
+    margin-top: 1rem;
+    padding: 0.6rem 1rem;
+    background: linear-gradient(to right, #4338ca, #6d28d9);
+    border-radius: 0.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  
+  .profileGrid {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  
+  .profileButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+    flex: 1;
+  }
+  
+  .profileButtons button {
+    background: linear-gradient(to right, #6366f1, #7c3aed);
+    color: white;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s ease;
+    min-width: 160px;
+  }
+  
+  .profileButtons button:hover {
+    background: #4f46e5;
+  }
+  
+  .portfolioSection {
+    flex: 2;
+  }
+  
+  .portfolioSection h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .viewMore {
+    color: #f97316;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-top: 0.5rem;
+    text-decoration: none;
+  }
+  
