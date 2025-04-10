@@ -20,6 +20,12 @@
     align-self: flex-start;
     text-align: left;
   }
+
+  .searchBarWrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }  
   
   .searchBar {
     display: flex;
@@ -42,6 +48,13 @@
   .searchIcon {
     width: 1.5rem;
     height: auto;
+  }
+
+  .stockGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
   }
   
   @media (max-width: 768px) {
