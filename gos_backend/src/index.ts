@@ -10,6 +10,7 @@ import authRoutes from "./routes/auth.route";
 import authenticate from "./middleware/authenticate";
 import userRoutes from "./routes/user.route";
 import sessionRoutes from "./routes/session.route";
+import stockRoutes from './routes/stockRoutes';
 
 const app = express();
 
@@ -36,6 +37,9 @@ app.get(
 
 // auth routes
 app.use("/auth", authRoutes);
+
+//stock routes
+app.use('/api/stocks', stockRoutes);
 
 // protected routes
 app.use("/user", authenticate, userRoutes) // making sure the user is authenticated first before fetching the user
