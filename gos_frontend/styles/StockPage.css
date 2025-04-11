@@ -1,89 +1,212 @@
+/* Stock page container */
 .stockPage {
-    width: 100%;
-    min-height: 100vh;
-    background-color: #17161C;
-    color: white;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .stockPageContainer {
-    margin: -1rem auto 0 auto;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-  }
-  
+  width: 100%;
+  min-height: 100vh;
+  background-color: #17161C; /* Dark background for the page */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+/* Container for the stock content */
+.stockPageContainer {
+  margin: -1rem auto 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Title of the page */
+.stockPageTitle {
+  font-size: 3.5rem;
+  margin-bottom: 2rem;
+  align-self: flex-start;
+  text-align: left;
+  font-weight: 700;
+  color: #f1f1f1;
+  border-bottom: 2px solid #8884d8; /* A subtle underline for style */
+  padding-bottom: 1rem;
+}
+
+/* Search bar container */
+.searchBarWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+/* Search bar styling */
+.searchBar {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid white;
+  padding-bottom: 0.5rem;
+  width: 100%;
+  max-width: 40rem;
+  background-color: transparent;
+}
+
+.searchBar input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  padding-left: 0.5rem;
+  margin-right: 0.5rem;
+  outline: none;
+}
+
+/* Search icon styling */
+.searchIcon {
+  width: 1.5rem;
+  height: auto;
+  cursor: pointer;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.searchIcon:hover {
+  color: #0b85ff; /* Change color on hover for a dynamic effect */
+}
+
+/* Stock grid display */
+.stockGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: space-between;
+}
+
+/* Individual stock card style */
+.stock-card {
+  background-color: #2c2c2c;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 280px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.stock-card:hover {
+  transform: translateY(-10px); /* Slight lift on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhance the shadow effect */
+}
+
+/* Stock icon */
+.stock-icon {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+/* Stock name and price */
+.stock-info {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.stock-info h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+
+.stock-price {
+  font-size: 1.25rem;
+  color: #5aff5a; /* Green color for price */
+  margin-top: 0.5rem;
+}
+
+/* Action buttons for Buy/Sell */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.buy-btn,
+.sell-btn {
+  background-color: #0b85ff;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  width: 48%;
+}
+
+.buy-btn:hover {
+  background-color: #0067cc; /* Darker blue on hover */
+}
+
+.sell-btn:hover {
+  background-color: #cc0000; /* Red color for sell button */
+}
+
+/* Responsive layout adjustments */
+@media (max-width: 1024px) {
   .stockPageTitle {
-    font-size: 3.5rem;
-    margin-bottom: 2rem;
-    align-self: flex-start;
-    text-align: left;
+    font-size: 3rem;
   }
 
-  .searchBarWrapper {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-  }  
-  
   .searchBar {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid white;
-    padding-bottom: 0.5rem;
-    width: 100%;
-    width: 40rem;
+    max-width: 30rem;
   }
-  
-  .searchBar input {
-    flex: 1;
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 1rem;
-    padding-left: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .stockPageTitle {
+    font-size: 2.5rem;
+    text-align: center;
   }
-  
-  .searchIcon {
-    width: 1.5rem;
-    height: auto;
+
+  .searchBar {
+    max-width: 30rem;
   }
 
   .stockGrid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-  
-  @media (max-width: 768px) {
-    .stockPageTitle {
-      font-size: 3rem;
-    }
-
-    .searchBar {
-      max-width: 30rem;
-    }
+    justify-content: center;
   }
 
-  @media (max-width: 680px) {
-    .stockPageTitle {
-      font-size: 3rem;
-    }
+  .stock-card {
+    max-width: 350px;
+  }
+}
 
-    .searchBar {
-      max-width: 25rem;
-    }
+@media (max-width: 480px) {
+  .stockPageTitle {
+    font-size: 2rem;
+    text-align: center;
   }
 
-  @media (max-width: 480px) {
-    .stockPageTitle {
-      font-size: 2rem;
-      text-align: center;
-    }
-
-    .searchBar {
-      max-width: 20rem;
-    }
+  .searchBar {
+    max-width: 20rem;
   }
+
+  .stockGrid {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stock-card {
+    width: 90%; /* Cards take up more space on small screens */
+    max-width: 350px;
+  }
+
+  .buy-btn,
+  .sell-btn {
+    width: 100%; /* Buttons take up full width on small screens */
+  }
+}
