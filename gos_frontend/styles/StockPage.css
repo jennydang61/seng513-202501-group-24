@@ -17,8 +17,8 @@
   .stockPageTitle {
     font-size: 3.5rem;
     margin-bottom: 2rem;
-    align-self: flex-start;
-    text-align: left;
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
 
   .searchBarWrapper {
@@ -54,8 +54,41 @@
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-    margin-top: 2rem;
+    margin: 1.5rem 0;
+    justify-content: center;
+    
   }
+  
+  .stockCard {
+    width: 150px;
+    padding: 1rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    border-radius: 15px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  }
+  
+  .stockSymbol {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stockPrice {
+    font-size: 0.95rem;
+  }
+  
+  /* Color variants (mocked) */
+  .black { background: linear-gradient(to right, #111, #333); }
+  .blue { background: linear-gradient(to right, #3b82f6, #60a5fa); }
+  .orange { background: linear-gradient(to right, #f97316, #fb923c); }
+  .purple { background: linear-gradient(to right, #8b5cf6, #a78bfa); }
+  .red { background: linear-gradient(to right, #ef4444, #f87171); }
+  
   
   @media (max-width: 768px) {
     .stockPageTitle {
