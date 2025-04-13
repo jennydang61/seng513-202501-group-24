@@ -9,6 +9,11 @@ export interface UserDocument extends mongoose.Document {
     cashBalance: number;
     portfolioValue: number;
     leaderboardRank: number;
+    portfolio: {
+        stock: string;
+        quantity: number;
+        price: number;          
+    }[];
     createdAt: Date;
     updatedAt: Date;
     comparePassword(val:string): Promise<boolean>;
