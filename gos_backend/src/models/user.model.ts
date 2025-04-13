@@ -24,14 +24,14 @@ const userSchema = new mongoose.Schema<UserDocument> (
     password: { type: String, required: true },
     role: { type: String, default: "user"},
     cashBalance: {type: Number, required: true, default: 10000},     // starting is $10 000
-    portfolioValue: {type: Number, reqruied: true, default: 0 },
-    leaderboardRank: {type: Number, default: 0},               // add to leaderboard once they make first purchase
+    portfolioValue: {type: Number, required: true, default: 0 },
+    leaderboardRank: {type: Number, required: true, default: 0},     // add to leaderboard once they make first purchase
     portfolio: {
         type: [
           {
             stock: { type: String, required: true },  
             quantity: { type: Number, required: true, min: 1 }, 
-            price: { type: Number, required: true, },     
+            price: { type: Number, required: true, },         // price at time of purchase 
           },
         ],
         required: true,
