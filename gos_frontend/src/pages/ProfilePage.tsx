@@ -8,7 +8,7 @@ import { useState } from "react";
 
 const ProfilePage = () => {
   const { user } = useAuth();
-  const { username } = user;
+  const { username } = user; // deconstructing
   // hard code
   const remainingFunds = 5056.0;
   const currentValue = 13256.0;

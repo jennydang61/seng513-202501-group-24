@@ -26,6 +26,7 @@ function App() {
           <Route path="profile" element={<ProfilePage />} />
           <Route path="trade" element={<Stockpage />} />
           <Route path="admin" element={<AdminPage />} />
+          <Route path="settings" element={<Settings />} />
         </Route>
         <Route path="/login" element={<SignIn />} />
         <Route path="/profile" element={<ProfilePage />} />
