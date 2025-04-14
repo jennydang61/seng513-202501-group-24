@@ -32,6 +32,28 @@ const stockSymbols = [
   "NKE", "LYFT", "MCD", "UBER"
 ];
 
+const getColorBySymbol = (symbol: string): string => {
+  switch (symbol) {
+    case "AAPL":
+    case "UBER":
+      return "black";
+    case "GOOG":
+    case "MSFT":
+    case "META":
+      return "blue";
+    case "AMZN":
+    case "NKE":
+      return "orange";
+    case "TSLA":
+    case "MCD":
+      return "red";
+    case "LYFT":
+      return "purple";
+    default:
+      return "black";
+  }
+};
+
 const Stockpage = () => {
   const [stocks, setStocks] = useState<StockData[]>([]);
   const [selectedSymbol, setSelectedSymbol] = useState<string>("MSFT");
@@ -90,7 +112,7 @@ const Stockpage = () => {
           {stocks.map((stock) => (
             <div
               key={stock.symbol}
-              className="stockButton"
+              className={`stockButton ${getColorBySymbol(stock.symbol)}`}
               onClick={() => setSelectedSymbol(stock.symbol)}
               style={{ 
                 cursor: "pointer"
@@ -114,4 +136,3 @@ const Stockpage = () => {
 };
 
 export default Stockpage;
-
