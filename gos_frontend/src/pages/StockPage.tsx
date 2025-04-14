@@ -5,6 +5,8 @@ import searchImage from "/src/images/searchIcon.png";
 import StockDetails from "../components/stocks/StockDetails";
 import { fetchHistoricalStock } from "../lib/api"; // Adjust if path is different
 
+
+
 // API format:
 // {
 //   date: "2021-02-02T00:00:00.000Z",
@@ -33,6 +35,7 @@ const stockSymbols = [
 const Stockpage = () => {
   const [stocks, setStocks] = useState<StockData[]>([]);
   const [selectedSymbol, setSelectedSymbol] = useState<string>("MSFT");
+
 
   useEffect(() => {
     const fetchAllStocks = async () => {
@@ -98,6 +101,10 @@ const Stockpage = () => {
             </div>
           ))}
         </div>
+        
+
+
+
 
         {/* Chart + Details */}
         <StockDetails selectedSymbol={selectedSymbol} />
