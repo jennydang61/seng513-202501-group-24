@@ -51,7 +51,7 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
   return (
     <div className="stockDetails">
       <div className="stockHeader">
-        <h2 style={{ color: "#1f74e3" , scale: 2.5 }}>{selectedSymbol}</h2>
+        <h2 style={{ color: "#FFFFFF" , scale: 2 }}>{selectedSymbol}</h2>
         {latestPrice !== null && (
           <span className="stockPriceLarge">${latestPrice.toFixed(2)}</span>
         )}
