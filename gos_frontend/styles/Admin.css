@@ -58,6 +58,7 @@
     border: none;
     font-size: 1rem;
     padding-left: 0.5rem;
+    outline: none;
   }
 
   .userSearchBar input::placeholder {
