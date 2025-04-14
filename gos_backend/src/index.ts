@@ -39,7 +39,7 @@ app.get(
 app.use("/auth", authRoutes);
 
 //stock routes
-app.use('/api/stocks', stockRoutes);
+app.use('/stocks', stockRoutes);
 
 // protected routes
 app.use("/user", authenticate, userRoutes) // making sure the user is authenticated first before fetching the user
