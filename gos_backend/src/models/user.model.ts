@@ -5,7 +5,15 @@ import { compareValue, hashValue } from "../utils/bcrypt";
 export interface UserDocument extends mongoose.Document {
     username: string;
     password: string;
-    // role: "user" || "admin";
+    role: string;
+    cashBalance: number;
+    portfolioValue: number;
+    leaderboardRank: number;
+    portfolio: {
+        stock: string;
+        quantity: number;
+        price: number;          
+    }[];
     createdAt: Date;
     updatedAt: Date;
     comparePassword(val:string): Promise<boolean>;
@@ -19,8 +27,21 @@ const userSchema = new mongoose.Schema<UserDocument> (
     {
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    // role: { type: String, default: "user"},
-    },
+    role: { type: String, default: "user"},
+    cashBalance: {type: Number, required: true, default: 10000},     // starting is $10 000
+    portfolioValue: {type: Number, required: true, default: 0 },
+    leaderboardRank: {type: Number, required: true, default: 0},     // add to leaderboard once they make first purchase
+    portfolio: {
+        type: [
+          {
+            stock: { type: String, required: true },  
+            quantity: { type: Number, required: true, min: 1 }, 
+            price: { type: Number, required: true, },         // price at time of purchase 
+          },
+        ],
+        required: true,
+        default: []  // Initialize the portfolio as an empty array by default
+    }},
     {
         timestamps: true,
     }

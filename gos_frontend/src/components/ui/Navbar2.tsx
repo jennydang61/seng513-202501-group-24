@@ -6,7 +6,7 @@ import { useMutation } from '@tanstack/react-query';
 import queryClient from '../../config/queryClient';
 import { logout } from '../../lib/api';
 
-const NavBar = () => {
+const NavBar2 = () => {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -62,4 +62,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default NavBar2;

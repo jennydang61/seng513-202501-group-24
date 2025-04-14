@@ -2,7 +2,9 @@ import NavBar from "../components/ui/Navbar2";
 import "../../styles/Admin.css";
 import Modal from "../components/ui/Modal";
 import { useState } from "react";
-import pfpImage from "/src/images/pfp.png";
+// import pfpImage from "/src/images/pfp.png";
+import useUsers from "../hooks/useUsers";
+import UserCard from "../components/dashboard/UserCard";
 
 {/* hard code */}
 const dummyUsers = [
@@ -17,6 +19,14 @@ const dummyUsers = [
 ];
 
 const AdminPage = () => {
+
+  const {
+    users,
+    isPending,
+    isSuccess,
+    isError
+  } = useUsers();
+
   const [modalType, setModalType] = useState<"edit" | null>(null);
   const [selectedUser, setSelectedUser] = useState<{ name: string; total: string } | null>(null);
 
@@ -44,27 +54,15 @@ const AdminPage = () => {
               <img src="/src/images/searchIcon.png" className="searchIcon" />
               <input type="text" placeholder="Search for users" />
             </div>
-            <div className="userList">
-              {dummyUsers.map((user, index) => (
-                <div key={index} className="userCard">
-                  <div className="userInfo">
-                    <img className="userAvatar" src={pfpImage}/>
-                    <div>
-                      {/* username and return*/}
-                      <p className="username">{user.name}</p>
-                      <p className={`userReturn ${user.return.startsWith("-") ? "negative" : "positive"}`}>
-                        {user.return}
-                      </p>
-                    </div>
-                  </div>
-                  <span className="userTotal">{user.total}</span>
-                  <div className="userActions">
-                    <button className="editButton" onClick={() => openEditModal(user)}>Edit Funds</button>
-                    <button className="removeButton">Remove User</button>
-                  </div>
-                </div>
+            {isPending && <p>loading...</p>}
+            {isError && <p>Failed to get users.</p>}
+            {isSuccess && (
+              <div className="userList">
+              {users.map((user) => (
+                <UserCard key={user._id} user={user} />
               ))}
             </div>
+            )}
           </div>
 
           {/* set funds */}

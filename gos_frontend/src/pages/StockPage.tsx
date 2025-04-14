@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "../components/ui/Navbar";
-import '../../styles/StockPage.css';
+import "../../styles/StockPage.css";
 import searchImage from "/src/images/searchIcon.png";
 import StockDetails from "../components/stocks/StockDetails";
 import { fetchHistoricalStock } from "../lib/api"; // Adjust if path is different
@@ -107,3 +107,4 @@ const Stockpage = () => {
 };
 
 export default Stockpage;
+
