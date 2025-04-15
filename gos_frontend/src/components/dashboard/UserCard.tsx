@@ -15,9 +15,9 @@ const UserCard = ({user}) => {
         <div>
           {/* username and return*/}
           <p className="username">{username}</p>
-          <p className={`userReturn ${user.return.startsWith("-") ? "negative" : "positive"}`}>
+          {/* <p className={`userReturn ${user.return.startsWith("-") ? "negative" : "positive"}`}>
             test_return_value %
-          </p>
+          </p> */}
         </div>
       </div>
       <span className="userTotal">$ test_total</span>

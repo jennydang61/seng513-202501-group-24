@@ -11,3 +11,15 @@ export const getUserHandler = catchErrors(
         return res.status(OK).json(user.omitPassword());        
     }
 )
+
+export const getAllUsersHandler = catchErrors(
+    async (req, res) => {
+        const users = await UserModel.find({}, { password: 0 }); // to hide fields
+        
+        return res.status(OK).json(
+            users.map((user) => ({
+                ...user.omitPassword(),
+            }))
+        );
+    }
+);
