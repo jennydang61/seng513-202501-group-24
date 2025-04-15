@@ -170,6 +170,7 @@
     border: none;
     background-color: white;
     color: #000;
+    outline: none;
   }
   
   .setButton {

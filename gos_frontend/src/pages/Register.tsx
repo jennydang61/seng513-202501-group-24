@@ -12,6 +12,8 @@ const Register = () => {
   const[username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [usernameError, setUsernameError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
   const {
     mutate: createAccount,
@@ -29,8 +31,19 @@ const Register = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+  
+    if (username.length < 8) {
+      setUsernameError("Username must be at least 8 characters.");
+      return;
+    }
+
+    if (password.length < 8) {
+      setPasswordError("Password must be at least 8 characters.");
+      return;
+    }
+  
     createAccount({ username, password, confirmPassword });
-  }
+  };  
 
   return (
     <div className="registerPage">
@@ -63,18 +76,21 @@ const Register = () => {
                 placeholder="Must be at least 8 characters long"
                 required
               />
+              {usernameError && <div className="inputError">{usernameError}</div>}
             </label>
             <label>
               <span>Password</span>
-              <input 
-                type="password" 
-                name="password" 
+              <input
+                type="password"
+                name="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Must be at least 8 characters long"
-                required 
+                placeholder="At least 8 characters"
+                required
               />
+              {passwordError && <div className="inputError">{passwordError}</div>}
             </label>
+
             <label>
               <span>Confirm Password</span>
               <input 

@@ -9,10 +9,16 @@ import { useState } from "react";
 const ProfilePage = () => {
   const { user } = useAuth();
   const { username } = user; // deconstructing
-  // hard code
-  const remainingFunds = 5056.0;
-  const currentValue = 13256.0;
-  const returnPercentage = 4.23;
+
+  // hard code will need to change later
+  const startingFunds = 10000;
+  const remainingFunds = 5056;
+  const portfolioValue = 13256.0;
+  
+  // calculations for total value and gain/loss
+  const totalValue = remainingFunds + portfolioValue;
+  const gainLoss = totalValue - startingFunds;
+  const returnPercentage = (gainLoss / startingFunds) * 100;  
 
 
   const [modalType, setModalType] = useState<"edit" | "password" | "delete" | null>(null);
@@ -42,18 +48,20 @@ const ProfilePage = () => {
 
             <div className="profileRight">
               <div className="statsSection">
-                <div className="statCard">
-                  <span className="label">Remaining funds </span>
-                  <span className="amount">${remainingFunds.toLocaleString()}</span>
-                </div>
-                <div className="statCard">
-                  <span className="label">Current </span>
-                  <span className="amount">${currentValue.toLocaleString()}</span>
-                  <span className={`return ${returnPercentage >= 0 ? "positive" : "negative"}`}>
-                    {returnPercentage >= 0 ? "+" : ""}
-                    {returnPercentage.toFixed(2)}%
-                  </span>
-                </div>
+
+              {/* hard code need to replace later */}
+              <div className="statCard">
+                <span className="label">Remaining funds</span>
+                <span className="amount">${remainingFunds.toLocaleString()}</span>
+              </div>
+              <div className="statCard">
+                <span className="label">Current</span>
+                <span className="amount">${totalValue.toLocaleString()}</span>
+                <span className={`return ${returnPercentage >= 0 ? "positive" : "negative"}`}>
+                  {returnPercentage >= 0 ? "+" : ""}
+                  {returnPercentage.toFixed(2)}%
+                </span>
+              </div>
               </div>
 
               {/* hard code */}
@@ -67,6 +75,7 @@ const ProfilePage = () => {
                 <div className="portfolioItem placeholder"></div>
                 <div className="portfolioItem placeholder"></div>
                 <div className="portfolioItem placeholder"></div>
+                {/* doesn't work yet */}
                 <a href="#" className="viewMore">See All Assets →</a>
               </div>
             </div>
@@ -74,6 +83,7 @@ const ProfilePage = () => {
         </div>
       </main>
 
+      {/* functions don't work yet */}
       {modalType === "edit" && (
         <Modal title="Edit Username" onClose={closeModal}>
           <input type="text" className="inputBar" placeholder="New username" />
