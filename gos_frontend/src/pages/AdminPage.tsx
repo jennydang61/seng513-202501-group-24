@@ -6,18 +6,6 @@ import { useState } from "react";
 import useUsers from "../hooks/useUsers";
 import UserCard from "../components/dashboard/UserCard";
 
-{/* hard code */}
-const dummyUsers = [
-  { name: "user1", total: "$1,000,598", return: "+4.23%" },
-  { name: "user2", total: "$990,231", return: "+3.09%" },
-  { name: "user3", total: "$867,283", return: "-1.01%" },
-  { name: "user4", total: "$840,331", return: "+2.47%" },
-  { name: "user5", total: "$801,221", return: "+1.22%" },
-  { name: "user6", total: "$780,900", return: "+3.63%" },
-  { name: "user7", total: "$760,124", return: "-0.79%" },
-  { name: "user8", total: "$720,123", return: "+2.91%" },
-];
-
 const AdminPage = () => {
 
   const {
