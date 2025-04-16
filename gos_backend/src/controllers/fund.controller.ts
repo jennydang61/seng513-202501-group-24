@@ -1,5 +1,5 @@
 import { BAD_REQUEST, OK } from "../constants/http";
-import { setInitialFundAmount } from "../services/fund.service";
+import { setInitialFundAmount, getInitialFundAmount } from "../services/fund.service";
 import appAssert from "../utils/appAssert";
 import catchErrors from "../utils/catchErrors";
 
@@ -17,5 +17,12 @@ export const initialFundHandler = catchErrors(async(req, res) => {
     // return response with cookies (refresh token)
     return res.status(OK).json({
         message: `Starting fund amount has been updated to ${setAmount}`});
-}
+    }
 );
+
+export const getInitialFundHandler = catchErrors(async(req, res) => {
+    const initialFundAmount = await getInitialFundAmount();
+    return res.status(OK).json(
+        initialFundAmount
+    );
+})

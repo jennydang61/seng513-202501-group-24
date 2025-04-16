@@ -9,3 +9,13 @@ export const setInitialFundAmount = async(amount: number) => {
 
     return config
 }
+
+export const getInitialFundAmount = async () => {
+    const startingFundsConfig = await ConfigSetting.findOne(
+        { key: "startingFunds" },
+    )
+
+    const initialFundAmount = startingFundsConfig?.value;
+
+    return initialFundAmount
+}

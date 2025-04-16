@@ -4,8 +4,11 @@ import Modal from "../components/ui/Modal";
 import { useState } from "react";
 import { setStartingFund } from "../lib/api";
 import useUsers from "../hooks/useUsers";
+import useInitialFund from "../hooks/useInitialFund";
 import UserCard from "../components/dashboard/UserCard";
 import { useMutation } from "@tanstack/react-query";
+import { setInitialFundAmount } from '../../../gos_backend/src/services/fund.service';
+import queryClient from "../config/queryClient";
 
 const AdminPage = () => {
 
@@ -17,14 +20,27 @@ const AdminPage = () => {
   } = useUsers();
 
   const {
+    initialFundAmount: startingAmount,
+    isPending: saPending,
+    isSuccess: saSuccess,
+    isError: saError
+  } = useInitialFund();
+
+  const {
     mutate: setAmount,
     isPending: isMtnPending,
     isError: isMtnError,
     error: mtnError,
+    isSuccess: isMtnSuccess,
   } = useMutation({
-    mutationFn: setStartingFund
+    mutationFn: setStartingFund, 
+    onSuccess: () => {
+      queryClient.invalidateQueries(["fund"]);
+    }
   });
 
+  const [formattedAmount, setFormattedAmount] = useState<string>
+("");
   const [modalType, setModalType] = useState<"edit" | null>(null);
   const [selectedUser, setSelectedUser] = useState<{ name: string; total: string } | null>(null);
 
@@ -38,16 +54,33 @@ const AdminPage = () => {
     setSelectedUser(null);
   };
 
+  const formatWithCommas = (value: string): string => {
+    // Remove non-numeric characters except for the decimal point
+    const numericValue = value.replace(/[^0-9.]/g, "");
+    
+    // Format the number with commas
+    const parts = numericValue.split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return ("$ " + parts.join("."));
+  }
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const rawValue = e.target.value; // Get the raw input value
+    const formattedValue = formatWithCommas(rawValue); // Format the value
+    setFormattedAmount(formattedValue); // Update the state
+  }
+
   const handleClick = async () => {
-    const inputElement = document.getElementById("amount") as HTMLInputElement;
-    const amount = parseFloat(inputElement.value);
+    // const inputElement = document.getElementById("amount") as HTMLInputElement;
+    // Remove commas and parse the number
+    const amount = parseFloat(formattedAmount.replace(/[$,]/g, ""));
 
     // Validate input
     if (isNaN(amount) || amount < 0) {
       alert("Please enter a valid starting amount.");
       return;
     }
-    setAmount(amount);
+    setAmount(amount); // Submit the numeric value
     
   }
 
@@ -79,9 +112,25 @@ const AdminPage = () => {
           {/* set funds */}
           <div className="adminFunds">
             <h2>Set Starting Fund Amount</h2>
-            <p className="currentFund">Current: <strong>$</strong></p>
+            {saPending && <p>loading...</p>}
+            {saError && <p>Failed to get starting fund amount.</p>}
+            {saSuccess && (
+              <p className="currentFund"><strong>Current: $ {startingAmount.toLocaleString("en-US")} </strong></p>
+            )}
             <div className="fundInputGroup">
-              <input id="amount" type="text" placeholder="$ New Starting Amount" />
+              {
+                isMtnError && (
+                  <div className="error">
+                    An error occured
+                  </div>
+                )
+              }
+              <input 
+                id="amount" 
+                type="text" 
+                placeholder="$ New Starting Amount"
+                value={formattedAmount}
+                onChange={handleInputChange} />
               <button className="setButton" onClick={handleClick}>SET</button>
             </div>
           </div>

@@ -1,9 +1,10 @@
 import { Router } from 'express';
-import { initialFundHandler } from '../controllers/fund.controller';
+import { initialFundHandler, getInitialFundHandler } from '../controllers/fund.controller';
 
 const fundRoutes = Router();
 
 // prefix: /fund
-fundRoutes.post("/initial", initialFundHandler);
+fundRoutes.post("/", initialFundHandler);
+fundRoutes.get("/", getInitialFundHandler);
 
 export default fundRoutes;

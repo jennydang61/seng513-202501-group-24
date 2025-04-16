@@ -10,4 +10,5 @@ export const getSessions = async() => API.get("/sessions");
 export const deleteSession = async(id) => API.delete(`/sessions/${id}`);
 export const fetchHistoricalStock = async (symbol: string) => API.get(`/stocks/historical/${symbol}`);
 
-export const setStartingFund = async(amount) => API.post("/fund/initial", {amount});
+export const setStartingFund = async(amount) => API.post("/fund", {amount});
+export const getStartingFund = async() => API.get("/fund");
