@@ -2,9 +2,10 @@ import NavBar from "../components/ui/Navbar2";
 import "../../styles/Admin.css";
 import Modal from "../components/ui/Modal";
 import { useState } from "react";
-// import pfpImage from "/src/images/pfp.png";
+import { setStartingFund } from "../lib/api";
 import useUsers from "../hooks/useUsers";
 import UserCard from "../components/dashboard/UserCard";
+import { useMutation } from "@tanstack/react-query";
 
 const AdminPage = () => {
 
@@ -14,6 +15,15 @@ const AdminPage = () => {
     isSuccess,
     isError
   } = useUsers();
+
+  const {
+    mutate: setAmount,
+    isPending: isMtnPending,
+    isError: isMtnError,
+    error: mtnError,
+  } = useMutation({
+    mutationFn: setStartingFund
+  });
 
   const [modalType, setModalType] = useState<"edit" | null>(null);
   const [selectedUser, setSelectedUser] = useState<{ name: string; total: string } | null>(null);
@@ -27,6 +37,19 @@ const AdminPage = () => {
     setModalType(null);
     setSelectedUser(null);
   };
+
+  const handleClick = async () => {
+    const inputElement = document.getElementById("amount") as HTMLInputElement;
+    const amount = parseFloat(inputElement.value);
+
+    // Validate input
+    if (isNaN(amount) || amount < 0) {
+      alert("Please enter a valid starting amount.");
+      return;
+    }
+    setAmount(amount);
+    
+  }
 
   return (
     <div className="adminPage">
@@ -58,8 +81,8 @@ const AdminPage = () => {
             <h2>Set Starting Fund Amount</h2>
             <p className="currentFund">Current: <strong>$</strong></p>
             <div className="fundInputGroup">
-              <input type="text" placeholder="$ New Starting Amount" />
-              <button className="setButton">SET</button>
+              <input id="amount" type="text" placeholder="$ New Starting Amount" />
+              <button className="setButton" onClick={handleClick}>SET</button>
             </div>
           </div>
         </div>
