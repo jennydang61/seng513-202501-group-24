@@ -11,9 +11,7 @@ export const updateUserHandler = catchErrors(
 
         const unauthorizedUpdateFields = ["_id", "username", "password", "role", "leaderboardRank",
             "createdAt", "updatedAt", "__v"];
-
-        const arrayField = ["portfolio"];
-        
+    
         const updateQuery: Record<string, any>  = {};
 
         for (let field in updates) {   
@@ -22,11 +20,25 @@ export const updateUserHandler = catchErrors(
                 continue;
             }         
             
-            if (arrayField.includes(field)) {
-                if (!updateQuery.$push) {
-                    updateQuery.$push = {};
+            if (field === "portfolio") {
+                const user = await UserModel.findById(userId);
+                appAssert(user, NOT_FOUND, "User not found");
+                const updatePortfolio = updates[field];
+
+                const stockIndex = user.portfolio.findIndex((stocks: any) => 
+                    stocks.stock === updatePortfolio.stock);
+
+                if (stockIndex > -1) {
+                    user.portfolio[stockIndex].quantity = 
+                        Number(user.portfolio[stockIndex].quantity) + Number(updatePortfolio.quantity);
+                    user.portfolio[stockIndex].price = updatePortfolio.price;
+                    updateQuery.$set = { portfolio: user.portfolio };
+                } else {
+                    if (!updateQuery.$push) {
+                        updateQuery.$push = {};
+                    }
+                    updateQuery.$push[field] = updates[field];
                 }
-                updateQuery.$push[field] = updates[field];
             } else {
                 if (!updateQuery.$set) {
                     updateQuery.$set = {};
@@ -43,4 +55,3 @@ export const updateUserHandler = catchErrors(
         return res.status(OK).json(user.omitPassword());    
     }
 )
-

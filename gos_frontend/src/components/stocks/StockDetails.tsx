@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { fetchHistoricalStock } from "../../lib/api";
 import StockChart from "./StockChart";
 import useAuth from "../../hooks/useAuth";
-import { getUser } from "../../lib/api";
+import BuySellModal from "../ui/BuySellModal";
 
 interface StockHistory {
   date: string;
@@ -18,22 +18,39 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
   const [latestPrice, setLatestPrice] = useState<number | null>(null);
   const [timeframe, setTimeframe] = useState<"1D" | "7D" | "1M" | "1Y">("1D");
   const {user, updateUserData, isUpdateError} = useAuth();
+  const [showModal, setShowModal] = useState(false);
+  const [quantity, setQuantity] = useState<string>("1");
+
 
   const handleBuyButton = () => {
-    // add error handling
-    console.log("buy button");
+    // add error handling for insufficient funds,
     if (latestPrice != null) {
-      console.log(latestPrice.toFixed(2));
-
       const stock = {
         stock: selectedSymbol,
-        quantity: 1,
-        price:latestPrice.toFixed(2)
+        quantity: quantity,
+        price:(latestPrice * (Number(quantity) >= 1 ? Number(quantity) : 1)).toFixed(2)
       }
 
+      // caution, using as any
+      const currentBalance = (user as any).cashBalance;
+
+      if (currentBalance >= (latestPrice * (Number(quantity) >= 1 ? Number(quantity) : 1)).toFixed(2)) {
+        const newBalance = currentBalance - Number(stock.price);
+        updateUserData({ portfolio: stock, cashBalance: newBalance});
+
+      }
+         
       console.log(user);
-      updateUserData({ cashBalance: 23 });
     }
+  }
+
+  
+  const handleOpenModal = () => {
+    setShowModal(true);
+  }
+
+  const handleCloseModal = () => {
+    setShowModal(false);
   }
 
   useEffect(() => {
@@ -76,7 +93,7 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
           <span className="stockPriceLarge">${latestPrice.toFixed(2)}</span>
         )}
         <div className="actionButtons">
-          <button onClick={handleBuyButton}className="buyButton">Buy</button>
+          <button onClick={handleOpenModal}className="buyButton">Buy</button>
           <button className="sellButton">Sell</button>
         </div>
       </div>
@@ -96,6 +113,41 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
           </button>
         ))}
       </div>
+
+      {showModal && selectedSymbol && (
+          <BuySellModal buySellTitle={selectedSymbol} onClose={handleCloseModal}>
+              {latestPrice !== null && (
+                <div className="currentPriceContainer">
+                  <p><strong>Current Price:</strong></p>
+                  <span>${latestPrice.toFixed(2)}</span>
+                </div>
+              )}
+              <div className="quantityContainer">
+                <p><strong>Quantity:</strong></p>
+                <input 
+                  type="number" 
+                  className="bsInputBar" 
+                  placeholder="Quantity (Minimum: 1)" 
+                  min={1} 
+                  value={quantity}
+                  onChange={(e) => setQuantity(e.target.value)} 
+                  onBlur={() => {
+                    if (quantity === "" || Number(quantity) < 1) {
+                      setQuantity("1"); 
+                    }
+                  }}
+                />
+              </div>
+              <div className="totalContainer">
+                <p><strong>Total Price:</strong></p>
+                {latestPrice !== null && (
+                  <span>${(latestPrice * (Number(quantity) >= 1 ? Number(quantity) : 1)).toFixed(2)}</span>
+                )}
+              </div>
+              <button onClick={handleBuyButton} className="confirmBuyButton">Confirm Buy</button>
+          </BuySellModal>
+      )}
+
     </div>
   );
 };
