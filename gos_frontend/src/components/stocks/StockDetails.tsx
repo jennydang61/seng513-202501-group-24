@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { fetchHistoricalStock } from "../../lib/api";
 import StockChart from "./StockChart";
+import useAuth from "../../hooks/useAuth";
+import { getUser } from "../../lib/api";
 
 interface StockHistory {
   date: string;
@@ -15,6 +17,24 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
   const [history, setHistory] = useState<StockHistory[]>([]);
   const [latestPrice, setLatestPrice] = useState<number | null>(null);
   const [timeframe, setTimeframe] = useState<"1D" | "7D" | "1M" | "1Y">("1D");
+  const {user, updateUserData, isUpdateError} = useAuth();
+
+  const handleBuyButton = () => {
+    // add error handling
+    console.log("buy button");
+    if (latestPrice != null) {
+      console.log(latestPrice.toFixed(2));
+
+      const stock = {
+        stock: selectedSymbol,
+        quantity: 1,
+        price:latestPrice.toFixed(2)
+      }
+
+      console.log(user);
+      updateUserData({ cashBalance: 23 });
+    }
+  }
 
   useEffect(() => {
     const loadStockData = async () => {
@@ -56,7 +76,7 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
           <span className="stockPriceLarge">${latestPrice.toFixed(2)}</span>
         )}
         <div className="actionButtons">
-          <button className="buyButton">Buy</button>
+          <button onClick={handleBuyButton}className="buyButton">Buy</button>
           <button className="sellButton">Sell</button>
         </div>
       </div>
