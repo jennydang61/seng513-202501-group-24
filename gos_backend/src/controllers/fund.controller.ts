@@ -6,7 +6,6 @@ import catchErrors from "../utils/catchErrors";
 export const initialFundHandler = catchErrors(async(req, res) => {
     // validate request
     const { amount } = req.body;
-    console.log(typeof amount);
     appAssert(typeof amount === "number" && amount > 0, BAD_REQUEST, "Invalid starting fund amount");
     
     // call service
