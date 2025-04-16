@@ -1,10 +1,13 @@
 
-import {useQuery} from "@tanstack/react-query";
-import { getUser } from "../lib/api";
+import {useQuery, useMutation, useQueryClient} from "@tanstack/react-query";
+import { getUser, updateUser} from "../lib/api";
 
 export const AUTH = "auth"
 
 const useAuth = (opts = {}) => {
+
+    const queryClient = useQueryClient();
+
     const{
         data: user,
         ...rest 
@@ -13,10 +16,27 @@ const useAuth = (opts = {}) => {
         queryFn:  getUser,
         staleTime: Infinity, // fetch user initially once and is cached - gets access to user data without having to keep remaking the same request
         ...opts
-    })
+    });
 
+    const {
+        mutate: updateUserData,
+        isPending,
+        isError: isUpdateError,
+        error,
+    } = useMutation({
+        mutationFn: updateUser,
+        onSuccess: (newUserData) => {
+            queryClient.setQueryData([AUTH], newUserData);
+        },
+    });
+
+ 
     return {
-        user, ...rest
+        user,
+        updateUserData,
+        isUpdateError,
+
+        ...rest
     }
 }
 

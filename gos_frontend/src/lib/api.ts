@@ -8,4 +8,5 @@ export const getUser = async() => API.get("/user");
 export const getUsers = async() => API.get("/users");
 export const getSessions = async() => API.get("/sessions");
 export const deleteSession = async(id) => API.delete(`/sessions/${id}`);
+export const updateUser = async(data) => API.patch("/update", data);
 export const fetchHistoricalStock = async (symbol: string) => API.get(`/stocks/historical/${symbol}`);
