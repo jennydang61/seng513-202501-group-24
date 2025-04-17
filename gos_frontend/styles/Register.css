@@ -7,54 +7,54 @@
     flex-direction: column;
   }
   
-  .registerContainer {
+.registerContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 4rem 6rem;
     gap: 2rem;
-  }
+}
   
-  .registerLeft {
+.registerLeft {
     flex: 1;
     margin-top: 2rem;
     margin-bottom: 2rem;
     text-align: center;
-  }
+}
   
-  .registerTitle {
+.registerTitle {
     font-size: 4rem;
     margin-bottom: 1rem;
-  }
+}
   
-  .registerImage {
+.registerImage {
     max-width: 50%;
     height: auto;
     margin-top: -1rem;
-  }
+}
   
-  .registerRight {
+.registerRight {
     flex: 1;
     display: flex;
     justify-content: center;
-  }
+}
   
-  .registerForm {
+.registerForm {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
     width: 100%;
     max-width: 400px;
-  }
+}
   
-  .registerForm label {
+.registerForm label {
     display: flex;
     flex-direction: column;
     font-size: 0.95rem;
     gap: 0.5rem;
-  }
+}
   
-  .registerForm input {
+.registerForm input {
     background: transparent;
     border: none;
     border-bottom: 1px solid white;
@@ -62,9 +62,9 @@
     color: white;
     font-size: 1rem;
     outline: none;
-  }
+}
   
-  .registerForm button {
+.registerForm button {
     background-color: #316BF3;
     color: white;
     padding: 0.75rem;
@@ -74,13 +74,13 @@
     cursor: pointer;
     margin-top: 1rem;
     transition: background-color 0.3s ease;
-  }
+}
   
-  .registerForm button:hover {
+.registerForm button:hover {
     background-color: #2563eb;
-  }
+}
 
-  .error {
+.error {
     background-color: rgba(220, 38, 38, 0.15);
     color: #f87171;
     padding: 0.75rem 1rem;
@@ -91,7 +91,14 @@
     margin-bottom: 1rem;
     text-align: center;
     height: 1.5rem;
-  }
+}
+
+.inputError {
+    color: #f87171;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+    font-weight: 500;
+}
   
 @media (max-width: 1024px) {
   .registerContainer {

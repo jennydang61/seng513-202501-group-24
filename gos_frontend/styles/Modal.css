@@ -1,50 +1,141 @@
 .modalOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modalContent {
+  background: linear-gradient(to bottom, #4f7df9, #5fd3ff);
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+}
+
+.closeButton {
+  margin-top: 1rem;
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* for the buy and sell modals*/
+.modalBuySellBody {
+  background: #000000;
+  border-radius: 1rem;
+  padding: 1rem;
+  font-size: 1.25rem;
+  max-height: 225px;
+  height: 100%;
+}
+
+.buySellContent {
+  background: linear-gradient(to bottom, #4f7df9, #5fd3ff);
+  padding: 3rem;
+  padding-top: 1rem;
+  border-radius: 1rem;
+  max-width: 400px;
+  max-height: 300px;
+  width: 90%;
+  height: 90%;
+  text-align: center;
+}
+
+.buySellTitle {
+  text-align: left;
+}
+
+.bsInputBar {
+  background-color: white;
+  color: black;
+  padding: 0.5rem 1.2rem;
+  border-radius: 10px;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box; 
+}
+
+.quantityContainer {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.quantityContainer p, .currentPriceContainer p {
+  margin: 0; 
+}
+
+.currentPriceContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.totalContainer {
+  text-align: left;
+}
+
+.totalContainer p {
+  margin-bottom: 11px;
+}
+
+.confirmBuyButton {
+  background: linear-gradient(to bottom, #4f7df9, #5fd3ff);
+  padding: 0.6rem 1.25rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+  width: 180px;
+  margin-right: 8px;
+  color: white;
+}
+
+.bsCancelButton {
+  padding: 0.6rem 1.25rem;
+  border: 1px solid white;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+  width: 180px;
+  color: white;
+}
+
+.totalContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (max-width: 768px) {
   .modalContent {
-    background: linear-gradient(to bottom, #4f7df9, #5fd3ff);
-    padding: 2rem;
-    border-radius: 1rem;
-    max-width: 400px;
-    width: 90%;
-    text-align: center;
+    padding: 1.5rem;
+    max-width: 80%;
   }
-  
+}
+
+@media (max-width: 480px) {
+  .modalContent {
+    padding: 1rem;
+    max-width: 80%;
+  }
+
   .closeButton {
-    margin-top: 1rem;
-    background: #ef4444;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 10px;
-    cursor: pointer;
+    padding: 0.5rem;
   }
-
-  @media (max-width: 768px) {
-    .modalContent {
-      padding: 1.5rem;
-      max-width: 80%;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .modalContent {
-      padding: 1rem;
-      max-width: 80%;
-    }
-
-    .closeButton {
-      padding: 0.5rem;
-    }
-  }
-  
+}

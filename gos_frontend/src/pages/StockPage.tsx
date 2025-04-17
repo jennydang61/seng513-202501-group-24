@@ -57,8 +57,6 @@ const getColorBySymbol = (symbol: string): string => {
 const Stockpage = () => {
   const [stocks, setStocks] = useState<StockData[]>([]);
   const [selectedSymbol, setSelectedSymbol] = useState<string>("MSFT");
-
-
   useEffect(() => {
     const fetchAllStocks = async () => {
       const fetched: StockData[] = [];
@@ -98,7 +96,6 @@ const Stockpage = () => {
       <main className="stockPageContainer">
         <h1 className="stockPageTitle">Trade Stocks</h1>
 
-
         {/* Search Bar */}
         <div className="searchBarWrapper">
           <div className="searchBar">
@@ -124,9 +121,6 @@ const Stockpage = () => {
           ))}
         </div>
         
-
-
-
 
         {/* Chart + Details */}
         <StockDetails selectedSymbol={selectedSymbol} />
