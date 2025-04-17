@@ -12,6 +12,7 @@ import userRoutes from "./routes/user.route";
 import sessionRoutes from "./routes/session.route";
 import stockRoutes from './routes/stockRoutes';
 import updateRoutes from "./routes/update.route";
+import fundRoutes from "./routes/fund.route";
 
 const app = express();
 
@@ -46,6 +47,7 @@ app.use('/stocks', stockRoutes);
 app.use("/user", authenticate, userRoutes) // making sure the user is authenticated first before fetching the user
 app.use("/sessions", authenticate, sessionRoutes) // making sure the user is authenticated first before fetching the user
 app.use("/update", authenticate, updateRoutes);
+app.use("/fund", authenticate, fundRoutes) // making sure the user is authenticated first before fetching the user
 
 app.use(errorHandler);
 

@@ -53,6 +53,7 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
     setShowModal(false);
   }
 
+
   useEffect(() => {
     const loadStockData = async () => {
       try {
@@ -113,7 +114,6 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
           </button>
         ))}
       </div>
-
       {showModal && selectedSymbol && (
           <BuySellModal buySellTitle={selectedSymbol} onClose={handleCloseModal}>
               {latestPrice !== null && (
@@ -147,7 +147,6 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
               <button onClick={handleBuyButton} className="confirmBuyButton">Confirm Buy</button>
           </BuySellModal>
       )}
-
     </div>
   );
 };

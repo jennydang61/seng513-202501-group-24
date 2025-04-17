@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getUsers } from "../lib/api";
+import { getAllUsers } from "../lib/api";
 
 
 export const USERS = "users"
@@ -9,7 +9,7 @@ const useUsers = (opts={}) => {
         data: users = [], ...rest
     } = useQuery({
         queryKey: [USERS],
-        queryFn: getUsers,
+        queryFn: getAllUsers,
         ...opts
     })
 

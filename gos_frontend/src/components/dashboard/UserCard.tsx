@@ -13,11 +13,7 @@ const UserCard = ({user}) => {
       <div className="userInfo">
         <img className="userAvatar" src={pfpImage}/>
         <div>
-          {/* username and return*/}
           <p className="username">{username}</p>
-          <p className={`userReturn ${user.return.startsWith("-") ? "negative" : "positive"}`}>
-            test_return_value %
-          </p>
         </div>
       </div>
       <span className="userTotal">$ test_total</span>
