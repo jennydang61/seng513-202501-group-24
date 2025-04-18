@@ -57,6 +57,9 @@ const getColorBySymbol = (symbol: string): string => {
 const Stockpage = () => {
   const [stocks, setStocks] = useState<StockData[]>([]);
   const [selectedSymbol, setSelectedSymbol] = useState<string>("MSFT");
+  const [searchInput, setSearchInput] = useState("");
+  const [error, setError] = useState("");
+  
   useEffect(() => {
     const fetchAllStocks = async () => {
       const fetched: StockData[] = [];
@@ -100,7 +103,26 @@ const Stockpage = () => {
         <div className="searchBarWrapper">
           <div className="searchBar">
             <img src={searchImage} className="searchIcon" alt="Search Icon" />
-            <input type="text" placeholder="Search for stocks" />
+            <input 
+              type="text" 
+              placeholder="Search for stocks" 
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  const match = stocks.find(
+                    (s) => s.symbol.toLowerCase() === searchInput.toLowerCase()
+                  );
+                  if (match) {
+                    setSelectedSymbol(match.symbol);
+                    setError(""); 
+                  } else {
+                    setError(`Stock ${searchInput.toUpperCase()} not found`);
+                  }
+                }
+              }}              
+            />
+            {error && <div className="searchError">{error}</div>}
           </div>
         </div>
 
