@@ -14,11 +14,13 @@ const PORT = process.env.PORT || 3500;
 // app.use(require("helmet")());
 
 // Connect to Database
-// if (process.env.MONGO_RUI) {
-//   connectDB();
-// } else {
-//   console.log("⚠️ Skipping MongoDB connection (MONGO_URI not set)")
-// }
+if (process.env.MONGO_RUI) {
+   connectDB();
+ } else {
+   console.log("⚠️ Skipping MongoDB connection (MONGO_URI not set)")
+ }
+ // Register stock routes
+ app.use("/stocks", stockRoutes);  // Register the stockRoutes for /stocks path
 
 // Default Route
 app.get("/", (req, res) => {
