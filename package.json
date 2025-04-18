@@ -1,7 +1,6 @@
 {
   "dependencies": {
     "react-router-dom": "^7.4.1",
-    "yahoo-finance": "^0.3.8",
-    "zod": "^3.24.3"
+    "yahoo-finance": "^0.3.8"
   }
 }
