@@ -1,0 +1,96 @@
+.leaderboardPage {
+    min-height: 100vh;
+    color: white;
+  }
+  
+  .leaderboardContainer {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: linear-gradient(to bottom, #4f7df9, #5fd3ff);
+    border-radius: 1rem;
+  }
+  
+  .leaderboardTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+  
+  .leaderboardHeader {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .leaderboardList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .leaderboardRow {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    padding: 0.75rem 1rem;
+    background: #17161C;
+    border-radius: 10px;
+  }
+
+  .userInfo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .userAvatar {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .username {
+    font-weight: 600;
+  }
+  
+  .ranking {
+    margin-right: 0.5rem;
+  }
+  
+  .positive {
+    color: #4ade80;
+  }
+  
+  .negative {
+    color: #f87171;
+  }
+
+  @media (max-width: 768px) {
+    .leaderboardContainer {
+      padding: 1rem;
+      margin: 1rem;
+    }
+
+    .leaderboardHeader, .leaderboardRow {
+      grid-template-columns: 1fr 1fr 1fr;
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .leaderboardTitle {
+      font-size: 1.5rem;
+    }
+
+    .leaderboardHeader, .leaderboardRow {
+      grid-template-columns: 1fr 1fr;
+      text-align: left;
+      gap: 0.5rem;
+    }
+    
+    .leaderboardContainer {
+      padding: 1rem;
+      margin: 0.5rem;
+    }
+  }

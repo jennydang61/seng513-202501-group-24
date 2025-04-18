@@ -1,0 +1,145 @@
+.pageContainer {
+    width: 100%;
+    min-height: 100dvh;
+    background-color: #17161C;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .contentWrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .heroContainer {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 12rem;
+    gap: 2rem;
+  }
+  
+  .heroContent {
+    flex: 1;
+    color: white;
+  }
+  
+  .heroTitle {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: #316BF3;
+  }
+  
+  .heroTagline {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .heroDescription {
+    font-size: 1.25rem;
+    color: white;
+  }
+  
+  .heroImageContainer {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .heroImage {
+    max-width: 100%;
+    height: auto;
+    border-radius: 1rem;
+  }
+
+
+@media (max-width: 1024px) {
+  .heroContainer {
+    margin-top: 6rem;
+    padding: 3rem 4rem;
+    gap: 2rem;
+  }
+
+  .heroTitle {
+    font-size: 3rem;
+  }
+
+  .heroTagline {
+    font-size: 1.5rem;
+  }
+
+  .heroDescription {
+    font-size: 1.1rem;
+  }
+
+  .heroImage {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroContainer {
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1.5rem;
+    gap: 1.5rem;
+    margin-top: 5rem;
+  }
+
+  .heroContent {
+    width: 100%;
+    max-width: 90%;
+  }
+
+  .heroTitle {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+
+  .heroTagline {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .heroDescription {
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .heroImageContainer {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .heroImage {
+    width: 100%;
+    max-width: 300px;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroContainer {
+    padding: 1.5rem 1rem;
+  }
+
+  .heroTitle {
+    font-size: 2rem;
+  }
+
+  .heroTagline {
+    font-size: 1rem;
+  }
+
+  .heroDescription {
+    font-size: 0.9rem;
+  }
+
+  .heroImage {
+    width: 100%;
+    max-width: 250px;
+  }
+}

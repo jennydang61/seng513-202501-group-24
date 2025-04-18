@@ -1,0 +1,257 @@
+/* Stock page main container */
+.stockPage {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #17161C;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+/* Main content wrapper */
+.stockPageContainer {
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  max-width: 950px;
+}
+
+/* Page title */
+.stockPageTitle {
+  font-size: 3.5rem;
+  margin-bottom: 2rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  text-align: left;
+  width: 100%;
+}
+
+/* Search bar container */
+.searchBarWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid white;
+  padding-bottom: 0.5rem;
+  width: 100%;
+  max-width: 40rem;
+  background-color: transparent;
+}
+
+.searchBar input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  padding-left: 0.5rem;
+  margin-right: 0.5rem;
+  outline: none;
+}
+
+.searchIcon {
+  width: 1.5rem;
+  height: auto;
+}
+
+/* Stock grid buttons */
+.stockGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+/* Individual stock button */
+.stockButton {
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.stockButton.black {
+  background: linear-gradient(135deg, #1f1f1f, #3a3a3a);
+}
+
+.stockButton.blue {
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+}
+
+.stockButton.orange {
+  background: linear-gradient(135deg, #f97316, #fb923c);
+}
+
+.stockButton.red {
+  background: linear-gradient(135deg, #ef4444, #f87171);
+}
+
+.stockButton.purple {
+  background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+}
+
+.stockSymbol {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+}
+
+.stockPrice {
+  font-size: 1rem;
+  margin-top: 0.25rem;
+}
+
+/* Stock details section */
+.stockDetails {
+  background: linear-gradient(to right, #3b82f6, #60a5fa);
+  border-radius: 15px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 900px;
+}
+
+.stockHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.stockHeader h2 {
+  margin-left: 3rem;
+}
+
+.stockHeader span {
+  font-size: 1.5rem;
+}
+
+.stockPriceLarge {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.buyButton,
+.sellButton {
+  padding: 0.6rem 1.25rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.buyButton {
+  background-color: #4caf50;
+  color: white;
+}
+
+.sellButton {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Chart container */
+.chartContainer {
+  background-color: #17161C;
+  padding: 1rem;
+  border-radius: 10px;
+  overflow-x: auto;
+}
+
+/* Timeframe buttons */
+.timeframeButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.timeframeButton {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #17161C;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s ease;
+}
+
+.timeframeButton:hover {
+  background-color: #555;
+}
+
+.timeframeButton.active {
+  background-color: #1f74e3;
+}
+
+.searchError {
+  color: #f87171;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: left;
+  padding-left: 0.25rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .stockPageTitle {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+
+  .stockGrid {
+    justify-content: center;
+  }
+
+  .stockButton {
+    min-width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stockPageTitle {
+    font-size: 2rem;
+  }
+
+  .searchBar {
+    max-width: 100%;
+  }
+
+  .chartContainer {
+    padding: 0.5rem;
+  }
+
+  .actionButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .buyButton,
+  .sellButton {
+    width: 100%;
+  }
+}

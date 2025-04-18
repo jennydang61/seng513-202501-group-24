@@ -1,0 +1,224 @@
+.profilePage {
+    background-color: #17161C;
+    min-height: 100vh;
+    color: white;
+  }
+  
+  .profileContainer {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: linear-gradient(to bottom, #4f7df9, #5fd3ff);
+    border-radius: 20px;
+  }
+  
+  .profileTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+  
+  .profileCard {
+    background: linear-gradient(to bottom right, #000000, #001f1f);
+    border-radius: 1.25rem;
+    padding: 2rem;
+  }
+  
+  .profileGrid {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .profileLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  
+  .profileTop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .avatar {
+    width: 120px;
+    height: 130px;
+  }
+  
+  .username {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  .profileRight {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    flex: 2;
+    gap: 1.5rem;
+  }
+  
+  .statsSection {
+    display: flex;
+    justify-content: center; 
+    gap: 1rem;
+    flex-wrap: wrap;
+    width: 100%;   
+  }
+  
+  .statCard {
+    background: linear-gradient(to right, #5b21b6, #7e22ce);
+    border-radius: 20px;
+    padding: 1rem 1.5rem;
+    text-align: center;
+    min-width: 150px;
+  }
+  
+  .statCard .label {
+    font-size: 0.9rem;
+  }
+  
+  .statusMessage {
+    background: linear-gradient(to right, #4338ca, #6d28d9);
+    border-radius: 20px;
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    text-align: center; 
+    justify-content: center;
+    width: 90%;
+  }
+  
+  .profileButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+  
+  .profileButtons button {
+    background: linear-gradient(to right, #6366f1, #7c3aed);
+    color: white;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s ease;
+    min-width: 160px;
+  }
+  
+  .profileButtons button:hover {
+    background: #4f46e5;
+  }
+  
+  .portfolioSection {
+    width: 100%;
+  }
+  
+  .portfolioSection h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    text-align: left; 
+  }
+  
+  .viewMore {
+    color: #f97316;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-top: 0.5rem;
+    text-decoration: none;
+    text-align: left;
+    cursor: pointer; 
+  }
+
+  .saveButton, .changeButton {
+    margin-left: 1rem;
+    background: linear-gradient(to right, #6366f1, #7c3aed);
+    color: white;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .saveButton:hover, .changeButton:hover {
+    background: #4f46e5;
+  }
+
+  .deleteButton {
+    background: #17161C;
+    color: white;
+    padding: 0.5rem 1.2rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .inputBar {
+    background-color: white;
+    color: black;
+    padding: 0.5rem 1.2rem;
+    border-radius: 10px;
+    outline: none;
+  }
+
+  .return.positive {
+    color: #4ade80;
+  }
+  
+  .return.negative {
+    color: #f87171;
+  }
+  
+  
+  @media (max-width: 1024px) {
+    .profileContainer {
+      padding: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .profileGrid {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .profileLeft, .profileRight {
+      align-items: center;
+      text-align: center;
+    }
+  
+    .statsSection {
+      justify-content: center;
+    }
+  
+    .statusMessage {
+      text-align: center;
+    }
+  
+    .portfolioSection h2,
+    .viewMore {
+      text-align: center;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .profileTitle {
+      font-size: 1.5rem;
+    }
+  
+    .avatar {
+      width: 100px;
+      height: 110px;
+    }
+  
+    .profileButtons button {
+      padding: 0.4rem 1rem;
+      min-width: 140px;
+    }
+  }

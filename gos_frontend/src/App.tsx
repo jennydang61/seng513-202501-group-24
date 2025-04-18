@@ -1,34 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { BrowserRouter as Router, Routes, Route, useNavigate} from 'react-router-dom'
+import LandingPage from './pages/LandingPage' 
+import Register from './pages/Register'
+import SignIn from './pages/SignIn'
+import Stockpage from './pages/StockPage'
+import Leaderboard from './pages/Leaderboard'
+import ProfilePage from './pages/ProfilePage'
+import AdminPage from './pages/AdminPage'
+
 import '../styles/App.css'
+// import Home from './pages/Home'
+import AppContainer from './components/auth/AppContainer'
+import Settings from './pages/Settings'
+import { setNavigate } from './lib/navigation'
 
 function App() {
-  const [count, setCount] = useState(0)
+  // setting up navigate fn so appClient can use the function outside of the react component
+  const navigate = useNavigate();
+  setNavigate(navigate);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/user" element={<AppContainer />}>
+          <Route index element={<LandingPage />} />
+          <Route path="profile" element={<ProfilePage />} />
+          <Route path="trade" element={<Stockpage />} />
+          <Route path="admin" element={<AdminPage />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
+        <Route path="/login" element={<SignIn />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/trade" element={<Stockpage />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/admin" element={<AdminPage />} />
+      </Routes>
   )
 }
 
