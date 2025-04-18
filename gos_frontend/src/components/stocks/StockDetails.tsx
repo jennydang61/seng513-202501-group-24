@@ -3,6 +3,8 @@ import { fetchHistoricalStock } from "../../lib/api";
 import StockChart from "./StockChart";
 import useAuth from "../../hooks/useAuth";
 import BuySellModal from "../ui/BuySellModal";
+import ConfirmationModal from "../ui/ConfirmationModal";
+import FundsErrorModal from "../ui/FundsErrorModal";
 
 interface StockHistory {
   date: string;
@@ -19,6 +21,8 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
   const [timeframe, setTimeframe] = useState<"1D" | "7D" | "1M" | "1Y">("1D");
   const {user, updateUserData, isUpdateError} = useAuth();
   const [showModal, setShowModal] = useState(false);
+  const [showConfirmationModal, setConfirmationModal] = useState(false);
+  const [showFundsErrorModal, setFundsErrorModal] = useState(false);
   const [quantity, setQuantity] = useState<string>("1");
 
 
@@ -38,10 +42,16 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
         const newBalance = currentBalance - Number(stock.price);
         updateUserData({ portfolio: stock, cashBalance: newBalance});
 
+        setTimeout(() => {
+          setShowModal(false);
+          handleOpenConModal();
+        }, 1000); 
+
+      } else {
+        handleErrorFundsModal();
       }
-         
-      console.log(user);
-    }
+
+    } 
   }
 
   
@@ -53,6 +63,19 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
     setShowModal(false);
   }
 
+  const handleOpenConModal = () => {
+    setConfirmationModal(true);
+    setTimeout(() => {
+      setConfirmationModal(false);
+    }, 1000)
+  }
+
+  const handleErrorFundsModal = () => {
+    setFundsErrorModal(true);
+    setTimeout(() => {
+      setFundsErrorModal(false);
+    }, 1000)
+  }
 
   useEffect(() => {
     const loadStockData = async () => {
@@ -147,8 +170,19 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
               <button onClick={handleBuyButton} className="confirmBuyButton">Confirm Buy</button>
           </BuySellModal>
       )}
+
+      {showConfirmationModal && ( 
+        <ConfirmationModal>
+        </ConfirmationModal>
+      )}
+
+      {showFundsErrorModal && (
+        <FundsErrorModal></FundsErrorModal>
+      )}
+
     </div>
   );
 };
 
 export default StockDetails;
+
