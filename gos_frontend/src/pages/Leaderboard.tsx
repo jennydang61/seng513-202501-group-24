@@ -24,7 +24,7 @@ const Leaderboard = () => {
         <div className="leaderboardHeader">
           <span>Ranking</span>
           <span>Total Assets</span>
-          <span>Daily Return</span>
+          <span>Total Return</span>
         </div>
         <div className="leaderboardList">
           {users.map((user, index) => (
