@@ -92,6 +92,29 @@ const Stockpage = () => {
     fetchAllStocks();
   }, []);
 
+  const handleSearch = async () => {
+    const match = stocks.find(
+      (s) => s.symbol.toLowerCase() === searchInput.toLowerCase()
+    );
+
+    if (match) {
+      setSelectedSymbol(match.symbol);
+      setError("");
+    } else {
+      try {
+        const data = await fetchHistoricalStock(searchInput.toUpperCase());
+        if (data && data.length > 0) {
+          setSelectedSymbol(searchInput.toUpperCase());
+          setError("");
+        } else {
+          setError(`Stock ${searchInput.toUpperCase()} not found`);
+        }
+      } catch (err) {
+        setError(`Stock ${searchInput.toUpperCase()} not found`);
+      }
+    }
+  };
+
   return (
     <div className="stockPage">
       <NavBar />
@@ -110,15 +133,7 @@ const Stockpage = () => {
               onChange={(e) => setSearchInput(e.target.value)}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
-                  const match = stocks.find(
-                    (s) => s.symbol.toLowerCase() === searchInput.toLowerCase()
-                  );
-                  if (match) {
-                    setSelectedSymbol(match.symbol);
-                    setError(""); 
-                  } else {
-                    setError(`Stock ${searchInput.toUpperCase()} not found`);
-                  }
+                  handleSearch();
                 }
               }}              
             />

@@ -126,4 +126,13 @@
     font-size: 1rem;
     text-align: center;
   }
+
+  .header {
+    margin-top: 0.8rem;
+    padding: 1rem 1rem;
+  }
+
+  .logo {
+    width: 4rem;
+  }
 }
