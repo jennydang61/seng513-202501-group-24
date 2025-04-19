@@ -8,4 +8,9 @@ export const getUser = async() => API.get("/user");
 export const getUsers = async() => API.get("/users");
 export const getSessions = async() => API.get("/sessions");
 export const deleteSession = async(id) => API.delete(`/sessions/${id}`);
-export const fetchHistoricalStock = async (symbol: string) => API.get(`/stocks/historical/${symbol}`);
+export const fetchHistoricalStock = async (
+    symbol: string,
+    interval: '1d' | '1h' = '1d'
+  ) => {
+    return API.get(`/stocks/historical/${symbol}?interval=${interval}`);
+  };
