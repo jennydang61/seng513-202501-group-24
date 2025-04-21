@@ -75,8 +75,9 @@ userSchema.pre("save", async function (next) {
         
         // Trigger user stats calculation
         await calculateAndUpdateUserStats();
-        
+
         next();
+        
     } catch (error) {
         console.error("Error fetching startingFunds from ConfigSetting: ", error);   
     }
