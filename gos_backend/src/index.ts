@@ -14,6 +14,10 @@ import stockRoutes from './routes/stockRoutes';
 import updateRoutes from "./routes/update.route";
 import fundRoutes from "./routes/fund.route";
 
+import "./utils/cronJobs";
+
+
+// using express
 const app = express();
 
 // middleware
