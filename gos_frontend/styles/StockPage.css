@@ -175,6 +175,14 @@
   color: white;
 }
 
+.sellButton:hover {
+  background-color: #F55C50;
+}
+
+.buyButton:hover {
+  background-color: #58B75C;
+}
+
 /* Chart container */
 .chartContainer {
   background-color: #17161C;
