@@ -17,9 +17,7 @@ const Register = () => {
 
   const {
     mutate: createAccount,
-    isPending,
     isError,
-    error,
   } = useMutation({
     mutationFn: register,
     onSuccess: () => {
@@ -54,7 +52,7 @@ const Register = () => {
       <main className="registerContainer">
         <section className="registerLeft">
           <h1 className="registerTitle">Get Started</h1>
-          <img src={registerImage} className="registerImage" />
+          <img src={registerImage} className="registerImage" alt=""/>
         </section>
 
         <section className="registerRight">

@@ -10,6 +10,8 @@ export const getSessions = async() => API.get("/sessions");
 export const deleteSession = async(id) => API.delete(`/sessions/${id}`);
 export const updateUser = async(data) => API.patch("/update", data);
 
+export const getLeaderboardUsers = async() => API.get("/user/leaderboard");
+
 export const fetchHistoricalStock = async (
     symbol: string,
     interval: '1d' | '1h' = '1d'

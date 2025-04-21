@@ -5,6 +5,7 @@ import {
   updateUsernameHandler,
   updatePasswordHandler,
   deleteUserHandler,
+  getLeaderboardUsersHandler,
 } from "../controllers/user.controller";
 import authenticate from "../middleware/authenticate"; 
 
@@ -15,6 +16,7 @@ const userRoutes = Router();
 
 userRoutes.get("/", authenticate, getUserHandler);         // GET /user
 userRoutes.get("/all", authenticate, getAllUsersHandler);  // GET /user/all
+userRoutes.get("/leaderboard", authenticate, getLeaderboardUsersHandler);  // GET /user/leaderboard
 
 
 userRoutes.put("/username", authenticate, updateUsernameHandler); // PUT /user/username

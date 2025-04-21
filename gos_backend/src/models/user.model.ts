@@ -1,6 +1,8 @@
 import mongoose from "mongoose";//
 import bcrypt from "bcryptjs";
 import { compareValue, hashValue } from "../utils/bcrypt";
+import ConfigSetting from "./config.model";
+import { calculateAndUpdateUserStats } from "../services/userStats.service";
 
 export interface UserDocument extends mongoose.Document {
     username: string;
@@ -56,11 +58,29 @@ userSchema.pre("save", async function (next) {
     if (!this.isModified("password")) {
         return next();
     }
-
     // hash password
     this.password = await hashValue(this.password);
-    next();
-})
+
+    if (!this.isNew) {
+        return next();
+    }
+
+    try {
+        // Fetch the startingFunds value from the ConfigSetting model
+        const config = await ConfigSetting.findOne({ key: "startingFunds" });
+        const startingFunds = config ? config.value : 1000000; // default to 1M if not found
+
+        // Set the cashBalance to the startingFunds value
+        this.cashBalance = startingFunds;
+        
+        // Trigger user stats calculation
+        await calculateAndUpdateUserStats();
+        
+        next();
+    } catch (error) {
+        console.error("Error fetching startingFunds from ConfigSetting: ", error);   
+    }
+});
 
 userSchema.methods.comparePassword = async function (val: string) {
     return compareValue(val, this.password);
