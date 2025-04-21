@@ -30,11 +30,16 @@ export const updateUserHandler = catchErrors(
                     stocks.stock === updatePortfolio.stock);
 
                 if (stockIndex > -1) {
-                    user.portfolio[stockIndex].quantity = 
-                        Number(user.portfolio[stockIndex].quantity) + Number(updatePortfolio.quantity);
-                    user.portfolio[stockIndex].bookValue = 
-                        user.portfolio[stockIndex].bookValue + (updatePortfolio.price * updatePortfolio.quantity);
-                    updateQuery.$set = { portfolio: user.portfolio };
+                    if (updatePortfolio.quantity == 0 ) {
+                        user.portfolio.splice(stockIndex, 1);
+                        updateQuery.$set = { portfolio: user.portfolio };
+                    } else {
+                        user.portfolio[stockIndex].quantity = 
+                            Number(user.portfolio[stockIndex].quantity) + Number(updatePortfolio.quantity);
+                        user.portfolio[stockIndex].bookValue = 
+                            user.portfolio[stockIndex].bookValue + (updatePortfolio.price * updatePortfolio.quantity);
+                        updateQuery.$set = { portfolio: user.portfolio };
+                    }
                 } else {
                     if (!updateQuery.$push) {
                         updateQuery.$push = {};
