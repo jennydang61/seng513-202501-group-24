@@ -10,7 +10,7 @@ import { login } from "../lib/api";
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const redirectUrl = location.state?.redirectUrl || "/";
+    const redirectUrl = location.state?.redirectUrl || "/user/profile";
 
 
     const {

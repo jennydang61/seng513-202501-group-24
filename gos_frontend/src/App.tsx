@@ -25,6 +25,7 @@ function App() {
           <Route index element={<LandingPage />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="trade" element={<Stockpage />} />
+          <Route path="leaderboard" element={<Leaderboard />} />
           <Route path="admin" element={<AdminPage />} />
           <Route path="settings" element={<Settings />} />
         </Route>

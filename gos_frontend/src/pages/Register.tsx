@@ -23,7 +23,7 @@ const Register = () => {
   } = useMutation({
     mutationFn: register,
     onSuccess: () => {
-      navigate("/", {
+      navigate("/user/profile", {
         replace: true,
       });
     },
@@ -35,13 +35,16 @@ const Register = () => {
     if (username.length < 8) {
       setUsernameError("Username must be at least 8 characters.");
       return;
+    } else {
+      setUsernameError("");
     }
 
     if (password.length < 8) {
       setPasswordError("Password must be at least 8 characters.");
       return;
+    } else {
+      setUsernameError("");
     }
-  
     createAccount({ username, password, confirmPassword });
   };  
 
