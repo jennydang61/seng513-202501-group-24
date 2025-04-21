@@ -38,7 +38,7 @@ export const calculateAndUpdateUserStats = async () => {
             let portfolioValue = 0;
             let totalSpent = 0;
 
-            user.portfolio.forEach((stock) => {            bookValue: { type: Number, required: true }
+            user.portfolio.forEach((stock) => {
 
                 // Skip stocks with invalid quantity
                 if (stock.quantity <= 0) {
