@@ -179,8 +179,11 @@
 .chartContainer {
   background-color: #17161C;
   padding: 1rem;
-  border-radius: 10px;
+  border-radius: 1px;
   overflow-x: auto;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1rem;
 }
 
 /* Timeframe buttons */

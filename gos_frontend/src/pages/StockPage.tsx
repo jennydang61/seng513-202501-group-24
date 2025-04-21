@@ -3,20 +3,7 @@ import NavBar from "../components/ui/Navbar2";
 import "../../styles/StockPage.css";
 import searchImage from "/src/images/searchIcon.png";
 import StockDetails from "../components/stocks/StockDetails";
-import { fetchHistoricalStock } from "../lib/api"; // Adjust if path is different
-
-
-
-// API format:
-// {
-//   date: "2021-02-02T00:00:00.000Z",
-//   open: 844.679993,
-//   high: 880.5,
-//   low: 842.200623,
-//   close: 872.789978,
-//   adjClose: 872.789978,
-//   volume: 24346213
-// }
+import { fetchHistoricalStock } from "../lib/api";
 
 interface StockData {
   symbol: string;
@@ -59,14 +46,16 @@ const Stockpage = () => {
   const [selectedSymbol, setSelectedSymbol] = useState<string>("MSFT");
   const [searchInput, setSearchInput] = useState("");
   const [error, setError] = useState("");
-  
+  const defaultInterval: '1d' | '1h' = '1d';
+
   useEffect(() => {
     const fetchAllStocks = async () => {
       const fetched: StockData[] = [];
 
       for (const symbol of stockSymbols) {
         try {
-          const data = await fetchHistoricalStock(symbol);
+          const data = await fetchHistoricalStock(symbol, defaultInterval); // ✅ no .data
+
           const formattedHistory = data.map((entry: any) => ({
             date: new Date(entry.date).toISOString().split("T")[0],
             close: entry.close
@@ -148,9 +137,7 @@ const Stockpage = () => {
               key={stock.symbol}
               className={`stockButton ${getColorBySymbol(stock.symbol)}`}
               onClick={() => setSelectedSymbol(stock.symbol)}
-              style={{ 
-                cursor: "pointer"
-              }}
+              style={{ cursor: "pointer" }}
             >
               <span className="stockSymbol">{stock.symbol}</span>
               <span className="stockPrice">${stock.latestPrice.toFixed(2)}</span>
