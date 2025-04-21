@@ -1,6 +1,6 @@
 import "../../../styles/Modal.css";
 
-const BuySellModal = ({ buySellTitle, children, onClose }: { buySellTitle: string, children: React.ReactNode, onClose: () => void }) => {
+const BuyModal = ({ buySellTitle, children, onClose }: { buySellTitle: string, children: React.ReactNode, onClose: () => void }) => {
   return (
     <div className="modalOverlay">
       <div className="buySellContent">
@@ -8,9 +8,9 @@ const BuySellModal = ({ buySellTitle, children, onClose }: { buySellTitle: strin
         <div className="modalBuySellBody">{children}
             <button className="bsCancelButton" onClick={onClose}>Cancel</button>
         </div>
-      </div>
+      </div>Buy
     </div>
   );
 };
 
-export default BuySellModal;
+export default BuyModal;

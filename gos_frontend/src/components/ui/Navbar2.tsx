@@ -51,7 +51,7 @@ const NavBar2 = () => {
                 <Link to="/user/trade">Trade</Link>
             </li>
             <li className="navItem">
-                <Link to="/leaderboard">Leaderboard</Link>
+                <Link to="/user/leaderboard">Leaderboard</Link>
             </li>
             <li className="navItem">
                 <button className="authButton" onClick={signOut}>Logout</button>

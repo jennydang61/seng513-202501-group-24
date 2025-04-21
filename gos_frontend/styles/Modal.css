@@ -105,6 +105,10 @@
   color: white;
 }
 
+.confirmBuyButton:hover {
+  background: linear-gradient(to bottom, #6F95FA, #5fd3ff); ;
+}
+
 .bsCancelButton {
   padding: 0.6rem 1.25rem;
   border: 1px solid white;
@@ -116,10 +120,66 @@
   color: white;
 }
 
+.bsCancelButton:hover {
+  background-color: #252525;
+}
+
 .totalContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+
+.confirmationBody {
+  background: linear-gradient(to bottom, #4f7df9, #5fd3ff);
+  padding: 3rem;
+  padding-top: 4rem;
+  border-radius: 1rem;
+  max-width: 400px;
+  max-height: 250px;
+  width: 90%;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.confirmationBody p {
+  font-size: 2rem;
+}
+
+.material-symbols-outlined {
+  font-size: 100px;
+  color: #D2EFD6;
+}
+
+.fundsErrorContent {
+  background: linear-gradient(to bottom, #4f7df9, #5fd3ff);
+  padding: 3rem;
+  padding-top: 4rem;
+  border-radius: 1rem;
+  max-width: 400px;
+  max-height: 250px;
+  width: 90%;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.fundsErrorTitle {
+  color: #ef4444;
+  margin-bottom: 0;
+  font-size: 2.5rem ;
+
+}
+
+.fundsErrorDescrip {
+  color: white;
+  font-size: 1.5rem;
 }
 
 @media (max-width: 768px) {
