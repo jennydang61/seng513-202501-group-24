@@ -47,7 +47,7 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
 
       if (currentBalance >= Number(total)) {
         const newBalance = currentBalance - Number(total);
-        updateUserData({ portfolio: stock, cashBalance: newBalance});
+        updateUserData({ portfolio: stock, cashBalance: Number(newBalance.toFixed(2))});
 
         setTimeout(() => {
           setShowModal(false);
@@ -84,7 +84,7 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
           // need it to be negative since updateController updates it through addition, if quantity is 0, it gets set to 0
           const newStockQuantity = Number(stock.quantity) * -1;
           stock.quantity = newStockQuantity.toString();
-          updateUserData({ portfolio: stock, cashBalance: newBalance});
+          updateUserData({ portfolio: stock, cashBalance: Number(newBalance.toFixed(2))});
 
           setTimeout(() => {
             setShowSellModal(false);

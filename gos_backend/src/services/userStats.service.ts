@@ -38,7 +38,7 @@ export const calculateAndUpdateUserStats = async () => {
             let portfolioValue = 0;
             let totalSpent = 0;
 
-            user.portfolio.forEach((stock) => {
+            user.portfolio.forEach((stock) => {            bookValue: { type: Number, required: true }
 
                 // Skip stocks with invalid quantity
                 if (stock.quantity <= 0) {
@@ -47,7 +47,7 @@ export const calculateAndUpdateUserStats = async () => {
                 }
                 const currentPrice = stockPrices[stock.stock] || 0;
                 portfolioValue += currentPrice * stock.quantity; // Current value of the stock
-                totalSpent += stock.price; // Total amount spent on the stock
+                totalSpent += stock.bookValue; // Total amount spent on the stock
             });
 
             // Avoid division by zerio
@@ -57,8 +57,9 @@ export const calculateAndUpdateUserStats = async () => {
             const netWorth = user.cashBalance + portfolioValue;
 
             // Update user stats in the db
-            user.gainLoss = isNaN(gainLoss) ? 0 : gainLoss;
-            user.netWorth = isNaN(netWorth) ? 0 : netWorth;
+            user.gainLoss = isNaN(gainLoss) ? 0 : Number(gainLoss.toFixed(2));
+            user.netWorth = isNaN(netWorth) ? 0 : Number(netWorth.toFixed(2));
+            user.portfolioValue = Number(portfolioValue.toFixed(2));
             await user.save();
         }
 

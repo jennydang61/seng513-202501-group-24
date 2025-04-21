@@ -12,7 +12,7 @@ export interface UserDocument extends mongoose.Document {
     portfolio: {
         stock: string;
         quantity: number;
-        price: number;          
+        bookValue: number;          
     }[];
     gainLoss: number; // gain/loss field
     netWorth: number; // net worth field
@@ -38,7 +38,7 @@ const userSchema = new mongoose.Schema<UserDocument> (
           {
             stock: { type: String, required: true },  
             quantity: { type: Number, required: true, min: 1 }, 
-            price: { type: Number, required: true, },         // price at time of purchase 
+            bookValue: { type: Number, required: true, },         // bookValue of the stock (= total spent on this stock)
           },
         ],
         required: true,

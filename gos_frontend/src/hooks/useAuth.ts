@@ -20,9 +20,7 @@ const useAuth = (opts = {}) => {
 
     const {
         mutate: updateUserData,
-        isPending,
         isError: isUpdateError,
-        error,
     } = useMutation({
         mutationFn: updateUser,
         onSuccess: (newUserData) => {

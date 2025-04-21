@@ -32,12 +32,14 @@ export const updateUserHandler = catchErrors(
                 if (stockIndex > -1) {
                     user.portfolio[stockIndex].quantity = 
                         Number(user.portfolio[stockIndex].quantity) + Number(updatePortfolio.quantity);
-                    user.portfolio[stockIndex].price = updatePortfolio.price;
+                    user.portfolio[stockIndex].bookValue = 
+                        user.portfolio[stockIndex].bookValue + (updatePortfolio.price * updatePortfolio.quantity);
                     updateQuery.$set = { portfolio: user.portfolio };
                 } else {
                     if (!updateQuery.$push) {
                         updateQuery.$push = {};
                     }
+                    updates[field].bookValue = updates[field].price * updates[field].quantity;
                     updateQuery.$push[field] = updates[field];
                 }
             } else {
