@@ -4,25 +4,62 @@ import Modal from "../components/ui/Modal";
 import useAuth from "../hooks/useAuth";
 import profileImage from "/src/images/happyPlant.png";
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
+import { updateUsername, updatePassword, deleteAccount } from "../lib/api";
 
 const ProfilePage = () => {
+  const navigate = useNavigate();
   const { user } = useAuth();
-  const { username } = user; // deconstructing
+  const { username } = user;
 
-  // hard code will need to change later
+  // Hardcoded values (replace with real data)
   const startingFunds = 10000;
   const remainingFunds = 5056;
   const portfolioValue = 13256.0;
-  
-  // calculations for total value and gain/loss
+
   const totalValue = remainingFunds + portfolioValue;
   const gainLoss = totalValue - startingFunds;
-  const returnPercentage = (gainLoss / startingFunds) * 100;  
-
+  const returnPercentage = (gainLoss / startingFunds) * 100;
 
   const [modalType, setModalType] = useState<"edit" | "password" | "delete" | null>(null);
   const closeModal = () => setModalType(null);
+
+  const [newUsername, setNewUsername] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+
+  // 🔧 HANDLERS
+  const handleSaveUsername = async () => {
+    try {
+      await updateUsername(newUsername);
+      alert("Username updated!");
+      closeModal();
+      window.location.reload(); // Refresh to reflect change or update user context
+    } catch (err: any) {
+      alert(err.response?.data?.error || "Failed to update username.");
+    }
+  };
+
+  const handleChangePassword = async () => {
+    try {
+      await updatePassword(newPassword);
+      alert("Password changed successfully.");
+      closeModal();
+    } catch (err: any) {
+      alert(err.response?.data?.error || "Failed to change password.");
+    }
+  };
+
+  const handleDeleteAccount = async () => {
+    try {
+      await deleteAccount();
+      alert("Account deleted.");
+      localStorage.removeItem("token");
+      closeModal();
+      navigate("/login");
+    } catch (err: any) {
+      alert(err.response?.data?.error || "Failed to delete account.");
+    }
+  };
 
   return (
     <div className="profilePage">
@@ -48,23 +85,20 @@ const ProfilePage = () => {
 
             <div className="profileRight">
               <div className="statsSection">
-
-              {/* hard code need to replace later */}
-              <div className="statCard">
-                <span className="label">Remaining funds</span>
-                <span className="amount">${remainingFunds.toLocaleString()}</span>
-              </div>
-              <div className="statCard">
-                <span className="label">Current</span>
-                <span className="amount">${totalValue.toLocaleString()}</span>
-                <span className={`return ${returnPercentage >= 0 ? "positive" : "negative"}`}>
-                  {returnPercentage >= 0 ? "+" : ""}
-                  {returnPercentage.toFixed(2)}%
-                </span>
-              </div>
+                <div className="statCard">
+                  <span className="label">Remaining funds</span>
+                  <span className="amount">${remainingFunds.toLocaleString()}</span>
+                </div>
+                <div className="statCard">
+                  <span className="label">Current</span>
+                  <span className="amount">${totalValue.toLocaleString()}</span>
+                  <span className={`return ${returnPercentage >= 0 ? "positive" : "negative"}`}>
+                    {returnPercentage >= 0 ? "+" : ""}
+                    {returnPercentage.toFixed(2)}%
+                  </span>
+                </div>
               </div>
 
-              {/* hard code */}
               <p className="statusMessage">
                 Congratulations! You are 12th position on the leaderboard
               </p>
@@ -75,7 +109,6 @@ const ProfilePage = () => {
                 <div className="portfolioItem placeholder"></div>
                 <div className="portfolioItem placeholder"></div>
                 <div className="portfolioItem placeholder"></div>
-                {/* doesn't work yet */}
                 <a href="#" className="viewMore">See All Assets →</a>
               </div>
             </div>
@@ -83,25 +116,37 @@ const ProfilePage = () => {
         </div>
       </main>
 
-      {/* functions don't work yet */}
+      {/* === MODALS === */}
       {modalType === "edit" && (
         <Modal title="Edit Username" onClose={closeModal}>
-          <input type="text" className="inputBar" placeholder="New username" />
-          <button className="saveButton">Save</button>
+          <input
+            type="text"
+            className="inputBar"
+            placeholder="New username"
+            value={newUsername}
+            onChange={(e) => setNewUsername(e.target.value)}
+          />
+          <button className="saveButton" onClick={handleSaveUsername}>Save</button>
         </Modal>
       )}
 
       {modalType === "password" && (
         <Modal title="Change Password" onClose={closeModal}>
-          <input type="password" className="inputBar" placeholder="New password" />
-          <button className="changeButton">Change</button>
+          <input
+            type="password"
+            className="inputBar"
+            placeholder="New password"
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+          />
+          <button className="changeButton" onClick={handleChangePassword}>Change</button>
         </Modal>
       )}
 
       {modalType === "delete" && (
         <Modal title="Are you sure?" onClose={closeModal}>
           <p>This action cannot be undone.</p>
-          <button className="deleteButton">Confirm Delete</button>
+          <button className="deleteButton" onClick={handleDeleteAccount}>Confirm Delete</button>
         </Modal>
       )}
     </div>
