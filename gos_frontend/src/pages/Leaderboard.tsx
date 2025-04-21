@@ -1,8 +1,9 @@
 import NavBar from "../components/ui/Navbar2";
 import '../../styles/Leaderboard.css';
 import pfpImage from "/src/images/pfp.png";
+import useUsers from "../hooks/useUsers";
 
-{/* hard code for now */}
+// {/* hard code for now */}
 const users = [
   { username: "user1", assets: "$1,000,598", return: "+4.23%" },
   { username: "user2", assets: "$990,231", return: "+3.09%" },
@@ -16,6 +17,15 @@ const users = [
 ];
 
 const Leaderboard = () => {
+
+  // retrieving all users from DB
+  // const {
+  //   users,
+  //   isPending,
+  //   isSuccess,
+  //   isError
+  // } = useUsers();
+
   return (
     <div className="leaderboardPage">
       <NavBar />

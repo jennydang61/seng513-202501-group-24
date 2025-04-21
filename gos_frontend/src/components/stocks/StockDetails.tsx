@@ -45,15 +45,14 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
         setTimeout(() => {
           setShowModal(false);
           handleOpenConModal();
-        }, 1000); 
+        }, 500); 
 
       } else {
         handleErrorFundsModal();
       }
-
+      
     } 
   }
-
   
   const handleOpenModal = () => {
     setShowModal(true);

@@ -7,11 +7,11 @@ import useUsers from "../hooks/useUsers";
 import useInitialFund from "../hooks/useInitialFund";
 import UserCard from "../components/dashboard/UserCard";
 import { useMutation } from "@tanstack/react-query";
-import { setInitialFundAmount } from '../../../gos_backend/src/services/fund.service';
 import queryClient from "../config/queryClient";
 
 const AdminPage = () => {
 
+  // retrieving all users from DB
   const {
     users,
     isPending,
@@ -19,6 +19,7 @@ const AdminPage = () => {
     isError
   } = useUsers();
 
+  // retrieving the existing initial fund amount from DB
   const {
     initialFundAmount: startingAmount,
     isPending: saPending,
@@ -26,6 +27,7 @@ const AdminPage = () => {
     isError: saError
   } = useInitialFund();
 
+  // using mutation to set/update the new initial fund amount in DB
   const {
     mutate: setAmount,
     isPending: isMtnPending,
@@ -38,21 +40,24 @@ const AdminPage = () => {
       queryClient.invalidateQueries(["fund"]);
     }
   });
-
-  const [formattedAmount, setFormattedAmount] = useState<string>
-("");
+  
+  // for the edit user pop up window 
   const [modalType, setModalType] = useState<"edit" | null>(null);
   const [selectedUser, setSelectedUser] = useState<{ name: string; total: string } | null>(null);
-
+  
   const openEditModal = (user: { name: string; total: string }) => {
     setSelectedUser(user);
     setModalType("edit");
   };
-
+  
   const closeModal = () => {
     setModalType(null);
     setSelectedUser(null);
   };
+  
+    // formattedAmount required to display numbers in money format with commas in the input field
+    const [formattedAmount, setFormattedAmount] = useState<string>
+  ("");
 
   const formatWithCommas = (value: string): string => {
     // Remove non-numeric characters except for the decimal point
@@ -70,6 +75,7 @@ const AdminPage = () => {
     setFormattedAmount(formattedValue); // Update the state
   }
 
+  // handleClick for setting the initial fund amount
   const handleClick = async () => {
     // const inputElement = document.getElementById("amount") as HTMLInputElement;
     // Remove commas and parse the number

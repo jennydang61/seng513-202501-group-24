@@ -272,7 +272,7 @@
     }
   }
   
-  @media (max-width: 768px) {
+  @media (max-width: 875px) {
     .adminPanel {
       flex-direction: column;
       align-items: center;
