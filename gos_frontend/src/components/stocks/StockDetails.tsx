@@ -98,44 +98,6 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
       }
     }
   }
-
-  const handleSellButton = () => {
-    if (latestPrice != null) {
-      const stock = {
-        stock: selectedSymbol,
-        quantity: quantity,
-        price: latestPrice
-      }
-
-      const total = (latestPrice * (Number(quantity) >= 1 ? Number(quantity) : 1)).toFixed(2);
-
-      // caution, using as any
-      const currentBalance = (user as any).cashBalance;
-      const userPortfolio = (user as any).portfolio;
-
-      const stockIndex = userPortfolio.findIndex((stocks: any) => 
-        stocks.stock === stock.stock);
- 
-      if (stockIndex > -1) { 
-        if (userPortfolio[stockIndex].quantity >= Number(quantity)) {
-          const newBalance = currentBalance + Number(total);
-          // need it to be negative since updateController updates it through addition, if quantity is 0, it gets set to 0
-          const newStockQuantity = Number(stock.quantity) * -1;
-          stock.quantity = newStockQuantity.toString();
-          updateUserData({ portfolio: stock, cashBalance: newBalance});
-
-          setTimeout(() => {
-            setShowSellModal(false);
-            handleOpenConModal();
-          }, 1000); 
-        } else {
-          handleErrorSharesModal();
-        }
-      } else {
-        handleErrorStockModal();
-      }
-    }
-  }
   
   const handleOpenModal = () => {
     setShowModal(true);
