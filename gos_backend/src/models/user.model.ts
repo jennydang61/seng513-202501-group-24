@@ -8,12 +8,14 @@ export interface UserDocument extends mongoose.Document {
     role: string;
     cashBalance: number;
     portfolioValue: number;
-    leaderboardRank: number;
+    // leaderboardRank: number;
     portfolio: {
         stock: string;
         quantity: number;
         price: number;          
     }[];
+    gainLoss: number; // gain/loss field
+    netWorth: number; // net worth field
     createdAt: Date;
     updatedAt: Date;
     comparePassword(val:string): Promise<boolean>;
@@ -30,7 +32,7 @@ const userSchema = new mongoose.Schema<UserDocument> (
     role: { type: String, default: "user"},
     cashBalance: {type: Number, required: true, default: 10000},     // starting is $10 000
     portfolioValue: {type: Number, required: true, default: 0 },
-    leaderboardRank: {type: Number, required: true, default: 0},     // add to leaderboard once they make first purchase
+    // leaderboardRank: {type: Number, required: true, default: 0},     // add to leaderboard once they make first purchase
     portfolio: {
         type: [
           {
@@ -41,7 +43,10 @@ const userSchema = new mongoose.Schema<UserDocument> (
         ],
         required: true,
         default: []  // Initialize the portfolio as an empty array by default
-    }},
+    },
+    gainLoss: { type: Number, default: 0 },
+    netWorth: { type: Number, default: 0},
+    },
     {
         timestamps: true,
     }

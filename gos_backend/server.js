@@ -1,3 +1,4 @@
+
 const express = require("express");
 const app = express();
 
@@ -19,8 +20,6 @@ if (process.env.MONGO_RUI) {
 } else {
   console.log("⚠️ Skipping MongoDB connection (MONGO_URI not set)")
 }
-// Register stock routes
-app.use("/stocks", stockRoutes);  // Register the stockRoutes for /stocks path
 
 // Default Route
 app.get("/", (req, res) => {
