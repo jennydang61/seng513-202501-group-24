@@ -21,7 +21,7 @@ export interface UserDocument extends mongoose.Document {
     comparePassword(val:string): Promise<boolean>;
     omitPassword(): Pick<
         UserDocument, 
-        "_id" | "username" | "createdAt" | "updatedAt" 
+        "_id" | "username" | "role" | "cashBalance" | "gainLoss" | "netWorth" | "createdAt" | "updatedAt" 
     >;
 }
 

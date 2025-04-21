@@ -10,16 +10,15 @@ import { updateUsername, updatePassword, deleteAccount } from "../lib/api";
 const ProfilePage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const { username } = user;
+  const { username, cashBalance, netWorth, gainLoss } = user;
 
   // Hardcoded values (replace with real data)
   const startingFunds = 10000;
   const remainingFunds = 5056;
   const portfolioValue = 13256.0;
 
-  const totalValue = remainingFunds + portfolioValue;
-  const gainLoss = totalValue - startingFunds;
-  const returnPercentage = (gainLoss / startingFunds) * 100;
+  // const totalValue = remainingFunds + portfolioValue;
+  // const returnPercentage = (gainLoss / startingFunds) * 100;
 
   const [modalType, setModalType] = useState<"edit" | "password" | "delete" | null>(null);
   const closeModal = () => setModalType(null);
@@ -86,16 +85,16 @@ const ProfilePage = () => {
             <div className="profileRight">
               <div className="statsSection">
                 <div className="statCard">
-                  <span className="label">Remaining funds</span>
-                  <span className="amount">${remainingFunds.toLocaleString()}</span>
+                  <span className="label">Remaining Cash Balance: </span>
+                  <span className="amount">${cashBalance.toLocaleString()}</span>
                 </div>
                 <div className="statCard">
-                  <span className="label">Current</span>
-                  <span className="amount">${totalValue.toLocaleString()}</span>
-                  <span className={`return ${returnPercentage >= 0 ? "positive" : "negative"}`}>
-                    {returnPercentage >= 0 ? "+" : ""}
-                    {returnPercentage.toFixed(2)}%
-                  </span>
+                  <span className="label">Current Net Worth: </span>
+                  <span className="amount">${netWorth}  </span>
+                  {/* <span className={`return ${gainLoss >= 0 ? "positive" : "negative"}`}>
+                    {gainLoss >= 0 ? "+" : ""}
+                    {gainLoss.toFixed(2)}%
+                  </span> */}
                 </div>
               </div>
 
