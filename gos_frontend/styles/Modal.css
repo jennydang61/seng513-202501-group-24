@@ -11,6 +11,7 @@
   z-index: 999;
 }
 
+/* modal content box */
 .modalContent {
   background: linear-gradient(to bottom, #4f7df9, #5fd3ff);
   padding: 2rem;
@@ -20,6 +21,7 @@
   text-align: center;
 }
 
+/* close modal */
 .closeButton {
   margin-top: 1rem;
   background: #ef4444;
@@ -31,6 +33,7 @@
 }
 
 /* for the buy and sell modals*/
+
 .modalBuySellBody {
   background: #000000;
   border-radius: 1rem;
@@ -182,6 +185,7 @@
   font-size: 1.5rem;
 }
 
+/* responsive design */
 @media (max-width: 768px) {
   .modalContent {
     padding: 1.5rem;

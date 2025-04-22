@@ -1,0 +1,23 @@
+services:
+  frontend:
+    build:
+      context: ./gos_frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./gos_backend
+    ports:
+      - "3001:3000"
+    environment:
+      - MONGO_URL=mongodb://db:27017/stocks
+    depends_on:
+      - db
+
+  db:
+    image: mongo
+    ports:
+      - "27017:27017"

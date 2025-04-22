@@ -25,6 +25,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/user" element={<AppContainer />}>
           <Route index element={<LandingPage />} />
+          {/* routes nested under user path */}
           <Route path="profile" element={<ProfilePage />} />
           <Route path="trade" element={<Stockpage />} />
           <Route path="leaderboard" element={<Leaderboard />} />
@@ -33,6 +34,7 @@ function App() {
         <Route path="/admin" element={<AdminContainer />}>
           <Route index element={<AdminPage />} />
         </Route>
+        {/* define pages */}
         <Route path="/login" element={<SignIn />} />
         {/* <Route path="/profile" element={<ProfilePage />} />
         <Route path="/trade" element={<Stockpage />} />

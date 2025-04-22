@@ -149,6 +149,8 @@
   margin: 0.5rem 0;
 }
 
+/* styles for buttons */
+
 .actionButtons {
   display: flex;
   gap: 1rem;
@@ -221,6 +223,7 @@
   background-color: #1f74e3;
 }
 
+/* search error */
 .searchError {
   color: #f87171;
   margin-top: 0.5rem;
@@ -230,7 +233,7 @@
   padding-left: 0.25rem;
 }
 
-/* Responsive adjustments */
+/* Responsive design */
 @media (max-width: 768px) {
   .stockPageTitle {
     font-size: 2.5rem;
