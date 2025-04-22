@@ -33,6 +33,7 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
   const [quantity, setQuantity] = useState<string>("1");
 
 
+  // handles buy button function when user clicks
   const handleBuyButton = () => {
     if (latestPrice != null) {
       const stock = {
@@ -45,6 +46,8 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
       // caution, using as any
       const currentBalance = (user as any).cashBalance;
 
+      // if the user has the money to buy the stocks, then it the user's data will be updated, reflecting the
+      // purchased stock
       if (currentBalance >= Number(total)) {
         const newBalance = currentBalance - Number(total);
         updateUserData({ portfolio: stock, cashBalance: Number(newBalance.toFixed(2))});
@@ -55,6 +58,7 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
           handleOpenConModal();
         }, 500); 
 
+      // if the user does not have the money, then an error pop up appears
       } else {
         handleErrorFundsModal();
       }
@@ -62,6 +66,7 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
     } 
   }
 
+  // handles sell button function when user clicks
   const handleSellButton = () => {
     if (latestPrice != null) {
       const stock = {
@@ -79,6 +84,8 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
       const stockIndex = userPortfolio.findIndex((stocks: any) => 
         stocks.stock === stock.stock);
  
+      //if the user has the specified stock that they want to sell and has shares from that stock, then 
+      // the user's data will updated reflecting the sold stocks
       if (stockIndex > -1) { 
         if (userPortfolio[stockIndex].quantity >= Number(quantity)) {
           const newBalance = currentBalance + Number(total);
@@ -92,28 +99,34 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
             setShowSellModal(false);
             handleOpenConModal();
           }, 1000); 
+        // if the user does not have enough shares to sell, then an error popup will appear
         } else {
           handleErrorSharesModal();
         }
+      // if the user does not own shares from a selected stock, then an error popup will appear
       } else {
         handleErrorStockModal();
       }
     }
   }
-  
+
+  // pop up for buying stocks
   const handleOpenModal = () => {
     setShowModal(true);
   }
 
+  // closes buy popup
   const handleCloseModal = () => {
     setShowModal(false);
     setShowSellModal(false);
   }
 
+  // pop up for selling stocks
   const handleOpenSellModal = () => {
     setShowSellModal(true);
   }
 
+  // confirmation pop up
   const handleOpenConModal = () => {
     setConfirmationModal(true);
     setTimeout(() => {
@@ -121,6 +134,7 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
     }, 1000)
   }
 
+  // no funds error pop up
   const handleErrorFundsModal = () => {
     setFundsErrorModal(true);
     setTimeout(() => {
@@ -128,6 +142,7 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
     }, 1000)
   }
 
+  // stock not found error pop up
   const handleErrorStockModal= () => {
     setStockErrorModal(true);
     setTimeout(() => {
@@ -135,6 +150,7 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
     }, 1000)
   }
 
+  // not enough shares error pop up
   const handleErrorSharesModal = () => {
     setSharesErrorModal(true);
     setTimeout(() => {
@@ -209,6 +225,8 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
           </button>
         ))}
       </div>
+
+      {/* buy stocks popup*/}
       {showModal && selectedSymbol && (
           <BuyModal buySellTitle={selectedSymbol} onClose={handleCloseModal}>
               {latestPrice !== null && (
@@ -243,6 +261,7 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
           </BuyModal>
       )}
 
+      {/* sell stocks popup*/} 
       {showSellModal && selectedSymbol && (
         <SellModal buySellTitle={selectedSymbol} onClose={handleCloseModal}>
           {latestPrice !== null && (
@@ -278,10 +297,12 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
         </SellModal>
       )}
 
+      {/* confirmation popup*/}
       {showConfirmationModal && ( 
         <ConfirmationModal></ConfirmationModal>
       )}
 
+      {/* error popups*/}
       {showFundsErrorModal && (
         <FundsErrorModal></FundsErrorModal>
       )}

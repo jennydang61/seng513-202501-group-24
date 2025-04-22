@@ -15,20 +15,24 @@ export const updateUserHandler = catchErrors(
     
         const updateQuery: Record<string, any>  = {};
 
+        // sort incoming updates
         for (let field in updates) {   
             if (unauthorizedUpdateFields.includes(field)) {
                 delete updates[field];
                 continue;
             }         
             
+            // if updates include portfolio
             if (field === "portfolio") {
                 const user = await UserModel.findById(userId);
                 appAssert(user, NOT_FOUND, "User not found");
                 const updatePortfolio = updates[field];
 
+                // find if stock exists in portfolio
                 const stockIndex = user.portfolio.findIndex((stocks: any) => 
                     stocks.stock === updatePortfolio.stock);
 
+                // if it does, then update the new data at that specific stock , uses set
                 if (stockIndex > -1) {
                     if (updatePortfolio.quantity == 0 ) {
                         user.portfolio.splice(stockIndex, 1);
@@ -41,12 +45,14 @@ export const updateUserHandler = catchErrors(
                         updateQuery.$set = { portfolio: user.portfolio };
                     }
                 } else {
+                    // if not, then add the stock to the portfolio, uses push
                     if (!updateQuery.$push) {
                         updateQuery.$push = {};
                     }
                     updates[field].bookValue = updates[field].price * updates[field].quantity;
                     updateQuery.$push[field] = updates[field];
                 }
+            // if the field is not portfolio, then use set 
             } else {
                 if (!updateQuery.$set) {
                     updateQuery.$set = {};
@@ -56,7 +62,7 @@ export const updateUserHandler = catchErrors(
             }
         }
 
-
+        // update to the db
         const user = await UserModel.findByIdAndUpdate(userId, updateQuery, { new: true, runValidators: true, });
 
         appAssert(user, NOT_FOUND, "User not found");
