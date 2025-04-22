@@ -15,7 +15,8 @@ export interface UserDocument extends mongoose.Document {
         stock: string;
         quantity: number;
         bookValue: number;
-        return: number;          
+        return: number;      
+        current: number;    
     }[];
     gainLoss: number; // gain/loss field
     netWorth: number; // net worth field
@@ -32,7 +33,7 @@ const userSchema = new mongoose.Schema<UserDocument> (
     {
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    role: { type: String, default: "user" },
+    role: { type: String, enum: ["admin", "user"], default: "user" },
     cashBalance: {type: Number, required: true, default: 0}, // for new user, cashBalance set in pre() middleware below (line 68)
     portfolioValue: {type: Number, required: true, default: 0 },
     leaderboardRank: {type: Number, default: 0 },     // add to leaderboard once they make first purchase
@@ -43,6 +44,7 @@ const userSchema = new mongoose.Schema<UserDocument> (
             quantity: { type: Number, required: true, min:0}, 
             bookValue: { type: Number, required: true },         // bookValue of the stock (= total spent on this stock)
             return: { type: Number },
+            current: { type: Number },
         },
         ],
         required: true,

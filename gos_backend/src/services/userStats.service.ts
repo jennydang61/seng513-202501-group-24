@@ -69,7 +69,8 @@ export const calculateAndUpdateUserStats = async () => {
                 const currentPrice = stockPrices[stock.stock] || 0;
                 portfolioValue += currentPrice * stock.quantity; // Current value of the stock
                 totalSpent += stock.bookValue; // Total amount spent on the stock
-                stock.return = ((currentPrice * stock.quantity) - stock.bookValue)/stock.bookValue;
+                stock.current = (currentPrice * stock.quantity);
+                stock.return = (stock.current - stock.bookValue)/stock.bookValue;
             });
 
             // Avoid division by zerio

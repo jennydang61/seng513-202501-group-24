@@ -11,7 +11,7 @@ import { getColorBySymbol } from "./StockPage";
 const ProfilePage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const { username, cashBalance, netWorth, portfolio, leaderboardRank } = user;
+  const { username, cashBalance, netWorth, portfolio, leaderboardRank,gainLoss } = user;
 
   const [modalType, setModalType] = useState<"edit" | "password" | "delete" | null>(null);
   const closeModal = () => setModalType(null);
@@ -84,10 +84,10 @@ const ProfilePage = () => {
                 <div className="statCard">
                   <span className="label">Current Net Worth: </span>
                   <span className="amount">${netWorth.toLocaleString()}  </span>
-                  {/* <span className={`return ${gainLoss >= 0 ? "positive" : "negative"}`}>
+                  <span className={`return ${gainLoss >= 0 ? "positive" : "negative"}`}>
                     {gainLoss >= 0 ? "+" : ""}
-                    {gainLoss.toFixed(2)}%
-                  </span> */}
+                    {gainLoss.toFixed(5)}%
+                  </span>
                 </div>
               </div>
 
@@ -115,21 +115,22 @@ const ProfilePage = () => {
                         className={`stockButton ${getColorBySymbol(stock.stock)}`}
                         style={{ cursor: "default", margin:"10px 0"}}
                       >
-                        <span className="stockSymbol">{stock.stock}</span>
+                        <span className="stockSymbol">{stock.stock}
+                          <span className={`return ${stock.return >= 0 ? "positive" : "negative"}`}>
+                            {stock.return >= 0 ? " +" : " "}
+                            {stock.return.toFixed(5)}%
+                          </span>
+                        </span>
                         <span className="stockQuantity">Quantity: {stock.quantity}</span>
+                        <span className="stockCurrentWorth">Current Worth: ${stock.current.toFixed(2)}</span>
                         <span className="stockBookValue">
-                          Book Value: ${stock.bookValue.toLocaleString()}
+                          Book Value: ${stock.bookValue.toLocaleString()} 
                         </span>
                       </div>
                     ))
                 ) : (
                   <p className="noAssetsMessage">You don't own any stocks yet.</p>
                 )}
-                {/* <div className="portfolioItem placeholder"></div>
-                <div className="portfolioItem placeholder"></div>
-                <div className="portfolioItem placeholder"></div>
-                <div className="portfolioItem placeholder"></div> */}
-                {/* <a href="#" className="viewMore">See All Assets →</a> */}
               </div>
             </div>
           </div>
