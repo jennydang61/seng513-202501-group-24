@@ -14,12 +14,12 @@ interface StockData {
   }[];
 }
 
-const stockSymbols = [
+export const stockSymbols = [
   "AAPL", "GOOG", "AMZN", "TSLA", "MSFT", "META",
   "NKE", "LYFT", "MCD", "UBER"
 ];
 
-const getColorBySymbol = (symbol: string): string => {
+export const getColorBySymbol = (symbol: string): string => {
   switch (symbol) {
     case "AAPL":
     case "UBER":

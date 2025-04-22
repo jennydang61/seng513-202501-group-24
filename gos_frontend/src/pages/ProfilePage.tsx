@@ -6,11 +6,12 @@ import profileImage from "/src/images/happyPlant.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { updateUsername, updatePassword, deleteAccount } from "../lib/api";
+import { stockSymbols, getColorBySymbol } from "./StockPage";
 
 const ProfilePage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const { username, cashBalance, netWorth, gainLoss } = user;
+  const { username, cashBalance, netWorth, portfolio } = user;
 
   const [modalType, setModalType] = useState<"edit" | "password" | "delete" | null>(null);
   const closeModal = () => setModalType(null);
@@ -96,11 +97,31 @@ const ProfilePage = () => {
 
               <div className="portfolioSection">
                 <h2>Your Portfolio</h2>
+                {portfolio.length > 0 ? (
+                  portfolio
+                    .slice()
+                    .sort((a,b) => b.bookValue - a.bookValue)
+                    .map((stock, index) => (
+                      <div 
+                        key={index} 
+                        className={`stockButton ${getColorBySymbol(stock.stock)}`}
+                        style={{ cursor: "default", margin:"10px 0"}}
+                      >
+                        <span className="stockSymbol">{stock.stock}</span>
+                        <span className="stockQuantity">Quantity: {stock.quantity}</span>
+                        <span className="stockBookValue">
+                          Book Value: ${stock.bookValue.toLocaleString()}
+                        </span>
+                      </div>
+                    ))
+                ) : (
+                  <p className="noAssetsMessage">You don't own any stocks yet.</p>
+                )}
+                {/* <div className="portfolioItem placeholder"></div>
                 <div className="portfolioItem placeholder"></div>
                 <div className="portfolioItem placeholder"></div>
-                <div className="portfolioItem placeholder"></div>
-                <div className="portfolioItem placeholder"></div>
-                <a href="#" className="viewMore">See All Assets →</a>
+                <div className="portfolioItem placeholder"></div> */}
+                {/* <a href="#" className="viewMore">See All Assets →</a> */}
               </div>
             </div>
           </div>
