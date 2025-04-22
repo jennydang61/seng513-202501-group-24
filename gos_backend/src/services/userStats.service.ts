@@ -5,7 +5,7 @@ import userRoutes from "../routes/user.route";
 export const updateLeaderboardRankings = async () => {
     try {
         // Fetch all users sorted by netWorth in descending order
-        const users = await UserModel.find().sort({ netWorth: -1 });
+        const users = await UserModel.find().sort({ netWorth: -1, createdAt: 1 });
 
         // Update leaderboardRank for each user
         for (let i = 0; i < users.length; i++) {
@@ -13,7 +13,7 @@ export const updateLeaderboardRankings = async () => {
             await users[i].save();
         }
 
-        const unrankedUsers = await UserModel.find({ leaderboardRank: { $xists: true }, netWorth: { $lte: 0 } });
+        const unrankedUsers = await UserModel.find({ leaderboardRank: { $exists: true }, netWorth: { $lte: 0 } });
         for (const user of unrankedUsers) {
             user.leaderboardRank = 0;
             await user.save();
@@ -69,16 +69,17 @@ export const calculateAndUpdateUserStats = async () => {
                 const currentPrice = stockPrices[stock.stock] || 0;
                 portfolioValue += currentPrice * stock.quantity; // Current value of the stock
                 totalSpent += stock.bookValue; // Total amount spent on the stock
+                stock.return = ((currentPrice * stock.quantity) - stock.bookValue)/stock.bookValue;
             });
 
             // Avoid division by zerio
-            const gainLoss = totalSpent > 0 
-                ? ((portfolioValue - totalSpent) / totalSpent * 100) // total gainLoss in percentage
-                : 0;
             const netWorth = user.cashBalance + portfolioValue;
+            const gainLoss = totalSpent > 0 
+                ? ((portfolioValue - totalSpent) / netWorth * 100) // total gainLoss in percentage
+                : 0;
 
             // Update user stats in the db
-            user.gainLoss = isNaN(gainLoss) ? 0 : Number(gainLoss.toFixed(2));
+            user.gainLoss = isNaN(gainLoss) ? 0 : Number(gainLoss.toFixed(5));
             user.netWorth = isNaN(netWorth) ? 0 : Number(netWorth.toFixed(2));
             user.portfolioValue = Number(portfolioValue.toFixed(2));
             await user.save();

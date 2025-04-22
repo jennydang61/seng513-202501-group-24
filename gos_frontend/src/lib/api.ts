@@ -12,6 +12,8 @@ export const updateUser = async(data) => API.patch("/update", data);
 
 export const getLeaderboardUsers = async() => API.get("/user/leaderboard");
 
+export const updateStats = async() => API.patch("/user/update-stats");
+
 export const fetchHistoricalStock = async (
     symbol: string,
     interval: '1d' | '1h' = '1d'

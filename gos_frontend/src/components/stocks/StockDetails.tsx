@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { fetchHistoricalStock, updateUser } from "../../lib/api";
+import { fetchHistoricalStock, updateStats } from "../../lib/api";
 import StockChart from "./StockChart";
 import useAuth from "../../hooks/useAuth";
 import BuyModal from "../ui/BuyModal";
@@ -23,7 +23,7 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
   const [history, setHistory] = useState<StockHistory[]>([]);
   const [latestPrice, setLatestPrice] = useState<number | null>(null);
   const [timeframe, setTimeframe] = useState<"1D" | "7D" | "1M" | "1Y">("1D");
-  const {user, updateUserData, isUpdateError} = useAuth();
+  const {user, updateUserData} = useAuth();
   const [showModal, setShowModal] = useState(false);
   const [showSellModal, setShowSellModal] = useState(false);
   const [showConfirmationModal, setConfirmationModal] = useState(false);
@@ -48,6 +48,7 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
       if (currentBalance >= Number(total)) {
         const newBalance = currentBalance - Number(total);
         updateUserData({ portfolio: stock, cashBalance: Number(newBalance.toFixed(2))});
+        updateStats();
 
         setTimeout(() => {
           setShowModal(false);
@@ -85,6 +86,7 @@ const StockDetails: React.FC<StockDetailsProps> = ({ selectedSymbol }) => {
           const newStockQuantity = Number(stock.quantity) * -1;
           stock.quantity = newStockQuantity.toString();
           updateUserData({ portfolio: stock, cashBalance: Number(newBalance.toFixed(2))});
+          updateStats();
 
           setTimeout(() => {
             setShowSellModal(false);

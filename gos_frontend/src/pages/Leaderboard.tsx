@@ -1,7 +1,6 @@
 import NavBar from "../components/ui/Navbar2";
 import '../../styles/Leaderboard.css';
 import pfpImage from "/src/images/pfp.png";
-import useUsers from "../hooks/useUsers";
 import useLeaderboard from "../hooks/useLeaderboard";
 
 interface User {
@@ -29,21 +28,26 @@ const Leaderboard = () => {
           <span>Total Assets</span>
           <span>Total Return</span>
         </div>
-        <div className="leaderboardList">
-          {users.map((user, index) => (
-            <div key={index} className="leaderboardRow">
-              <div className="userInfo">
-                <span className="ranking">{user.leaderboardRank || index + 1}</span>
-                <img className="userAvatar" src={pfpImage}/>
-                <span className="username">{user.username}</span>
+        { isPending && (
+          <div classname="leaderboardList">Loading...</div>
+        )}
+        { isSuccess && (
+          <div className="leaderboardList">
+            {users.map((user, index) => (
+              <div key={index} className="leaderboardRow">
+                <div className="userInfo">
+                  <span className="ranking">{user.leaderboardRank || index + 1}</span>
+                  <img className="userAvatar" src={pfpImage}/>
+                  <span className="username">{user.username}</span>
+                </div>
+                <span>$ {user.netWorth.toLocaleString()}</span>
+                <span className={user.gainLoss >= 0 ? "positive" : "negative"}>
+                    {user.gainLoss >= 0 ? `+${user.gainLoss.toFixed(5)}%` : `${user.gainLoss.toFixed(5)}%`}
+                </span>
               </div>
-              <span>$ {user.netWorth.toLocaleString()}</span>
-              <span className={user.gainLoss >= 0 ? "positive" : "negative"}>
-                  {user.gainLoss >= 0 ? `+${user.gainLoss.toFixed(2)}%` : `${user.gainLoss.toFixed(2)}%`}
-              </span>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </main>
     </div>
   );

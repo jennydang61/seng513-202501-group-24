@@ -14,7 +14,8 @@ export interface UserDocument extends mongoose.Document {
     portfolio: {
         stock: string;
         quantity: number;
-        bookValue: number;          
+        bookValue: number;
+        return: number;          
     }[];
     gainLoss: number; // gain/loss field
     netWorth: number; // net worth field
@@ -41,7 +42,8 @@ const userSchema = new mongoose.Schema<UserDocument> (
             stock: { type: String, required: true },  
             quantity: { type: Number, required: true, min:0}, 
             bookValue: { type: Number, required: true },         // bookValue of the stock (= total spent on this stock)
-          },
+            return: { type: Number },
+        },
         ],
         required: true,
         default: []  // Initialize the portfolio as an empty array by default

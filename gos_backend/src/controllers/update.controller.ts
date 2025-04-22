@@ -10,7 +10,7 @@ export const updateUserHandler = catchErrors(
         let updates = {...req.body};
 
         const unauthorizedUpdateFields = ["_id", "username", "password", "role", 
-            // "leaderboardRank",
+            "leaderboardRank",
             "createdAt", "updatedAt", "__v"];
     
         const updateQuery: Record<string, any>  = {};

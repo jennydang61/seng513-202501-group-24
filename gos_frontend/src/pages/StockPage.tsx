@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import NavBar from "../components/ui/Navbar2";
 import "../../styles/StockPage.css";
 import searchImage from "/src/images/searchIcon.png";
