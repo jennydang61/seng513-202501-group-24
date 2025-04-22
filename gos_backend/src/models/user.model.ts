@@ -42,9 +42,9 @@ const userSchema = new mongoose.Schema<UserDocument> (
           {
             stock: { type: String, required: true },  
             quantity: { type: Number, required: true, min:0}, 
-            bookValue: { type: Number, required: true },         // bookValue of the stock (= total spent on this stock)
-            return: { type: Number },
-            current: { type: Number },
+            bookValue: { type: Number, default: 0 },         // bookValue of the stock (= total spent on this stock)
+            return: { type: Number, default: 0 },
+            current: { type: Number, default: 0 },
         },
         ],
         required: true,
