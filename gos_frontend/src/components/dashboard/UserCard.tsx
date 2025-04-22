@@ -3,6 +3,7 @@ import pfpImage from "/src/images/pfp.png";
 
 interface UsercardParam {
   username: string;
+  netWorth: number;
 }
 
 interface UserCardProps {
@@ -10,7 +11,7 @@ interface UserCardProps {
 }
 
 const UserCard: React.FC<UserCardProps> = ({ user }) => {
-  const { username } = user;
+  const { username, netWorth } = user;
 
   function openEditModal(user: UsercardParam): void {
     throw new Error("Function not implemented."); // to do
@@ -21,10 +22,10 @@ const UserCard: React.FC<UserCardProps> = ({ user }) => {
       <div className="userInfo">
         <img className="userAvatar" src={pfpImage} alt=""/>
         <div>
-          <p className="username">{username}</p>
+          <p className="username">{ username }</p>
         </div>
       </div>
-      <span className="userTotal">$ test_total</span>
+      <span className="userTotal">$ { netWorth.toLocaleString() }</span>
       <div className="userActions">
         <button className="editButton" onClick={() => openEditModal(user)}>Edit Funds</button>
         <button className="removeButton">Remove User</button>

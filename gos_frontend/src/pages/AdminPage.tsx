@@ -108,7 +108,10 @@ const AdminPage = () => {
             {isError && <p>Failed to get users.</p>}
             {isSuccess && (
               <div className="userList">
-              {users.map((user) => (
+              {users
+                .slice() // Create a shallow copy to avoid mutating the original array
+                .sort((a, b) => a.username.localeCompare(b.username)) // Sort by username
+                .map((user) => (
                 <UserCard key={user._id} user={user} />
               ))}
             </div>
