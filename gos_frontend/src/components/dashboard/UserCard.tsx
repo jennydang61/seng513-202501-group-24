@@ -1,17 +1,25 @@
 
 import pfpImage from "/src/images/pfp.png";
 
-const UserCard = ({user}) => {
+interface UsercardParam {
+  username: string;
+}
+
+interface UserCardProps {
+  user: UsercardParam;
+}
+
+const UserCard: React.FC<UserCardProps> = ({ user }) => {
   const { username } = user;
 
-  function openEditModal(user: any): void {
-    throw new Error("Function not implemented.");
+  function openEditModal(user: UsercardParam): void {
+    throw new Error("Function not implemented."); // to do
   }
 
   return(
     <div className="userCard">
       <div className="userInfo">
-        <img className="userAvatar" src={pfpImage}/>
+        <img className="userAvatar" src={pfpImage} alt=""/>
         <div>
           <p className="username">{username}</p>
         </div>
