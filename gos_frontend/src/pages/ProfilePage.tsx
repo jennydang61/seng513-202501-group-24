@@ -84,18 +84,13 @@ const ProfilePage = () => {
             <div className="profileRight">
               <div className="statsSection">
                 <div className="statCard">
-                  <span className="label">Remaining Cash Balance: </span> 
+                  <span className="label">Remaining Cash Balance: </span>
                   <span className="amount">${cashBalance.toLocaleString()}</span> {/* display remaining balance */}
                 </div>
                 <div className="statCard">
                   <span className="label">Current Net Worth: </span>
-<<<<<<< HEAD
                   <span className="amount">${netWorth.toLocaleString()}  </span> {/* display net worth */}
-                  {/* <span className={`return ${gainLoss >= 0 ? "positive" : "negative"}`}>
-=======
-                  <span className="amount">${netWorth.toLocaleString()}  </span>
                   <span className={`return ${gainLoss >= 0 ? "positive" : "negative"}`}>
->>>>>>> cbdaa96c574d4d0c0970f3903334658688bf5fa1
                     {gainLoss >= 0 ? "+" : ""}
                     {gainLoss.toFixed(5)}%
                   </span>
@@ -114,7 +109,6 @@ const ProfilePage = () => {
                   </p>
                 )  
               }
-
               {/* section to display assets */}
               <div className="portfolioSection">
                 <h2>Your Portfolio</h2>
@@ -150,7 +144,7 @@ const ProfilePage = () => {
         </div>
       </main>
 
-      {/* MODALS */}
+      {/* === MODALS === */}
       {modalType === "edit" && (
         <Modal title="Edit Username" onClose={closeModal}>
           <input
