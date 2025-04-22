@@ -52,7 +52,7 @@ const Leaderboard = () => {
               </div>
               <span>$ {user.netWorth.toLocaleString()}</span>
               <span className={user.gainLoss >= 0 ? "positive" : "negative"}>
-                  {user.gainLoss >= 0 ? `+${user.gainLoss.toFixed(2)}%` : `-${user.gainLoss.toFixed(2)}%`}
+                  {user.gainLoss >= 0 ? `+${user.gainLoss.toFixed(2)}%` : `${user.gainLoss.toFixed(2)}%`}
               </span>
             </div>
           ))}
