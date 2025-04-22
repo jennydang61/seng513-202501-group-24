@@ -11,6 +11,9 @@ import queryClient from "../config/queryClient";
 
 const AdminPage = () => {
 
+  // state for search bar
+  const [searchTerm, setSearchTerm] = useState(""); 
+
   // retrieving all users from DB
   const {
     users,
@@ -102,13 +105,21 @@ const AdminPage = () => {
             <h2>Users</h2>
             <div className="userSearchBar">
               <img src="/src/images/searchIcon.png" className="searchIcon" />
-              <input type="text" placeholder="Search for users" />
+              <input 
+                type="text" 
+                placeholder="Search for users" 
+                value={searchTerm} // Bind to searchTerm state
+                onChange={(e) => setSearchTerm(e.target.value)} // Update state on input change
+                />
             </div>
             {isPending && <p>loading...</p>}
             {isError && <p>Failed to get users.</p>}
             {isSuccess && (
               <div className="userList">
               {users
+                .filter((user) =>
+                  user.username.toLowerCase().includes(searchTerm.toLowerCase()) // Filter by search term
+                )
                 .slice() // Create a shallow copy to avoid mutating the original array
                 .sort((a, b) => a.username.localeCompare(b.username)) // Sort by username
                 .map((user) => (
