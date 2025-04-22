@@ -13,8 +13,10 @@ import sessionRoutes from "./routes/session.route";
 import stockRoutes from './routes/stockRoutes';
 import updateRoutes from "./routes/update.route";
 import fundRoutes from "./routes/fund.route";
+import adminRoutes from "./routes/admin.route";
 
 import "./utils/cronJobs";
+import authorize from './middleware/authorize';
 
 
 // using express
@@ -49,9 +51,9 @@ app.use('/stocks', stockRoutes);
 
 // protected routes
 app.use("/user", authenticate, userRoutes) // making sure the user is authenticated first before fetching the user
-app.use("/sessions", authenticate, sessionRoutes) // making sure the user is authenticated first before fetching the user
 app.use("/update", authenticate, updateRoutes);
-app.use("/fund", authenticate, fundRoutes) // making sure the user is authenticated first before fetching the user
+app.use("/admin", authenticate, adminRoutes)
+app.use("/fund", authenticate, authorize(["admin"]), fundRoutes) // making sure the user is authenticated first before fetching the user
 
 app.use(errorHandler);
 

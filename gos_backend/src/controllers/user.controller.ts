@@ -78,6 +78,7 @@ export const getLeaderboardUsersHandler = catchErrors(async (req, res) => {
 
 // POST /user/update-stats - Update user stats when trading stocks
 export const triggerUserStatsUpdateHandler = catchErrors(async (req, res) => {
+  console.log("Triggering stat update from trading...");
   await calculateAndUpdateUserStats();
   return res.status(OK).json({ message: "User stats update triggered successfully"});
 })

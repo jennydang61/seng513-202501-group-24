@@ -11,7 +11,7 @@ import { getColorBySymbol } from "./StockPage";
 const ProfilePage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const { username, cashBalance, netWorth, portfolio, leaderboardRank,gainLoss } = user;
+  const { username, cashBalance, netWorth, portfolio, leaderboardRank,gainLoss, role } = user;
 
   const [modalType, setModalType] = useState<"edit" | "password" | "delete" | null>(null);
   const closeModal = () => setModalType(null);
@@ -76,62 +76,82 @@ const ProfilePage = () => {
             </div>
 
             <div className="profileRight">
-              <div className="statsSection">
-                <div className="statCard">
-                  <span className="label">Remaining Cash Balance: </span>
-                  <span className="amount">${cashBalance.toLocaleString()}</span>
-                </div>
-                <div className="statCard">
-                  <span className="label">Current Net Worth: </span>
-                  <span className="amount">${netWorth.toLocaleString()}  </span>
-                  <span className={`return ${gainLoss >= 0 ? "positive" : "negative"}`}>
-                    {gainLoss >= 0 ? "+" : ""}
-                    {gainLoss.toFixed(5)}%
-                  </span>
-                </div>
-              </div>
+              {role === "user" ? (
+                <>
+                  <div className="statsSection">
+                    <div className="statCard">
+                      <span className="label">Remaining Cash Balance: </span>
+                      <span className="amount">${cashBalance.toLocaleString()}</span>
+                    </div>
+                    <div className="statCard">
+                      <span className="label">Current Net Worth: </span>
+                      <span className="amount">${netWorth.toLocaleString()}  </span>
+                      <span className={`return ${gainLoss >= 0 ? "positive" : "negative"}`}>
+                        {gainLoss >= 0 ? "+" : ""}
+                        {gainLoss.toFixed(5)}%
+                      </span>
+                    </div>
+                  </div>
 
-              {
-                leaderboardRank === 0 ? (
-                  <p className="statusMessage">
-                    You are not on the leaderboard yet, keep trading!
-                  </p>
-                ) : (
-                  <p className="statusMessage">
-                    Congratulations! You are #{leaderboardRank} on the leaderboard
-                  </p>
-                )  
-              }
+                  {
+                    leaderboardRank === 0 ? (
+                      <p className="statusMessage">
+                        You are not on the leaderboard yet, keep trading!
+                      </p>
+                    ) : (
+                      <p className="statusMessage">
+                        Congratulations! You are #{leaderboardRank} on the leaderboard
+                      </p>
+                    )  
+                  }
 
-              <div className="portfolioSection">
-                <h2>Your Portfolio</h2>
-                {portfolio.length > 0 ? (
-                  portfolio
-                    .slice()
-                    .sort((a,b) => b.bookValue - a.bookValue)
-                    .map((stock, index) => (
-                      <div 
-                        key={index} 
-                        className={`stockButton ${getColorBySymbol(stock.stock)}`}
-                        style={{ cursor: "default", margin:"10px 0"}}
+                  <div className="portfolioSection">
+                    <h2>Your Portfolio</h2>
+                    {portfolio.length > 0 ? (
+                      portfolio
+                        .slice()
+                        .sort((a,b) => b.bookValue - a.bookValue)
+                        .map((stock, index) => (
+                          <div 
+                            key={index} 
+                            className={`stockButton ${getColorBySymbol(stock.stock)}`}
+                            style={{ cursor: "default", margin:"10px 0"}}
+                          >
+                            <span className="stockSymbol">{stock.stock}
+                              <span className={`return ${stock.return >= 0 ? "positive" : "negative"}`}>
+                                {stock.return >= 0 ? " +" : " "}
+                                {stock.return.toFixed(5)}%
+                              </span>
+                            </span>
+                            <span className="stockQuantity">Quantity: {stock.quantity}</span>
+                            <span className="stockCurrentWorth">Current Worth: ${stock.current.toFixed(2)}</span>
+                            <span className="stockBookValue">
+                              Book Value: ${stock.bookValue.toLocaleString()} 
+                            </span>
+                          </div>
+                        ))
+                    ) : (
+                      <p className="noAssetsMessage">You don't own any stocks yet.</p>
+                    )}
+                  </div>
+                </>
+              ) : (
+                <> {/* need styling */} 
+                  <div className="adminSection">
+                    <h2>Admin Dashboard</h2>
+                    <p>Welcome, Admin! You have full control over the platform.</p>
+                    <div className="profileButtons">
+                      <button
+                        className="adminButton"
+                        onClick={() => navigate("/admin")}
                       >
-                        <span className="stockSymbol">{stock.stock}
-                          <span className={`return ${stock.return >= 0 ? "positive" : "negative"}`}>
-                            {stock.return >= 0 ? " +" : " "}
-                            {stock.return.toFixed(5)}%
-                          </span>
-                        </span>
-                        <span className="stockQuantity">Quantity: {stock.quantity}</span>
-                        <span className="stockCurrentWorth">Current Worth: ${stock.current.toFixed(2)}</span>
-                        <span className="stockBookValue">
-                          Book Value: ${stock.bookValue.toLocaleString()} 
-                        </span>
-                      </div>
-                    ))
-                ) : (
-                  <p className="noAssetsMessage">You don't own any stocks yet.</p>
-                )}
-              </div>
+                        Go to Admin Page
+                      </button>
+                    </div>
+                  </div>
+                </>
+              )
+            }
             </div>
           </div>
         </div>

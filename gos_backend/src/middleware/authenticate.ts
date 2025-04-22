@@ -3,8 +3,9 @@ import appAssert from "../utils/appAssert";
 import AppErrorCode from "../constants/appErrorCode";
 import { UNAUTHORIZED } from "../constants/http";
 import { verifyToken } from "../utils/jwt";
+import UserModel from "../models/user.model";
 
-const authenticate: RequestHandler = (req, res, next) => {
+const authenticate: RequestHandler = async (req, res, next) => {
     const accessToken = req.cookies.accessToken as string; 
     appAssert(
         accessToken, 
@@ -21,8 +22,12 @@ const authenticate: RequestHandler = (req, res, next) => {
         AppErrorCode.InvalidAccessToken
     )
 
+    const user = await UserModel.findById(payload.userId);
+    appAssert(user, UNAUTHORIZED, "User not found");
+
     req.userId = payload.userId;
     req.sessionId = payload.sessionId;
+    req.userRole = user.role; // set the user's role for later use
     next();
 }
 
