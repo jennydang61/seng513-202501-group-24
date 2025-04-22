@@ -13,10 +13,13 @@ const Settings = () => {
 
   return (
     <div>
-        <NavBar />
+        <NavBar /> {/* add nav bar component */}
       <h1>My Sessions</h1>
+      {/* display loading message if data is being fetched */}
       {isPending && <p>loading...</p>}
+      {/* display error */}
       {isError && <p>Failed to get sessions.</p>}
+      {/* if successful display session */}
       {isSuccess && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         {sessions.map((session) => (

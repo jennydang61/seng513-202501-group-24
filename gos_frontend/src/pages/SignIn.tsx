@@ -26,6 +26,7 @@ import { login } from "../lib/api";
         },
       });
 
+    {/* handler for form submission */}
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       signIn({username, password});
@@ -33,14 +34,16 @@ import { login } from "../lib/api";
 
     return (
       <div className="signInPage">
-        <NavBar />
+        <NavBar /> {/* add nav bar component */}
         <main className="signInContainer">
+          {/* title text */}
             <h1 className="signInTitle">Sign In</h1>
 
             <form 
               className="signInForm"
               onSubmit={handleSubmit}
             >
+              {/* if wrong password or username show error */}
               {
                 isError && (
                 <div className="error">
@@ -49,25 +52,27 @@ import { login } from "../lib/api";
                 )
               }
               <label>
+                {/* input for username */}
                 <span>Username</span>
                 <input 
                   type="text" 
                   name="username" 
                   value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  onChange={(e) => setUsername(e.target.value)} // update username state
                   autoFocus
                   required 
                 />
               </label>
               <label>
+                {/* input for password */}
                 <span>Password</span>
                 <input 
                   type="password" 
                   name="password"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value)} // update password state
                   onKeyDown={(e) => 
-                    e.key === "Enter" && signIn({ username, password })
+                    e.key === "Enter" && signIn({ username, password }) // trigger sign in on enter key
                   } 
                   required 
                 />
@@ -80,6 +85,7 @@ import { login } from "../lib/api";
                 Sign In
               </button>
             </form>
+            {/* link to register page */}
             <p>Don't have an account?{" "}
               <Link to="/register">Sign Up</Link>
             </p>

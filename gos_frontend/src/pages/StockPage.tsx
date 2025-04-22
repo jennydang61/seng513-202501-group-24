@@ -14,11 +14,13 @@ interface StockData {
   }[];
 }
 
+// display trending stocks
 export const stockSymbols = [
   "AAPL", "GOOG", "AMZN", "TSLA", "MSFT", "META",
   "NKE", "LYFT", "MCD", "UBER"
 ];
 
+// to determine colour of stocks
 export const getColorBySymbol = (symbol: string): string => {
   switch (symbol) {
     case "AAPL":
@@ -49,6 +51,7 @@ const Stockpage = () => {
   const defaultInterval: '1d' | '1h' = '1d';
 
   useEffect(() => {
+    // to fetch stock data
     const fetchAllStocks = async () => {
       const fetched: StockData[] = [];
 
@@ -81,18 +84,22 @@ const Stockpage = () => {
     fetchAllStocks();
   }, []);
 
+  // handler search bar
   const handleSearch = async () => {
+    // find matching stock symbol from stocks
     const match = stocks.find(
       (s) => s.symbol.toLowerCase() === searchInput.toLowerCase()
     );
 
+    // if a match is found update selected symbol
     if (match) {
       setSelectedSymbol(match.symbol);
       setError("");
     } else {
       try {
+        // fetch historical stock data for searched symbol
         const data = await fetchHistoricalStock(searchInput.toUpperCase());
-        if (data && data.length > 0) {
+        if (data && data.length > 0) { // if data found, update selected symbol
           setSelectedSymbol(searchInput.toUpperCase());
           setError("");
         } else {

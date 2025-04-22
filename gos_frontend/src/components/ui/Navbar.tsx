@@ -13,6 +13,7 @@ const NavBar = () => {
 
   return (
     <header className="header">
+      {/* logo that navigates to landing page when clicked */}
       <img
         src={logo}
         alt="Logo"
@@ -20,6 +21,7 @@ const NavBar = () => {
         onClick={() => navigate('/')}
       />
 
+      {/* hamburger menu icon for mobile */}
       <div
         className={`hamburgerNav ${menuOpen ? 'open' : ''}`}
         onClick={toggleMenu}
@@ -29,6 +31,7 @@ const NavBar = () => {
         <div className="line"></div>
       </div>
 
+      {/* nav bar that shows when opened */}
       <nav className={`navBar ${menuOpen ? 'open' : ''}`}>
         <ul className="navList">
             <li className="navItem">

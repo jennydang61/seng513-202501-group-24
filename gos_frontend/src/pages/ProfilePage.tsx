@@ -13,13 +13,17 @@ const ProfilePage = () => {
   const { user } = useAuth();
   const { username, cashBalance, netWorth, portfolio, leaderboardRank } = user;
 
+  // managing modal component type
   const [modalType, setModalType] = useState<"edit" | "password" | "delete" | null>(null);
   const closeModal = () => setModalType(null);
 
+  // state for new username and password
   const [newUsername, setNewUsername] = useState("");
   const [newPassword, setNewPassword] = useState("");
 
-  // 🔧 HANDLERS
+  // HANDLERS
+
+  // handler for saving new username
   const handleSaveUsername = async () => {
     try {
       await updateUsername(newUsername);
@@ -31,6 +35,7 @@ const ProfilePage = () => {
     }
   };
 
+  // handler for changing password
   const handleChangePassword = async () => {
     try {
       await updatePassword(newPassword);
@@ -41,6 +46,7 @@ const ProfilePage = () => {
     }
   };
 
+  // handler for deleting account
   const handleDeleteAccount = async () => {
     try {
       await deleteAccount();
@@ -55,17 +61,17 @@ const ProfilePage = () => {
 
   return (
     <div className="profilePage">
-      <NavBar />
+      <NavBar /> {/* add nav bar component */}
       <main className="profileContainer">
         <h1 className="profileTitle">Profile</h1>
 
         <div className="profileCard">
           <div className="profileGrid">
-
+            {/* left section of page */}
             <div className="profileLeft">
               <div className="profileTop">
-                <img src={profileImage} alt="Profile" className="avatar" />
-                <h2 className="username">{username}</h2>
+                <img src={profileImage} alt="Profile" className="avatar" /> {/* profile image */}
+                <h2 className="username">{username}</h2> {/* display username */}
               </div>
 
               <div className="profileButtons">
@@ -74,16 +80,16 @@ const ProfilePage = () => {
                 <button onClick={() => setModalType("delete")}>Delete account</button>
               </div>
             </div>
-
+            {/* right section of page */}
             <div className="profileRight">
               <div className="statsSection">
                 <div className="statCard">
-                  <span className="label">Remaining Cash Balance: </span>
-                  <span className="amount">${cashBalance.toLocaleString()}</span>
+                  <span className="label">Remaining Cash Balance: </span> 
+                  <span className="amount">${cashBalance.toLocaleString()}</span> {/* display remaining balance */}
                 </div>
                 <div className="statCard">
                   <span className="label">Current Net Worth: </span>
-                  <span className="amount">${netWorth.toLocaleString()}  </span>
+                  <span className="amount">${netWorth.toLocaleString()}  </span> {/* display net worth */}
                   {/* <span className={`return ${gainLoss >= 0 ? "positive" : "negative"}`}>
                     {gainLoss >= 0 ? "+" : ""}
                     {gainLoss.toFixed(2)}%
@@ -91,6 +97,7 @@ const ProfilePage = () => {
                 </div>
               </div>
 
+              {/* to show leaderboard status */}
               {
                 leaderboardRank === 0 ? (
                   <p className="statusMessage">
@@ -103,6 +110,7 @@ const ProfilePage = () => {
                 )  
               }
 
+              {/* section to display assets */}
               <div className="portfolioSection">
                 <h2>Your Portfolio</h2>
                 {portfolio.length > 0 ? (
@@ -136,7 +144,7 @@ const ProfilePage = () => {
         </div>
       </main>
 
-      {/* === MODALS === */}
+      {/* MODALS */}
       {modalType === "edit" && (
         <Modal title="Edit Username" onClose={closeModal}>
           <input

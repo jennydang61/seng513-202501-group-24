@@ -1,5 +1,6 @@
 import "../../../styles/Modal.css";
 
+// for buy button in stock page
 const BuyModal = ({ buySellTitle, children, onClose }: { buySellTitle: string, children: React.ReactNode, onClose: () => void }) => {
   return (
     <div className="modalOverlay">
