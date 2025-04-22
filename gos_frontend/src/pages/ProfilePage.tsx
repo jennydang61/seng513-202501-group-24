@@ -144,7 +144,7 @@ const ProfilePage = () => {
         </div>
       </main>
 
-      {/* === MODALS === */}
+      {/* MODALS */}
       {modalType === "edit" && (
         <Modal title="Edit Username" onClose={closeModal}>
           <input
