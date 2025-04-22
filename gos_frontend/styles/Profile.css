@@ -189,6 +189,25 @@
     color: #f87171;
 }
 
+/* admin Section */
+.adminSection {
+    padding: 2rem;
+    color: white;
+    width: 100%;
+    max-width: 900px;
+}
+  
+.adminSection h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+  
+.adminSection p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
 /* responsive design */
   
 @media (max-width: 1024px) {
@@ -219,6 +238,17 @@
     .portfolioSection h2,
     .viewMore {
       text-align: center;
+    }
+
+    .profileButtons {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+      .adminButton {
+        width: 80%;
+        text-align: center;
     }
 }
   
