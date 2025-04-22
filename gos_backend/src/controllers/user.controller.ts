@@ -11,12 +11,6 @@ export const getUserHandler = catchErrors(async (req, res) => {
   return res.status(OK).json(user.omitPassword());
 });
 
-// GET /user/all - Get all users (no passwords)
-export const getAllUsersHandler = catchErrors(async (req, res) => {
-  const users = await UserModel.find({}, { password: 0 }); // exclude password
-  return res.status(OK).json(users.map((user) => user.omitPassword()));
-});
-
 // PUT /user/username - Update username
 export const updateUsernameHandler = catchErrors(async (req, res) => {
   const userId = req.userId;
@@ -66,7 +60,7 @@ export const deleteUserHandler = catchErrors(async (req, res) => {
 // GET /user/leaderboard - Get top 10 users based on thier net worth
 export const getLeaderboardUsersHandler = catchErrors(async (req, res) => {
   // Fetch top 10 users sorted by netWorth in descending order
-  const topUsers = await UserModel.find()
+  const topUsers = await UserModel.find({ role: "user" })
   .sort({ netWorth: -1, createdAt: 1 }) // primary sort by netWorth, secondary sort by createdAt
   .limit(10)
   .select("username netWorth gainLoss"); // Select only the required fields

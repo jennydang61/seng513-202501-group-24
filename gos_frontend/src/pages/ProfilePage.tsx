@@ -75,7 +75,7 @@ const ProfilePage = () => {
               </div>
 
               <div className="profileButtons">
-                <button onClick={() => setModalType("edit")}>Edit name</button>
+                <button onClick={() => setModalType("edit")}>Edit username</button>
                 <button onClick={() => setModalType("password")}>Change password</button>
                 <button onClick={() => setModalType("delete")}>Delete account</button>
               </div>

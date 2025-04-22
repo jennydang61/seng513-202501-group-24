@@ -1,7 +1,6 @@
 import { Router } from "express";
 import {
   getUserHandler,
-  getAllUsersHandler,
   updateUsernameHandler,
   updatePasswordHandler,
   deleteUserHandler,
