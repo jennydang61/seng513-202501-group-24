@@ -18,6 +18,7 @@ const Register = () => {
   const {
     mutate: createAccount,
     isError,
+    error,
   } = useMutation({
     mutationFn: register,
     onSuccess: () => {
@@ -46,6 +47,24 @@ const Register = () => {
     createAccount({ username, password, confirmPassword });
   };  
 
+  const extractErrorMessage = (error: any): string | null => {
+    if (!error) return null;
+  
+    // Check if the error is a Zod validation error
+    if (error.issues && Array.isArray(error.issues)) {
+      return error.issues[0]?.message || null;
+    }
+
+    // Check if the error is a standard backend error
+    if (error.response?.data?.message) {
+      return error.response.data.message;
+    }
+    
+    console.log('here')
+    // Fallback to a generic error message
+    return error.message || null;
+  };
+
   return (
     <div className="registerPage">
       <NavBar />
@@ -63,7 +82,7 @@ const Register = () => {
             {
               isError && (
               <div className="error">
-                An error ocurred      
+                { extractErrorMessage(error) || "An error ocurred" }
               </div>
               )
             } 

@@ -9,9 +9,10 @@ const handleZodError = (res:Response, error: z.ZodError) => {
         path: err.path.join("."), // take the entire path and combine it with periods
         message: err.message, // error message
     }));
+    console.log("here: ", errors)
     return res.status(BAD_REQUEST).json({
-        message: error.message,
         errors, 
+        message: errors[0].message,
     });
 }  
 

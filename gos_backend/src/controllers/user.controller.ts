@@ -67,13 +67,13 @@ export const getLeaderboardUsersHandler = catchErrors(async (req, res) => {
   try {
     // Fetch top 10 users sorted by netWorth in descending order
     const topUsers = await UserModel.find()
-      .sort({ netWorth: -1 })
+      .sort({ netWorth: -1, createdAt: 1 }) // primary sort by netWorth, secondary sort by createdAt
       .limit(10)
       .select("username netWorth gainLoss"); // Select only the required fields
 
       res.status(200).json(topUsers);
   } catch (error) {
     console.error("Error fetching top users: ", error);
-    res.status(500).json({ message: "Failed to fetch top users" });
+    res.status(500).json({ message: "Failed to fetch top users" })
   }
 });

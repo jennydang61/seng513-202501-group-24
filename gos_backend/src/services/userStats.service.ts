@@ -2,7 +2,28 @@ import yahooFinance from "yahoo-finance2";
 import UserModel, { UserDocument } from "../models/user.model";
 import userRoutes from "../routes/user.route";
 
+export const updateLeaderboardRankings = async () => {
+    try {
+        // Fetch all users sorted by netWorth in descending order
+        const users = await UserModel.find().sort({ netWorth: -1 });
 
+        // Update leaderboardRank for each user
+        for (let i = 0; i < users.length; i++) {
+            users[i].leaderboardRank = i + 1; // Rank starts from 1
+            await users[i].save();
+        }
+
+        const unrankedUsers = await UserModel.find({ leaderboardRank: { $xists: true }, netWorth: { $lte: 0 } });
+        for (const user of unrankedUsers) {
+            user.leaderboardRank = 0;
+            await user.save();
+        }
+
+        console.log("Leaderboard rankings updated successfully.");
+    } catch (error) {
+        console.error("Error updating leaderboard rankings: ", error);
+    }
+}
 
 export const calculateAndUpdateUserStats = async () => {
     try {
@@ -64,6 +85,9 @@ export const calculateAndUpdateUserStats = async () => {
         }
 
         console.log("User stats updated successfully.");
+
+        await updateLeaderboardRankings();
+        
     } catch (error) {
         console.error("Failed to calculate and update user stats:", error);
     }

@@ -12,7 +12,7 @@ export const loginSchema = z.object({
 
 export const registerSchema = loginSchema
     .extend({
-        confirmPassword: z.string().min(8).max(20),
+        confirmPassword: passwordSchema,
     })
     .refine(
     (data) => data.password === data.confirmPassword, {

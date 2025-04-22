@@ -6,12 +6,12 @@ import profileImage from "/src/images/happyPlant.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { updateUsername, updatePassword, deleteAccount } from "../lib/api";
-import { stockSymbols, getColorBySymbol } from "./StockPage";
+import { getColorBySymbol } from "./StockPage";
 
 const ProfilePage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const { username, cashBalance, netWorth, portfolio } = user;
+  const { username, cashBalance, netWorth, portfolio, leaderboardRank } = user;
 
   const [modalType, setModalType] = useState<"edit" | "password" | "delete" | null>(null);
   const closeModal = () => setModalType(null);
@@ -91,9 +91,17 @@ const ProfilePage = () => {
                 </div>
               </div>
 
-              <p className="statusMessage">
-                Congratulations! You are 12th position on the leaderboard
-              </p>
+              {
+                leaderboardRank === 0 ? (
+                  <p className="statusMessage">
+                    You are not on the leaderboard yet, keep trading!
+                  </p>
+                ) : (
+                  <p className="statusMessage">
+                    Congratulations! You are #{leaderboardRank} on the leaderboard
+                  </p>
+                )  
+              }
 
               <div className="portfolioSection">
                 <h2>Your Portfolio</h2>
