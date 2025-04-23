@@ -125,9 +125,10 @@ const ProfilePage = () => {
                             style={{ cursor: "default", margin:"10px 0"}}
                           >
                             <span className="stockSymbol">{stock.stock}
-                              <span className={`return ${stock.return >= 0 ? "positive" : "negative"}`}>
-                                {stock.return >= 0 ? " +" : " "}
+                              <span className={`return ${stock.return >= 0 ? "positive" : ""}`}>
+                                {stock.return >= 0 ? " +" : " ("}
                                 {stock.return.toFixed(5)}%
+                                {stock.return >= 0 ? "" : ")"}
                               </span>
                             </span>
                             <span className="stockQuantity">Quantity: {stock.quantity}</span>

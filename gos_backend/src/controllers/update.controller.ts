@@ -41,8 +41,16 @@ export const updateUserHandler = catchErrors(
                     } else {
                         user.portfolio[stockIndex].quantity = 
                             Number(user.portfolio[stockIndex].quantity) + Number(updatePortfolio.quantity);
-                        user.portfolio[stockIndex].bookValue = 
-                            user.portfolio[stockIndex].bookValue + (updatePortfolio.price * updatePortfolio.quantity);
+                        if (user.portfolio[stockIndex].quantity===0) {
+                            user.portfolio[stockIndex].bookValue = 0;
+                            user.portfolio[stockIndex].current = 0;
+                            user.portfolio[stockIndex].return = 0;
+                        } else {
+                            user.portfolio[stockIndex].bookValue = 
+                                user.portfolio[stockIndex].bookValue + (updatePortfolio.price * updatePortfolio.quantity);
+                            user.portfolio[stockIndex].current = updatePortfolio.price * user.portfolio[stockIndex].quantity;
+                            user.portfolio[stockIndex].return = (user.portfolio[stockIndex].current - user.portfolio[stockIndex].bookValue) / user.portfolio[stockIndex].bookValue;
+                        }
                         updateQuery.$set = { portfolio: user.portfolio };
                     }
                 } else {
@@ -50,7 +58,8 @@ export const updateUserHandler = catchErrors(
                     if (!updateQuery.$push) {
                         updateQuery.$push = {};
                     }
-                    updates[field].bookValue = updates[field].price * updates[field].quantity;
+                    updates[field].bookValue = updates[field].current =  updates[field].price * updates[field].quantity;
+                    updates[field].return = 0;
                     updateQuery.$push[field] = updates[field];
                 }
             // if the field is not portfolio, then uses mongodb's set operation
