@@ -1,1 +1,0 @@
-// Dynamic animated plant

@@ -1,3 +1,5 @@
+// List of HTTP error codes for more human readable error codes in the code
+
 export const OK = 200;
 export const CREATED = 201;
 export const BAD_REQUEST = 400;

@@ -29,20 +29,16 @@ function App() {
           <Route path="profile" element={<ProfilePage />} />
           <Route path="trade" element={<Stockpage />} />
           <Route path="leaderboard" element={<Leaderboard />} />
-          {/* <Route path="settings" element={<Settings />} /> */}
         </Route>
         <Route path="/admin" element={<AdminContainer />}>
+          {/* routes nested under AdminContainer for admin only access */}
           <Route index element={<AdminPage />} />
         </Route>
         {/* define pages */}
         <Route path="/login" element={<SignIn />} />
-        {/* <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/trade" element={<Stockpage />} />
-        <Route path="/leaderboard" element={<Leaderboard />} /> */}
         <Route path="/register" element={<Register />} />
         <Route path="/forbidden" element={<ForbiddenPage />} />
         <Route path="*" element={<NotFoundPage />} /> {/* Catch-all route for 404 */}
-        {/* <Route path="/admin" element={<AdminPage />} /> */}
       </Routes>
   )
 }
