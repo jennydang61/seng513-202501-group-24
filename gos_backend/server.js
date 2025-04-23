@@ -1,3 +1,4 @@
+
 const express = require("express");
 const app = express();
 
@@ -14,11 +15,11 @@ const PORT = process.env.PORT || 3500;
 // app.use(require("helmet")());
 
 // Connect to Database
-// if (process.env.MONGO_RUI) {
-//   connectDB();
-// } else {
-//   console.log("⚠️ Skipping MongoDB connection (MONGO_URI not set)")
-// }
+if (process.env.MONGO_RUI) {
+  connectDB();
+} else {
+  console.log("⚠️ Skipping MongoDB connection (MONGO_URI not set)")
+}
 
 // Default Route
 app.get("/", (req, res) => {

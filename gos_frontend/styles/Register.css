@@ -22,11 +22,13 @@
     text-align: center;
 }
   
+/* register title */
 .registerTitle {
     font-size: 4rem;
     margin-bottom: 1rem;
 }
-  
+
+/* image on page */
 .registerImage {
     max-width: 50%;
     height: auto;
@@ -38,7 +40,9 @@
     display: flex;
     justify-content: center;
 }
-  
+
+/* register input */
+
 .registerForm {
     display: flex;
     flex-direction: column;
@@ -64,6 +68,7 @@
     outline: none;
 }
   
+/* register button */
 .registerForm button {
     background-color: #316BF3;
     color: white;
@@ -80,6 +85,7 @@
     background-color: #2563eb;
 }
 
+/* styles for errors */
 .error {
     background-color: rgba(220, 38, 38, 0.15);
     color: #f87171;
@@ -99,6 +105,8 @@
     margin-top: 0.25rem;
     font-weight: 500;
 }
+
+/* responsive design */
   
 @media (max-width: 1024px) {
   .registerContainer {

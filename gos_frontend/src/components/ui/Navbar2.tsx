@@ -13,7 +13,8 @@ const NavBar2 = () => {
   const toggleMenu = (): void => {
     setMenuOpen(!menuOpen);
   };
-
+ 
+  // logs user out
   const{
     mutate:signOut
   } = useMutation({
@@ -26,13 +27,15 @@ const NavBar2 = () => {
 
   return (
     <header className="header">
+      {/* logo that navigates to landing page when clicked */}
       <img
         src={logo}
         alt="Logo"
         className="logo"
-        onClick={() => navigate('/profile')}
+        onClick={() => navigate('/user/profile')}
       />
 
+      {/* hamburger menu icon for mobile */}
       <div
         className={`hamburgerNav ${menuOpen ? 'open' : ''}`}
         onClick={toggleMenu}
@@ -42,6 +45,7 @@ const NavBar2 = () => {
         <div className="line"></div>
       </div>
 
+      {/* nav bar that shows when opened */}
       <nav className={`navBar ${menuOpen ? 'open' : ''}`}>
         <ul className="navList">
             <li className="navItem">
@@ -51,7 +55,7 @@ const NavBar2 = () => {
                 <Link to="/user/trade">Trade</Link>
             </li>
             <li className="navItem">
-                <Link to="/leaderboard">Leaderboard</Link>
+                <Link to="/user/leaderboard">Leaderboard</Link>
             </li>
             <li className="navItem">
                 <button className="authButton" onClick={signOut}>Logout</button>

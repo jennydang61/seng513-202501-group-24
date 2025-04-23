@@ -1,5 +1,6 @@
 import "../../../styles/Modal.css";
 
+// modal component used for pop ups in profile and admin
 const Modal = ({ title, children, onClose }: { title: string, children: React.ReactNode, onClose: () => void }) => {
   return (
     <div className="modalOverlay">

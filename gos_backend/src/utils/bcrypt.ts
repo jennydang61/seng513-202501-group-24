@@ -1,3 +1,4 @@
+// used for hashing password so plain passwords are not saved in the db
 import bcrypt from 'bcrypt';
 
 export const hashValue = async (value: string, saltRounds?: number) => 

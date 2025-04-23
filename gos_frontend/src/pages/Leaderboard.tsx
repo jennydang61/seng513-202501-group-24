@@ -1,46 +1,55 @@
 import NavBar from "../components/ui/Navbar2";
 import '../../styles/Leaderboard.css';
 import pfpImage from "/src/images/pfp.png";
+import useLeaderboard from "../hooks/useLeaderboard";
 
-{/* hard code for now */}
-const users = [
-  { username: "user1", assets: "$1,000,598", return: "+4.23%" },
-  { username: "user2", assets: "$990,231", return: "+3.09%" },
-  { username: "user3", assets: "$867,283", return: "-1.01%" },
-  { username: "user4", assets: "$840,331", return: "+2.47%" },
-  { username: "user5", assets: "$801,221", return: "+1.22%" },
-  { username: "user6", assets: "$780,900", return: "+3.63%" },
-  { username: "user7", assets: "$760,124", return: "-0.79%" },
-  { username: "user8", assets: "$720,123", return: "+2.91%" },
-  { username: "user9", assets: "$609,123", return: "+1.69%" },
-];
+// defining user object
+interface User {
+  username: string;
+  netWorth: number;
+  gainLoss: number;
+}
 
 const Leaderboard = () => {
+
+  const {
+    leaderboardUsers: users,
+    isPending,
+    isSuccess,
+    isError
+  } = useLeaderboard();
+
   return (
     <div className="leaderboardPage">
+      {/* add nav bar */}
       <NavBar />
       <main className="leaderboardContainer">
-        <h1 className="leaderboardTitle">Leaderboard</h1>
+        <h1 className="leaderboardTitle">Leaderboard</h1> {/* title */}
         <div className="leaderboardHeader">
           <span>Ranking</span>
           <span>Total Assets</span>
-          <span>Daily Return</span>
+          <span>Total Return</span>
         </div>
-        <div className="leaderboardList">
-          {users.map((user, index) => (
-            <div key={index} className="leaderboardRow">
-              <div className="userInfo">
-              <span className="ranking">{index + 1}</span>
-              <img className="userAvatar" src={pfpImage}/>
-              <span className="username">{user.username}</span>
-            </div>
-              <span>{user.assets}</span>
-              <span className={user.return.startsWith("-") ? "negative" : "positive"}>
-                {user.return}
-              </span>
-            </div>
-          ))}
-        </div>
+        { isPending && ( // load leaderboard
+          <div classname="leaderboardList">Loading...</div>
+        )}
+        { isSuccess && ( // loading is successful
+          <div className="leaderboardList">
+            {users.map((user, index) => (
+              <div key={index} className="leaderboardRow">
+                <div className="userInfo">
+                  <span className="ranking">{user.leaderboardRank || index + 1}</span> {/* display user rank */}
+                  <img className="userAvatar" src={pfpImage}/> {/* display avatar */}
+                  <span className="username">{user.username}</span> {/* display username */}
+                </div>
+                <span>$ {user.netWorth.toLocaleString()}</span> {/* display total assets */}
+                <span className={user.gainLoss >= 0 ? "positive" : "negative"}> {/* conditional class for gain or loss */}
+                    {user.gainLoss >= 0 ? `+${user.gainLoss.toFixed(5)}%` : `${user.gainLoss.toFixed(5)}%`} {/* display total return */}
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
       </main>
     </div>
   );

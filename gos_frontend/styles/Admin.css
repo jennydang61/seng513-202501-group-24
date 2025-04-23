@@ -1,34 +1,39 @@
+/* styles for the main admin page */
 .adminPage {
     color: white;
     min-height: 100vh;
-  }
+}
   
-  .adminPageContainer {
+/* container for the admin page content */
+.adminPageContainer {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-  }
-  
-  .adminPageTitle {
+}
+
+/* page title */
+.adminPageTitle {
     font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 1.5rem;
     color: white;
-  }
+}
   
-  .adminPanel {
+/* panel layout */
+.adminPanel {
     display: flex;
     flex: 1;
     gap: 2rem;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
-  }
+}
   
-  .adminUsers {
+/* styles for the user management */
+.adminUsers {
     flex: 1;
     min-width: 350px;
     max-height: 70vh;
@@ -37,47 +42,51 @@
     padding: 1.5rem;
     border-radius: 1rem;
     box-sizing: border-box;
-  }
+}
   
-  .adminUsers h2 {
+.adminUsers h2 {
     font-size: 1.4rem;
     margin-bottom: 1rem;
-  }
+}
   
-  .userSearchBar {
+/* styles for the user search bar */
+.userSearchBar {
     display: flex;
     align-items: center;
     border-bottom: 1px solid white;
     padding-bottom: 0.5rem;
     margin-bottom: 1rem;
-  }
+}
   
-  .userSearchBar input {
+/* search user input field */
+.userSearchBar input {
     flex: 1;
     background: transparent;
     border: none;
     font-size: 1rem;
     padding-left: 0.5rem;
     outline: none;
-  }
+}
 
-  .userSearchBar input::placeholder {
+.userSearchBar input::placeholder {
     color: white;
     opacity: 0.6;
-  }
+}
   
-  .searchIcon {
+.searchIcon {
     width: 1rem;
     height: auto;
-  }
+}
   
-  .userList {
+/* list of users */
+.userList {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
-  }
+}
   
-  .userCard {
+/* individual user cards */
+.userCard {
     background: linear-gradient(to right, #000, #001f1f);
     padding: 1rem;
     border-radius: 1rem;
@@ -85,37 +94,41 @@
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-  }
-  
-  .userInfo {
+}
+
+/* user information section */
+.userInfo {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-  }
+}
   
-  .username {
+.username {
     font-weight: 600;
-  }
-  
-  .userReturn.positive {
+}
+
+/* positive gain */
+.userReturn.positive {
     color: #4ade80;
-  }
+}
   
-  .userReturn.negative {
+/* negative gain  */
+.userReturn.negative {
     color: #f87171;
-  }
+}
   
-  .userTotal {
+.userTotal {
     font-weight: 600;
-  }
+}
   
-  .userActions {
+.userActions {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-  }
+}
   
-  .editButton {
+/* styles buttons */
+.editButton {
     background: #16a34a;
     color: white;
     border: none;
@@ -123,9 +136,9 @@
     border-radius: 10px;
     font-size: 0.85rem;
     cursor: pointer;
-  }
+}
   
-  .removeButton {
+.removeButton {
     background: #dc2626;
     color: white;
     border: none;
@@ -133,9 +146,10 @@
     border-radius: 10px;
     font-size: 0.85rem;
     cursor: pointer;
-  }
+}
   
-  .adminFunds {
+/* styles for the funds management */
+.adminFunds {
     flex: 1;
     min-width: 350px;
     background: linear-gradient(to bottom, #3b82f6, #5eead4);
@@ -146,34 +160,36 @@
     align-items: center;
     text-align: center;
     box-sizing: border-box;
-  }
+}
   
-  .adminFunds h2 {
+.adminFunds h2 {
     font-size: 1.4rem;
     margin-bottom: 1rem;
-  }
+}
   
-  .currentFund {
+.currentFund {
     font-size: 1.1rem;
     margin-bottom: 1rem;
-  }
+}
   
-  .fundInputGroup {
+.fundInputGroup {
     display: flex;
     gap: 0.5rem;
     align-items: center;
-  }
-  
-  .fundInputGroup input {
+}
+
+/* styles for fund input */
+.fundInputGroup input {
     padding: 0.5rem 1rem;
     border-radius: 20px;
     border: none;
     background-color: white;
     color: #000;
     outline: none;
-  }
+}
   
-  .setButton {
+/* styles for set button */
+.setButton {
     background: #22c55e;
     color: white;
     padding: 0.5rem 1rem;
@@ -181,9 +197,10 @@
     border-radius: 20px;
     font-weight: bold;
     cursor: pointer;
-  }
+}
 
-  .editFundsModal {
+/* edit funds modal */
+.editFundsModal {
     background: black;
     padding: 2rem;
     border-radius: 1.25rem;
@@ -191,54 +208,55 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
-  }
+}
   
-  .editFundsRow {
+.editFundsRow {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 1.25rem;
-  }
+}
   
-  .fundLabel {
+.fundLabel {
     font-weight: 500;
-  }
+}
   
-  .fundAmount {
+.fundAmount {
     font-size: 1.5rem;
     font-weight: bold;
-  }
+}
   
-  .inputGroup {
+.inputGroup {
     display: flex;
     align-items: center;
     background: white;
     border-radius: 10px;
     padding: 0.3rem 0.75rem;
     gap: 0.5rem;
-  }
+}
   
-  .dollarSign {
+.dollarSign {
     color: black;
     font-size: 1.1rem;
-  }
+}
   
-  .newBalanceInput {
+.newBalanceInput {
     border: none;
     outline: none;
     font-size: 1.1rem;
     color: black;
     background: transparent;
     width: 120px;
-  }
-  
-  .editFundsButtons {
+}
+
+/* styles for buttons */
+.editFundsButtons {
     display: flex;
     justify-content: space-between;
     gap: 1rem;
-  }
+}
   
-  .cancelButton {
+.cancelButton {
     background: transparent;
     border: 2px solid white;
     color: white;
@@ -247,9 +265,9 @@
     font-weight: bold;
     cursor: pointer;
     flex: 1;
-  }
+}
   
-  .confirmButton {
+.confirmButton {
     background: linear-gradient(to right, #3b82f6, #6366f1);
     border: none;
     color: white;
@@ -258,10 +276,11 @@
     font-weight: bold;
     cursor: pointer;
     flex: 1;
-  }
+}
   
+/* responsiveness design */
   
-  @media (max-width: 1024px) {
+@media (max-width: 1024px) {
     .adminPageTitle {
       font-size: 2rem;
     }
@@ -270,9 +289,9 @@
     .adminFunds {
       min-width: 300px;
     }
-  }
+}
   
-  @media (max-width: 768px) {
+@media (max-width: 875px) {
     .adminPanel {
       flex-direction: column;
       align-items: center;
@@ -282,9 +301,9 @@
     .adminFunds {
       width: 100%;
     }
-  }
+}
   
-  @media (max-width: 480px) {
+@media (max-width: 480px) {
     .adminPageTitle {
       font-size: 1.5rem;
     }

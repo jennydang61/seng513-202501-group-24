@@ -6,7 +6,8 @@
   color: white;
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 /* Main content wrapper */
@@ -18,6 +19,7 @@
   width: 100%;
   align-items: center;
   max-width: 950px;
+  box-sizing: border-box;
 }
 
 /* Page title */
@@ -46,6 +48,7 @@
   width: 100%;
   max-width: 40rem;
   background-color: transparent;
+  overflow-x: hidden;
 }
 
 .searchBar input {
@@ -146,6 +149,8 @@
   margin: 0.5rem 0;
 }
 
+/* styles for buttons */
+
 .actionButtons {
   display: flex;
   gap: 1rem;
@@ -172,12 +177,23 @@
   color: white;
 }
 
+.sellButton:hover {
+  background-color: #F55C50;
+}
+
+.buyButton:hover {
+  background-color: #58B75C;
+}
+
 /* Chart container */
 .chartContainer {
   background-color: #17161C;
   padding: 1rem;
-  border-radius: 10px;
+  border-radius: 1px;
   overflow-x: auto;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1rem;
 }
 
 /* Timeframe buttons */
@@ -207,6 +223,7 @@
   background-color: #1f74e3;
 }
 
+/* search error */
 .searchError {
   color: #f87171;
   margin-top: 0.5rem;
@@ -216,7 +233,7 @@
   padding-left: 0.25rem;
 }
 
-/* Responsive adjustments */
+/* Responsive design */
 @media (max-width: 768px) {
   .stockPageTitle {
     font-size: 2.5rem;

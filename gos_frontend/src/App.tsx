@@ -10,8 +10,10 @@ import AdminPage from './pages/AdminPage'
 import '../styles/App.css'
 // import Home from './pages/Home'
 import AppContainer from './components/auth/AppContainer'
-import Settings from './pages/Settings'
 import { setNavigate } from './lib/navigation'
+import AdminContainer from './components/auth/AdminContainer'
+import ForbiddenPage from './pages/ForbiddenPage'
+import NotFoundPage from './pages/NotFoundPage'
 
 function App() {
   // setting up navigate fn so appClient can use the function outside of the react component
@@ -23,17 +25,20 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/user" element={<AppContainer />}>
           <Route index element={<LandingPage />} />
+          {/* routes nested under user path */}
           <Route path="profile" element={<ProfilePage />} />
           <Route path="trade" element={<Stockpage />} />
-          <Route path="admin" element={<AdminPage />} />
-          <Route path="settings" element={<Settings />} />
+          <Route path="leaderboard" element={<Leaderboard />} />
         </Route>
+        <Route path="/admin" element={<AdminContainer />}>
+          {/* routes nested under AdminContainer for admin only access */}
+          <Route index element={<AdminPage />} />
+        </Route>
+        {/* define pages */}
         <Route path="/login" element={<SignIn />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/trade" element={<Stockpage />} />
-        <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/forbidden" element={<ForbiddenPage />} />
+        <Route path="*" element={<NotFoundPage />} /> {/* Catch-all route for 404 */}
       </Routes>
   )
 }

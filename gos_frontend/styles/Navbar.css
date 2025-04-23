@@ -8,6 +8,7 @@
   position: relative;
 }
 
+/* website logo */
 .logo {
   width: 5rem;
   height: auto;
@@ -20,6 +21,7 @@
   gap: 2rem;
 }
 
+/* for nav items */
 .navList {
   display: flex;
   gap: 2rem;
@@ -34,6 +36,7 @@
   cursor: pointer;
 }
 
+/* sign in, register and logout buttons */
 .authButton {
   background-color: #316BF3;
   color: white;
@@ -50,6 +53,8 @@
 .authButton:hover {
   background-color: #2563eb;
 }
+
+/* style hamburger nav for mobile */
 
 .hamburgerNav {
   display: none;
@@ -76,6 +81,7 @@
   transform: translateY(-8px) rotate(45deg);
 }
 
+/* responsive design */
 @media only screen and (max-width: 900px) {
   .hamburgerNav {
     display: flex;
@@ -125,5 +131,14 @@
     font-weight: 500;
     font-size: 1rem;
     text-align: center;
+  }
+
+  .header {
+    margin-top: 0.8rem;
+    padding: 1rem 1rem;
+  }
+
+  .logo {
+    width: 4rem;
   }
 }

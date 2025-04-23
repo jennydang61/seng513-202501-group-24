@@ -1,6 +1,8 @@
+// for type safety, used in the auth.controller
+
 import { z } from "zod";
 
-const usernameSchema = z.string().min(6).max(20);
+const usernameSchema = z.string().min(8).max(20);
 const passwordSchema = z.string().min(8).max(20);
 
 
@@ -12,7 +14,7 @@ export const loginSchema = z.object({
 
 export const registerSchema = loginSchema
     .extend({
-        confirmPassword: z.string().min(8).max(20),
+        confirmPassword: passwordSchema,
     })
     .refine(
     (data) => data.password === data.confirmPassword, {

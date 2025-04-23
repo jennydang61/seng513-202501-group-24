@@ -1,3 +1,4 @@
+/* container for entire page */
 .pageContainer {
     width: 100%;
     min-height: 100dvh;
@@ -6,55 +7,57 @@
     flex-direction: column;
   }
   
-  .contentWrapper {
+.contentWrapper {
     display: flex;
     flex-direction: column;
     height: 100%;
-  }
+}
   
-  .heroContainer {
+.heroContainer {
     display: flex;
     flex: 1;
     align-items: center;
     justify-content: space-between;
     padding: 4rem 12rem;
     gap: 2rem;
-  }
+}
   
-  .heroContent {
+.heroContent {
     flex: 1;
     color: white;
-  }
+}
   
-  .heroTitle {
+/* styles for title, tagline and description */
+.heroTitle {
     font-size: 4rem;
     margin-bottom: 1rem;
     color: #316BF3;
-  }
-  
-  .heroTagline {
+ }
+
+.heroTagline {
     font-size: 2rem;
     margin-bottom: 1.5rem;
-  }
+}
   
-  .heroDescription {
+.heroDescription {
     font-size: 1.25rem;
     color: white;
-  }
+}
   
-  .heroImageContainer {
+.heroImageContainer {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
   
-  .heroImage {
+.heroImage {
     max-width: 100%;
     height: auto;
     border-radius: 1rem;
-  }
+}
 
+/* responsive design */
 
 @media (max-width: 1024px) {
   .heroContainer {
@@ -104,7 +107,7 @@
     margin-bottom: 0.5rem;
   }
 
-  .heroDescription {
+.heroDescription {
     font-size: 1rem;
     margin-bottom: 1.2rem;
   }

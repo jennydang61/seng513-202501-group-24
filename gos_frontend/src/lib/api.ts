@@ -5,7 +5,24 @@ export const login = async(data) => API.post("/auth/login", data);
 export const logout = async() => API.get("/auth/logout");
 
 export const getUser = async() => API.get("/user");
-export const getUsers = async() => API.get("/users");
-export const getSessions = async() => API.get("/sessions");
-export const deleteSession = async(id) => API.delete(`/sessions/${id}`);
-export const fetchHistoricalStock = async (symbol: string) => API.get(`/stocks/historical/${symbol}`);
+export const getLeaderboardUsers = async() => API.get("/user/leaderboard");
+export const updateStats = async() => API.patch("/user/update-stats");
+// export const getSessions = async() => API.get("/sessions");
+// export const deleteSession = async(id) => API.delete(`/sessions/${id}`);
+export const updateUser = async(data) => API.patch("/update", data);
+
+
+export const getAllUsers = async() => API.get("/admin/all");
+export const deleteUser = async (id) => API.delete(`/admin/${id}`);
+
+export const fetchHistoricalStock = async (
+    symbol: string,
+    interval: '1d' | '1h' = '1d'
+  ) => {
+    return API.get(`/stocks/historical/${symbol}?interval=${interval}`)};
+
+export const setStartingFund = async(amount) => API.post("/fund", {amount});
+export const getStartingFund = async() => API.get("/fund");
+export const updateUsername = async (newUsername) =>API.put("/user/username", { newUsername });
+export const updatePassword = async (newPassword) =>API.put("/user/password", { newPassword });
+export const deleteAccount = async () =>API.delete("/user");

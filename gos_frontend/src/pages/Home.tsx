@@ -2,15 +2,18 @@ import NavBar from "../components/ui/Navbar2";
 import stockImage from "/src/images/stock_trading_computer.png";
 import '../../styles/LandingPage.css';
 
-
+// landing page
 const Home = () => {
     return (
         <>
           <div className={'pageContainer'}>
             <div className={'contentWrapper'}>
+                {/* add nav bar */}
                 <NavBar/>
+              {/* hero container */}
               <main className={'heroContainer'}>
                 <section className={'heroContent'}>
+                  {/* hero text content */}
                   <h1 className={'heroTitle'}>The Game of Stocks</h1>
                   <h2 className={'heroTagline'}>TRADE. LEARN. INVEST.</h2>
                   <p className={'heroDescription'}>

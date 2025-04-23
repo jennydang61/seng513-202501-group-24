@@ -1,3 +1,7 @@
+// centralized environment variable management
+// also validating required variables
+// defaul values and type safety
+
 const getEnv = (key: string, defaultValue?: string): string => {
     const value = process.env[key] || defaultValue;
 

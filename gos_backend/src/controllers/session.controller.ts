@@ -31,14 +31,14 @@ export const getSessionsHandler = catchErrors(
     );
 });
 
-export const deleteSessionHandler = catchErrors(async (req, res) => {
-    const sessionId = z.string().parse(req.params.id);
-    const deleted = await SessionModel.findOneAndDelete({
-        _id: sessionId,
-        userId: req.userId, 
-    })
-    appAssert(deleted, NOT_FOUND, "Session not found");
-    return res.status(OK).json({
-        message: "Session removed",
-    })
-})
+// export const deleteSessionHandler = catchErrors(async (req, res) => {
+//     const sessionId = z.string().parse(req.params.id);
+//     const deleted = await SessionModel.findOneAndDelete({
+//         _id: sessionId,
+//         userId: req.userId, 
+//     })
+//     appAssert(deleted, NOT_FOUND, "Session not found");
+//     return res.status(OK).json({
+//         message: "Session removed",
+//     })
+// })
