@@ -1,9 +1,14 @@
+// centralized error handling
+// categorized error responses for different types of error
+// client-friendly responses
+
 import { ErrorRequestHandler, Response } from "express";
 import { BAD_REQUEST, INTERNAL_SERVER_ERROR } from "../constants/http";
 import { z } from "zod";
 import AppError from "../utils/AppError";
 import { clearAuthCookies, REFRESH_PATH } from "../utils/cookies";
 
+// handles validation errors from zod; used for schema validation
 const handleZodError = (res:Response, error: z.ZodError) => {
     const errors = error.issues.map((err) => ({ // array of error issues
         path: err.path.join("."), // take the entire path and combine it with periods
@@ -16,6 +21,7 @@ const handleZodError = (res:Response, error: z.ZodError) => {
     });
 }  
 
+// handles application-specific errors
 const handleAppError = (res: Response, error: AppError) => {
     return res.status(error.statusCode).json({
         message: error.message,
@@ -23,6 +29,8 @@ const handleAppError = (res: Response, error: AppError) => {
     });
 }
 
+
+// error-handling middleware, processes all errors passed to i
 const errorHandler: ErrorRequestHandler = (error, req, res, next) => {
     console.log(`PATH: ${req.path}`, error);
 

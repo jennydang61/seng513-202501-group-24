@@ -52,8 +52,8 @@ app.use('/stocks', stockRoutes);
 // protected routes
 app.use("/user", authenticate, userRoutes) // making sure the user is authenticated first before fetching the user
 app.use("/update", authenticate, updateRoutes);
-app.use("/admin", authenticate, adminRoutes)
-app.use("/fund", authenticate, authorize(["admin"]), fundRoutes) // making sure the user is authenticated first before fetching the user
+app.use("/admin", authenticate, adminRoutes);
+app.use("/fund", authenticate, authorize(["admin"]), fundRoutes); // making sure the user is authenticated first before fetching the user
 
 app.use(errorHandler);
 

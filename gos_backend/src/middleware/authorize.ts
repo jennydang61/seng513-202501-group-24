@@ -1,3 +1,5 @@
+// for security, also checking the authorization on the backend endpoints for admin only routes
+
 import { RequestHandler } from "express";
 import { FORBIDDEN } from "../constants/http";
 import appAssert from "../utils/appAssert";

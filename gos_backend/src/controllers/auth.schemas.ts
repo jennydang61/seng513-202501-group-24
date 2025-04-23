@@ -1,3 +1,5 @@
+// for type safety, used in the auth.controller
+
 import { z } from "zod";
 
 const usernameSchema = z.string().min(8).max(20);

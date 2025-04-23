@@ -1,3 +1,5 @@
+// verifying the user is logged in, using the tokens in the cookie (either accessToken or refreshToken)
+
 import { RequestHandler } from "express";
 import appAssert from "../utils/appAssert";
 import AppErrorCode from "../constants/appErrorCode";

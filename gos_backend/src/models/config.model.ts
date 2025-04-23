@@ -6,6 +6,7 @@ export interface ConfigDocument extends mongoose.Document {
   updatedAt: Date;
 }
 
+// used for values that require global access, like startingFund value
 const configSchema = new mongoose.Schema<ConfigDocument>(
     {
     key: { 

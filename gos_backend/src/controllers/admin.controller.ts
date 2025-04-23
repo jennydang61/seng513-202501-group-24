@@ -10,7 +10,7 @@ export const getAllUsersHandler = catchErrors(async (req, res) => {
     return res.status(OK).json(users.map((user) => user.omitPassword()));
   });
 
-// DELETE /admin/:id - Delete account
+// DELETE /admin/:id - Delete account from admin page
 export const deleteUserHandler = catchErrors(async (req, res) => {
     const username = z.string().parse(req.params.id);
     const deleted = await UserModel.findOneAndDelete({
