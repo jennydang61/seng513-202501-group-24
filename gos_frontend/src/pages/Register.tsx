@@ -115,7 +115,7 @@ const Register = () => {
                 name="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)} // update password state
-                placeholder="At least 8 characters"
+                placeholder="Must be at least 8 characters long"
                 required
               />
               {/* display password error */}
