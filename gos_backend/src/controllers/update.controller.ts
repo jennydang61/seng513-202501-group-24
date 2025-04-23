@@ -32,8 +32,9 @@ export const updateUserHandler = catchErrors(
                 const stockIndex = user.portfolio.findIndex((stocks: any) => 
                     stocks.stock === updatePortfolio.stock);
 
-                // if it does, then update the new data at that specific stock , uses set
+                // if it does, then update the new data at that specific stock , uses mongodb's set operation
                 if (stockIndex > -1) {
+                    // if the shares are empty, then delete the stock from the portfolio
                     if (updatePortfolio.quantity == 0 ) {
                         user.portfolio.splice(stockIndex, 1);
                         updateQuery.$set = { portfolio: user.portfolio };
@@ -45,14 +46,14 @@ export const updateUserHandler = catchErrors(
                         updateQuery.$set = { portfolio: user.portfolio };
                     }
                 } else {
-                    // if not, then add the stock to the portfolio, uses push
+                    // if not, then add the stock to the portfolio, uses mongodb's push operation
                     if (!updateQuery.$push) {
                         updateQuery.$push = {};
                     }
                     updates[field].bookValue = updates[field].price * updates[field].quantity;
                     updateQuery.$push[field] = updates[field];
                 }
-            // if the field is not portfolio, then use set 
+            // if the field is not portfolio, then uses mongodb's set operation
             } else {
                 if (!updateQuery.$set) {
                     updateQuery.$set = {};

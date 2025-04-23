@@ -143,7 +143,7 @@ const ProfilePage = () => {
                   </div>
                 </>
               ) : (
-                <> {/* need styling */} 
+                <> 
                   <div className="adminSection">
                     <h2>Admin Dashboard</h2>
                     <p>Welcome, Admin! You have full control over the platform.</p>

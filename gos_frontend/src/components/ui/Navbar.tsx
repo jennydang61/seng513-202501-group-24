@@ -35,15 +35,6 @@ const NavBar = () => {
       <nav className={`navBar ${menuOpen ? 'open' : ''}`}>
         <ul className="navList">
             <li className="navItem">
-                <Link to="/user/profile">Profile</Link>
-            </li>
-            <li className="navItem">
-                <Link to="/user/trade">Trade</Link>
-            </li>
-            <li className="navItem">
-                <Link to="/user/leaderboard">Leaderboard</Link>
-            </li>
-            <li className="navItem">
                 <Link to="/login" className="authButton">Sign In</Link>
             </li>
             <li className="navItem">
