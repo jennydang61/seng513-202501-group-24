@@ -42,7 +42,7 @@ const Leaderboard = () => {
                   <img className="userAvatar" src={pfpImage}/> {/* display avatar */}
                   <span className="username">{user.username}</span> {/* display username */}
                 </div>
-                <span>$ {user.netWorth.toLocaleString()}</span> {/* displat total assets */}
+                <span>$ {user.netWorth.toLocaleString()}</span> {/* display total assets */}
                 <span className={user.gainLoss >= 0 ? "positive" : "negative"}> {/* conditional class for gain or loss */}
                     {user.gainLoss >= 0 ? `+${user.gainLoss.toFixed(5)}%` : `${user.gainLoss.toFixed(5)}%`} {/* display total return */}
                 </span>
