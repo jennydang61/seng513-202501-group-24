@@ -1,18 +1,18 @@
+# gos_frontend/Dockerfile
 FROM node:22
 
-# Create app directory
 WORKDIR /usr/src/app
 
-# Copy only package.json and package-lock.json
+# copy only package.json and package-lock.json
 COPY package*.json ./
 
-# Install dependencies
+# install dependencies
 RUN npm install
 
-# Copy the rest of the app
+# copy rest of frontend
 COPY . .
 
-EXPOSE 80
+EXPOSE 5173
 
-# Start the app
+# start dev server
 CMD ["npm", "run", "dev"] 
